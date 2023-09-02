@@ -1,0 +1,43 @@
+import '/components/button_gradient/button_gradient_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_video_player.dart';
+import '/pages/registration_email/registration_email_widget.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+class WelcomeModel extends FlutterFlowModel {
+  ///  State fields for stateful widgets in this page.
+
+  final unfocusNode = FocusNode();
+  // State field(s) for PageView widget.
+  PageController? pageViewController;
+
+  int get pageViewCurrentIndex => pageViewController != null &&
+          pageViewController!.hasClients &&
+          pageViewController!.page != null
+      ? pageViewController!.page!.round()
+      : 0;
+  // Model for Button_Gradient component.
+  late ButtonGradientModel buttonGradientModel;
+
+  /// Initialization and disposal methods.
+
+  void initState(BuildContext context) {
+    buttonGradientModel = createModel(context, () => ButtonGradientModel());
+  }
+
+  void dispose() {
+    unfocusNode.dispose();
+    buttonGradientModel.dispose();
+  }
+
+  /// Action blocks are added here.
+
+  /// Additional helper methods are added here.
+}

@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "1017382373837",
+    "project_id": "frau-balance",
+    "storage_bucket": "frau-balance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017382373837:android:deebb373269dc894821c84",
+        "android_client_info": {
+          "package_name": "pro.appful.fraubalance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1017382373837-a0cdsm4esram6voe9itp6ro4tu4ck271.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pro.appful.fraubalance",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "1017382373837-s80u0kdpf6403etf55rs3o1h06srnr0s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pro.appful.fraubalance",
+            "certificate_hash": "337b7c27800dcede8072b7ba2db8b8030e987820"
+          }
+        },
+        {
+          "client_id": "1017382373837-j2efr4ji7a6alttb54o8mb2jgjo4latv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMgqSeR2N1HgIL14F-rbdKZcD5S8OsJgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017382373837-j2efr4ji7a6alttb54o8mb2jgjo4latv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1017382373837-10kekvp797etcv8hfuj7afinhu5ba44v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "pro.appful.fraubalance"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1017382373837-10kekvp797etcv8hfuj7afinhu5ba44v.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1017382373837-10kekvp797etcv8hfuj7afinhu5ba44v</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1017382373837-a0cdsm4esram6voe9itp6ro4tu4ck271.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAJmjyzJhKU8qQkwEHzJ5w-T-P_sFTVwoE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1017382373837</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>pro.appful.fraubalance</string>
+	<key>PROJECT_ID</key>
+	<string>frau-balance</string>
+	<key>STORAGE_BUCKET</key>
+	<string>frau-balance.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1017382373837:ios:efa57e3f85dbe547821c84</string>
+</dict>
+</plist>

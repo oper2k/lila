@@ -1,0 +1,32 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "games",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isDelete",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "date",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "games",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isDelete",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "date",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
+}
