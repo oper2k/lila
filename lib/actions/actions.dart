@@ -14,9 +14,7 @@ Future<bool> checkSubs(BuildContext context) async {
 
   logFirebaseEvent('CheckSubs_revenue_cat');
   final isEntitled = await revenue_cat.isEntitled('issubscribe');
-  if (isEntitled == null) {
-    return;
-  } else if (!isEntitled) {
+  if (!isEntitled) {
     await revenue_cat.loadOfferings();
   }
 
