@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/components/button_exp/button_exp_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/registration_email/registration_email_widget.dart';
 import '/pages/welcome/welcome_widget.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/cases_one/cases_one_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -64,7 +65,7 @@ class _CasesWidgetState extends State<CasesWidget> {
                 height: 100.0,
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -80,7 +81,7 @@ class _CasesWidgetState extends State<CasesWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,

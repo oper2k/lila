@@ -103,7 +103,7 @@ class _Game666WidgetState extends State<Game666Widget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(-1.0, 0.0),
+                      alignment: AlignmentDirectional(-1.00, 0.00),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 58.0, 0.0, 0.0),

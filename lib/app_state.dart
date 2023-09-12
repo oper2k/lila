@@ -6,13 +6,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
-  static final FFAppState _instance = FFAppState._internal();
+  static FFAppState _instance = FFAppState._internal();
 
   factory FFAppState() {
     return _instance;
   }
 
   FFAppState._internal();
+
+  static void reset() {
+    _instance = FFAppState._internal();
+  }
 
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
@@ -102,6 +106,10 @@ class FFAppState extends ChangeNotifier {
     _cubeText[_index] = updateFn(_cubeText[_index]);
   }
 
+  void insertAtIndexInCubeText(int _index, String _value) {
+    _cubeText.insert(_index, _value);
+  }
+
   List<String> _randomPraseForStartGame = [
     'Попробуй еще раз',
     'Упс, попробуй ещё раз',
@@ -139,6 +147,11 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList('ff_randomPraseForStartGame', _randomPraseForStartGame);
   }
 
+  void insertAtIndexInRandomPraseForStartGame(int _index, String _value) {
+    _randomPraseForStartGame.insert(_index, _value);
+    prefs.setStringList('ff_randomPraseForStartGame', _randomPraseForStartGame);
+  }
+
   List<int> _removeNumberField = [5, 14, 23];
   List<int> get removeNumberField => _removeNumberField;
   set removeNumberField(List<int> _value) {
@@ -162,6 +175,10 @@ class FFAppState extends ChangeNotifier {
     int Function(int) updateFn,
   ) {
     _removeNumberField[_index] = updateFn(_removeNumberField[_index]);
+  }
+
+  void insertAtIndexInRemoveNumberField(int _index, int _value) {
+    _removeNumberField.insert(_index, _value);
   }
 
   bool _requestVisibility = false;
@@ -289,7 +306,7 @@ class FFAppState extends ChangeNotifier {
     _GameEnd666 = _value;
   }
 
-  String _publicID = '';
+  String _publicID = 'pk_85232625b475efafefde0de526b76';
   String get publicID => _publicID;
   set publicID(String _value) {
     _publicID = _value;

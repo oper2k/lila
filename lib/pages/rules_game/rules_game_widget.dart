@@ -4,6 +4,7 @@ import '/components/button_gradient/button_gradient_widget.dart';
 import '/components/button_star_game/button_star_game_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/field_game/field_game_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -91,7 +92,7 @@ class _RulesGameWidgetState extends State<RulesGameWidget> {
                   child: Container(
                     decoration: BoxDecoration(),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.00, 1.00),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -107,7 +108,7 @@ class _RulesGameWidgetState extends State<RulesGameWidget> {
                 actions: [],
                 flexibleSpace: FlexibleSpaceBar(
                   background: Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.00, -1.00),
                     child: Image.asset(
                       'assets/images/StatusBar.png',
                       width: double.infinity,
@@ -236,7 +237,7 @@ class _RulesGameWidgetState extends State<RulesGameWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.00, 1.00),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 27.0, 0.0, 20.0),

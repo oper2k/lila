@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/button_exp/button_exp_widget.dart';
 import '/components/cube_6/cube6_widget.dart';
@@ -11,9 +12,9 @@ import '/flutter_flow/flutter_flow_audio_player.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/end_game_dage/end_game_dage_widget.dart';
 import '/pages/sub_pay/sub_pay_widget.dart';
-import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
@@ -787,7 +788,7 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                           children: [
                             if (FFAppState().visibilityCard == 1)
                               Align(
-                                alignment: AlignmentDirectional(0.0, -1.0),
+                                alignment: AlignmentDirectional(0.00, -1.00),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 13.0, 0.0, 0.0),
@@ -1194,8 +1195,8 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                               Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0),
+                                                                        0.00,
+                                                                        0.00),
                                                                 child: Text(
                                                                   gridViewGameFieldRecord
                                                                       .number
@@ -1222,8 +1223,8 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                               Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0),
+                                                                        0.00,
+                                                                        0.00),
                                                                 child: Text(
                                                                   gridViewGameFieldRecord
                                                                       .number
@@ -1303,29 +1304,61 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                           ?.buyGame,
                                                       false)) {
                                                     logFirebaseEvent(
-                                                        'Stack_action_block');
-                                                    _model.checkSubs =
-                                                        await action_blocks
-                                                            .checkSubs(context);
-                                                    _shouldSetState = true;
-                                                    if (!_model.checkSubs!) {
+                                                        'Stack_revenue_cat');
+                                                    final isEntitled =
+                                                        await revenue_cat
+                                                            .isEntitled(
+                                                                'issubscribe');
+                                                    if (isEntitled == null) {
+                                                      return;
+                                                    } else if (!isEntitled) {
+                                                      await revenue_cat
+                                                          .loadOfferings();
+                                                    }
+
+                                                    if (!isEntitled) {
                                                       logFirebaseEvent(
-                                                          'Stack_update_app_state');
-                                                      FFAppState()
-                                                              .stopCubeRotate =
-                                                          false;
-                                                      logFirebaseEvent(
-                                                          'Stack_navigate_to');
-                                                      Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              SubPayWidget(
-                                                            showThreeMove:
-                                                                false,
-                                                          ),
-                                                        ),
+                                                          'Stack_backend_call');
+                                                      _model.getSubscribeCloudGame =
+                                                          await CloudpaymentsGroup
+                                                              .getSubscriptionCall
+                                                              .call(
+                                                        id: valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.modelId,
+                                                            ''),
                                                       );
+                                                      _shouldSetState = true;
+                                                      if (CloudpaymentsGroup
+                                                              .getSubscriptionCall
+                                                              .modelStatus(
+                                                                (_model.getSubscribeCloudGame
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              )
+                                                              .toString() !=
+                                                          'Active') {
+                                                        logFirebaseEvent(
+                                                            'Stack_update_app_state');
+                                                        FFAppState()
+                                                                .stopCubeRotate =
+                                                            false;
+                                                        logFirebaseEvent(
+                                                            'Stack_navigate_to');
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                SubPayWidget(
+                                                              showThreeMove:
+                                                                  true,
+                                                            ),
+                                                          ),
+                                                        );
+                                                        if (_shouldSetState)
+                                                          setState(() {});
+                                                        return;
+                                                      }
                                                     }
                                                   }
                                                 } else {
@@ -2058,7 +2091,7 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                               ),
                             if (FFAppState().visibilityCard == 2)
                               Align(
-                                alignment: AlignmentDirectional(0.0, 1.0),
+                                alignment: AlignmentDirectional(0.00, 1.00),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,

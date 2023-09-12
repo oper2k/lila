@@ -7,6 +7,7 @@ import '/components/sub_up_success/sub_up_success_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/field_game/field_game_widget.dart';
 import '/pages/history_game/history_game_widget.dart';
 import '/pages/history_moves/history_moves_widget.dart';
@@ -82,7 +83,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                 actions: [],
                 flexibleSpace: FlexibleSpaceBar(
                   background: Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.00, -1.00),
                     child: Image.asset(
                       'assets/images/StatusBar.png',
                       width: double.infinity,
@@ -182,7 +183,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                           Expanded(
                                             child: Align(
                                               alignment: AlignmentDirectional(
-                                                  1.0, -1.0),
+                                                  1.00, -1.00),
                                               child: Container(
                                                 width: 40.0,
                                                 height: 40.0,
@@ -258,7 +259,8 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 1.0),
+                                      alignment:
+                                          AlignmentDirectional(0.00, 1.00),
                                       child: Image.asset(
                                         'assets/images/bg_home_leela.png',
                                         width: double.infinity,
@@ -316,7 +318,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                             Expanded(
                                               child: Align(
                                                 alignment: AlignmentDirectional(
-                                                    1.0, -1.0),
+                                                    1.00, -1.00),
                                                 child: Container(
                                                   width: 40.0,
                                                   height: 40.0,
@@ -389,7 +391,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                       ),
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 1.0),
+                                            AlignmentDirectional(0.00, 1.00),
                                         child: Image.asset(
                                           'assets/images/bg_home_leela.png',
                                           width: double.infinity,
@@ -759,7 +761,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                       },
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.00, 1.00),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 27.0, 0.0, 25.0),

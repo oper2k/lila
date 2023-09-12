@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/components/button_gradient/button_gradient_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/question_game/question_game_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -66,109 +67,113 @@ class _AffirmationsWidgetState extends State<AffirmationsWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 48.0, 24.0, 45.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 48.0, 0.0, 45.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        logFirebaseEvent(
-                            'AFFIRMATIONS_Container_7a3rb5j7_ON_TAP');
-                        logFirebaseEvent('Container_navigate_back');
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        width: 35.0,
-                        height: 35.0,
-                        decoration: BoxDecoration(),
-                        child: Icon(
-                          FFIcons.kdown,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 16.0,
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          logFirebaseEvent(
+                              'AFFIRMATIONS_Container_7a3rb5j7_ON_TAP');
+                          logFirebaseEvent('Container_navigate_back');
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          width: 35.0,
+                          height: 35.0,
+                          decoration: BoxDecoration(),
+                          child: Icon(
+                            FFIcons.kdown,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 16.0,
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 35.0, 0.0),
-                        child: Text(
-                          'Аффирмация',
-                          textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyMediumFamily,
-                                fontWeight: FontWeight.w600,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
-                              ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 35.0, 0.0),
+                          child: Text(
+                            'Аффирмация',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
+                                  fontWeight: FontWeight.w600,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
+                                ),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
+                Spacer(),
                 Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (responsiveVisibility(
-                      context: context,
-                      phone: false,
-                      tablet: false,
-                      tabletLandscape: false,
-                      desktop: false,
-                    ))
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 45.0, 0.0, 0.0),
-                        child: Container(
-                          width: double.infinity,
-                          height: 335.0,
-                          child: custom_widgets.AudioPlayerNew(
-                            width: double.infinity,
-                            height: 335.0,
-                            musicName: 'Аффирмация',
-                            description: widget.currentAffi!.name,
-                            url: functions
-                                .stringAudio(widget.currentAffi?.audio)!,
-                          ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                      child: Text(
+                        valueOrDefault<String>(
+                          widget.currentAffi?.name,
+                          'Название',
                         ),
+                        style:
+                            FlutterFlowTheme.of(context).displaySmall.override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .displaySmallFamily,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .displaySmallFamily),
+                                  lineHeight: 1.0,
+                                ),
                       ),
-                    Container(
-                      width: double.infinity,
-                      height: 300.0,
-                      child: custom_widgets.CustomAudioPlayer(
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 26.0, 10.0, 0.0),
+                      child: Container(
                         width: double.infinity,
-                        height: 300.0,
-                        audioUrl:
-                            functions.stringAudio(widget.currentAffi?.audio)!,
-                        title: widget.currentAffi!.name,
-                        imgUrl: '0',
-                        skipForwardWidget: Icon(
-                          FFIcons.kleft,
-                          size: 0.0,
+                        height: 250.0,
+                        child: custom_widgets.CustomAudioPlayer(
+                          width: double.infinity,
+                          height: 250.0,
+                          audioUrl:
+                              functions.stringAudio(widget.currentAffi?.audio)!,
+                          title: widget.currentAffi!.name,
+                          imgUrl: '0',
+                          skipForwardWidget: Icon(
+                            FFIcons.kleft,
+                            size: 0.0,
+                          ),
+                          skipBackWidget: Icon(
+                            FFIcons.kleft,
+                            size: 0.0,
+                          ),
+                          onPlay: () async {},
+                          onPause: () async {},
+                          onSkipForward: () async {},
+                          onSkipBack: () async {},
                         ),
-                        skipBackWidget: Icon(
-                          FFIcons.kleft,
-                          size: 0.0,
-                        ),
-                        onPlay: () async {},
-                        onPause: () async {},
-                        onSkipForward: () async {},
-                        onSkipBack: () async {},
                       ),
                     ),
                     if (responsiveVisibility(

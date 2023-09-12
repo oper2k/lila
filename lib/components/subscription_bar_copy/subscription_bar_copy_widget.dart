@@ -91,7 +91,7 @@ class _SubscriptionBarCopyWidgetState extends State<SubscriptionBarCopyWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    alignment: AlignmentDirectional(-1.00, 0.00),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 48.0, 0.0, 0.0),
@@ -122,7 +122,7 @@ class _SubscriptionBarCopyWidgetState extends State<SubscriptionBarCopyWidget> {
                         ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    alignment: AlignmentDirectional(-1.00, 0.00),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
@@ -497,7 +497,7 @@ class _SubscriptionBarCopyWidgetState extends State<SubscriptionBarCopyWidget> {
                   ),
                   if (widget.showThreeMovies)
                     Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.00, 1.00),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
@@ -534,7 +534,7 @@ class _SubscriptionBarCopyWidgetState extends State<SubscriptionBarCopyWidget> {
                     ),
                   if (!widget.showThreeMovies)
                     Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.00, 1.00),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),

@@ -3,6 +3,7 @@ import '/components/button_exp/button_exp_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main.dart';
 import '/pages/registration_name/registration_name_widget.dart';
 import '/pages/sms_code/sms_code_widget.dart';

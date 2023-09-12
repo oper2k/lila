@@ -1,6 +1,7 @@
 import '/components/question/question_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/cube_game/cube_game_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
@@ -66,7 +67,7 @@ class _QuestionGameWidgetState extends State<QuestionGameWidget> {
               child: Container(
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -82,7 +83,7 @@ class _QuestionGameWidgetState extends State<QuestionGameWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -265,7 +266,7 @@ class _QuestionGameWidgetState extends State<QuestionGameWidget> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.00, 0.00),
                       child: Text(
                         'Бросить кубик',
                         textAlign: TextAlign.center,

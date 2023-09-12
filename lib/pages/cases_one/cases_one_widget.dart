@@ -3,6 +3,7 @@ import '/components/instagram/instagram_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -85,7 +86,7 @@ class _CasesOneWidgetState extends State<CasesOneWidget>
             child: Container(
               decoration: BoxDecoration(),
               child: Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.00, 1.00),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 6.0),
                   child: Icon(
@@ -132,7 +133,7 @@ class _CasesOneWidgetState extends State<CasesOneWidget>
           actions: [],
           flexibleSpace: FlexibleSpaceBar(
             background: Align(
-              alignment: AlignmentDirectional(0.0, -1.0),
+              alignment: AlignmentDirectional(0.00, -1.00),
               child: Image.asset(
                 'assets/images/StatusBar.png',
                 width: double.infinity,

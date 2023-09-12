@@ -76,6 +76,11 @@ class UsersRecord extends FirestoreRecord {
   bool get buyGame => _buyGame ?? false;
   bool hasBuyGame() => _buyGame != null;
 
+  // "Model_Id" field.
+  String? _modelId;
+  String get modelId => _modelId ?? '';
+  bool hasModelId() => _modelId != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -89,6 +94,7 @@ class UsersRecord extends FirestoreRecord {
     _firstEntry = snapshotData['first_entry'] as bool?;
     _endFreeGame = snapshotData['end_free_game'] as bool?;
     _buyGame = snapshotData['buyGame'] as bool?;
+    _modelId = snapshotData['Model_Id'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -137,6 +143,7 @@ Map<String, dynamic> createUsersRecordData({
   bool? firstEntry,
   bool? endFreeGame,
   bool? buyGame,
+  String? modelId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -152,6 +159,7 @@ Map<String, dynamic> createUsersRecordData({
       'first_entry': firstEntry,
       'end_free_game': endFreeGame,
       'buyGame': buyGame,
+      'Model_Id': modelId,
     }.withoutNulls,
   );
 
@@ -174,7 +182,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.dateBirth == e2?.dateBirth &&
         e1?.firstEntry == e2?.firstEntry &&
         e1?.endFreeGame == e2?.endFreeGame &&
-        e1?.buyGame == e2?.buyGame;
+        e1?.buyGame == e2?.buyGame &&
+        e1?.modelId == e2?.modelId;
   }
 
   @override
@@ -190,7 +199,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.dateBirth,
         e?.firstEntry,
         e?.endFreeGame,
-        e?.buyGame
+        e?.buyGame,
+        e?.modelId
       ]);
 
   @override

@@ -57,7 +57,7 @@ class _ButtonStarGameWidgetState extends State<ButtonStarGameWidget> {
               borderRadius: BorderRadius.circular(30.0),
             ),
             child: Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.00, 0.00),
               child: Text(
                 'Начать игру',
                 style: FlutterFlowTheme.of(context).bodyMedium,

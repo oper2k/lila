@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/card_pay/card_pay_widget.dart';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:flutter/material.dart';
@@ -68,7 +69,7 @@ class _SubCloudPaymentsWidgetState extends State<SubCloudPaymentsWidget> {
               child: Container(
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -84,7 +85,7 @@ class _SubCloudPaymentsWidgetState extends State<SubCloudPaymentsWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -105,7 +106,7 @@ class _SubCloudPaymentsWidgetState extends State<SubCloudPaymentsWidget> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  alignment: AlignmentDirectional(-1.00, 0.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 48.0, 0.0, 0.0),
@@ -134,7 +135,7 @@ class _SubCloudPaymentsWidgetState extends State<SubCloudPaymentsWidget> {
                       ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  alignment: AlignmentDirectional(-1.00, 0.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
@@ -518,7 +519,7 @@ class _SubCloudPaymentsWidgetState extends State<SubCloudPaymentsWidget> {
                 ),
                 if (widget.showThreeMovies ?? true)
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.00, 1.00),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
@@ -553,9 +554,16 @@ class _SubCloudPaymentsWidgetState extends State<SubCloudPaymentsWidget> {
                       ),
                     ),
                   ),
-                if (!widget.showThreeMovies!)
+                if (!widget.showThreeMovies! &&
+                    responsiveVisibility(
+                      context: context,
+                      phone: false,
+                      tablet: false,
+                      tabletLandscape: false,
+                      desktop: false,
+                    ))
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.00, 1.00),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),

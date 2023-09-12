@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/components/button_exp/button_exp_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -34,8 +36,26 @@ class _SubUpSuccessWidgetState extends State<SubUpSuccessWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('SUB_UP_SUCCESS_SubUpSuccess_ON_INIT_STAT');
       logFirebaseEvent('SubUpSuccess_backend_call');
-      logFirebaseEvent('SubUpSuccess_backend_call');
-      logFirebaseEvent('SubUpSuccess_not_defined');
+      _model.getSubscribeCloudGame =
+          await CloudpaymentsGroup.getSubscriptionCall.call(
+        id: valueOrDefault(currentUserDocument?.modelId, ''),
+      );
+      if (CloudpaymentsGroup.getSubscriptionCall
+              .modelStatus(
+                (_model.getSubscribeCloudGame?.jsonBody ?? ''),
+              )
+              .toString() ==
+          'Active') {
+        logFirebaseEvent('SubUpSuccess_update_widget_state');
+        setState(() {
+          _model.subBool = true;
+        });
+      } else {
+        logFirebaseEvent('SubUpSuccess_update_widget_state');
+        setState(() {
+          _model.subBool = false;
+        });
+      }
     });
   }
 
@@ -121,6 +141,7 @@ class _SubUpSuccessWidgetState extends State<SubUpSuccessWidget> {
                     await launchURL('https://my.cloudpayments.ru/');
                   },
                   child: RichText(
+                    textScaleFactor: MediaQuery.of(context).textScaleFactor,
                     text: TextSpan(
                       children: [
                         TextSpan(
@@ -151,7 +172,7 @@ class _SubUpSuccessWidgetState extends State<SubUpSuccessWidget> {
                 ),
               ),
             Align(
-              alignment: AlignmentDirectional(0.0, 1.0),
+              alignment: AlignmentDirectional(0.00, 1.00),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 52.0, 0.0, 0.0),
                 child: InkWell(

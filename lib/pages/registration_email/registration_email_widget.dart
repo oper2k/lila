@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/components/button_exp/button_exp_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main.dart';
 import '/pages/forgot_password/forgot_password_widget.dart';
 import '/pages/registration_name/registration_name_widget.dart';
@@ -37,7 +38,7 @@ class _RegistrationEmailWidgetState extends State<RegistrationEmailWidget>
       vsync: this,
       length: 2,
       initialIndex: 0,
-    );
+    )..addListener(() => setState(() {}));
     _model.emailAddressController ??= TextEditingController();
     _model.passwordController ??= TextEditingController();
     _model.emailController ??= TextEditingController();
@@ -84,7 +85,7 @@ class _RegistrationEmailWidgetState extends State<RegistrationEmailWidget>
               child: Container(
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -100,7 +101,7 @@ class _RegistrationEmailWidgetState extends State<RegistrationEmailWidget>
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -155,7 +156,6 @@ class _RegistrationEmailWidgetState extends State<RegistrationEmailWidget>
                             ),
                           ],
                           controller: _model.tabBarController,
-                          onTap: (value) => setState(() {}),
                         ),
                       ),
                       Expanded(

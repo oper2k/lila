@@ -1,6 +1,7 @@
 import '/components/button_gradient/button_gradient_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main.dart';
 import '/pages/history_game/history_game_widget.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,7 @@ class _EndGameDageWidgetState extends State<EndGameDageWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -142,7 +143,7 @@ class _EndGameDageWidgetState extends State<EndGameDageWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.00, 1.00),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 36.0, 0.0, 0.0),
                   child: InkWell(
@@ -174,7 +175,7 @@ class _EndGameDageWidgetState extends State<EndGameDageWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.00, 1.00),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 36.0, 0.0, 0.0),
                   child: InkWell(

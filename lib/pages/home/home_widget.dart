@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/button_home_game/button_home_game_widget.dart';
 import '/components/continue_game/continue_game_widget.dart';
@@ -6,6 +7,7 @@ import '/components/empty/empty_widget.dart';
 import '/components/review_video/review_video_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/affirmations/affirmations_widget.dart';
 import '/pages/cases/cases_widget.dart';
 import '/pages/cases_one/cases_one_widget.dart';
@@ -14,13 +16,14 @@ import '/pages/news/news_widget.dart';
 import '/pages/player/player_widget.dart';
 import '/pages/reviews/reviews_widget.dart';
 import '/pages/sub_pay/sub_pay_widget.dart';
-import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -91,7 +94,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   actions: [],
                   flexibleSpace: FlexibleSpaceBar(
                     background: Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.00, -1.00),
                       child: Image.asset(
                         'assets/images/StatusBar.png',
                         width: double.infinity,
@@ -326,7 +329,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 1.0),
+                                      alignment:
+                                          AlignmentDirectional(0.00, 1.00),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 10.0),
@@ -405,21 +409,17 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     onTap: () async {
                                       logFirebaseEvent(
                                           'HOME_PAGE_Container_zjqz1ekj_ON_TAP');
-                                      logFirebaseEvent(
-                                          'Container_update_app_state');
-                                      setState(() {
-                                        FFAppState().meditationName =
-                                            'Успокоение';
-                                        FFAppState().meditationSound =
-                                            'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/Rowland%20-%20Arc-En-Ciel.mp3?alt=media&token=bf0bcb79-8b14-4a1a-bc00-7e22307d4b42';
-                                        FFAppState().meditationDescription =
-                                            'Замедлись и приди к внутренней гармонии';
-                                      });
                                       logFirebaseEvent('Container_navigate_to');
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => PlayerWidget(),
+                                          builder: (context) => PlayerWidget(
+                                            meditationName: 'Успокоение',
+                                            meditationSound:
+                                                'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/Rowland%20-%20Arc-En-Ciel.mp3?alt=media&token=bf0bcb79-8b14-4a1a-bc00-7e22307d4b42',
+                                            meditationDescription:
+                                                'Замедлись и приди к внутренней гармонии',
+                                          ),
                                         ),
                                       );
                                     },
@@ -512,21 +512,17 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         logFirebaseEvent(
                                             'HOME_PAGE_Container_5a9mom82_ON_TAP');
                                         logFirebaseEvent(
-                                            'Container_update_app_state');
-                                        setState(() {
-                                          FFAppState().meditationName = 'Сон';
-                                          FFAppState().meditationSound =
-                                              'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/Morpheo%20-%20Under%20the%20Trees.mp3?alt=media&token=4551891f-5409-464a-a2c6-cfb096974a91';
-                                          FFAppState().meditationDescription =
-                                              'Погрузись в здоровый сон, благодаря избавлению от лишних мыслей  ';
-                                        });
-                                        logFirebaseEvent(
                                             'Container_navigate_to');
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) =>
-                                                PlayerWidget(),
+                                            builder: (context) => PlayerWidget(
+                                              meditationName: 'Сон',
+                                              meditationSound:
+                                                  'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/Morpheo%20-%20Under%20the%20Trees.mp3?alt=media&token=4551891f-5409-464a-a2c6-cfb096974a91',
+                                              meditationDescription:
+                                                  'Погрузись в здоровый сон, благодаря избавлению от лишних мыслей  ',
+                                            ),
                                           ),
                                         );
                                       },
@@ -610,21 +606,17 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         logFirebaseEvent(
                                             'HOME_PAGE_Container_f4pz0g8x_ON_TAP');
                                         logFirebaseEvent(
-                                            'Container_update_app_state');
-                                        setState(() {
-                                          FFAppState().meditationName = 'Утро';
-                                          FFAppState().meditationSound =
-                                              'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/Quinn%20%26%20Asher%20-%20Angels%20Tending.mp3?alt=media&token=6f635a96-493a-4f93-85d3-a714088931be';
-                                          FFAppState().meditationDescription =
-                                              'Убери лишнюю суету из жизни, держа фокус на себе';
-                                        });
-                                        logFirebaseEvent(
                                             'Container_navigate_to');
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) =>
-                                                PlayerWidget(),
+                                            builder: (context) => PlayerWidget(
+                                              meditationName: 'Утро',
+                                              meditationSound:
+                                                  'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/Quinn%20%26%20Asher%20-%20Angels%20Tending.mp3?alt=media&token=6f635a96-493a-4f93-85d3-a714088931be',
+                                              meditationDescription:
+                                                  'Убери лишнюю суету из жизни, держа фокус на себе',
+                                            ),
                                           ),
                                         );
                                       },
@@ -708,45 +700,69 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       onTap: () async {
                                         logFirebaseEvent(
                                             'HOME_PAGE_Container_vem76mh6_ON_TAP');
+                                        var _shouldSetState = false;
                                         logFirebaseEvent(
-                                            'Container_action_block');
-                                        _model.checkSubs = await action_blocks
-                                            .checkSubs(context);
-                                        if (_model.checkSubs1!) {
-                                          logFirebaseEvent(
-                                              'Container_update_app_state');
-                                          setState(() {
-                                            FFAppState().meditationName =
-                                                'Деньги';
-                                            FFAppState().meditationSound =
-                                                'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/meditation%2F%D0%94%D0%B5%D0%BD%D0%B5%D0%B6%D0%BD%D0%B0%D1%8F%20%D0%BC%D0%B5%D0%B4%D0%B8%D1%82%D0%B0%D1%86%D0%B8%D1%8F.m4a?alt=media&token=4b18e763-e9ce-41bb-b038-0d47c70ab91f';
-                                            FFAppState().meditationDescription =
-                                                'Слушай и расширяй денежную ёмкость';
-                                          });
-                                          logFirebaseEvent(
-                                              'Container_navigate_to');
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  PlayerWidget(),
-                                            ),
-                                          );
-                                        } else {
-                                          logFirebaseEvent(
-                                              'Container_navigate_to');
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SubPayWidget(
-                                                showThreeMove: true,
-                                              ),
-                                            ),
-                                          );
+                                            'Container_revenue_cat');
+                                        final isEntitled = await revenue_cat
+                                            .isEntitled('issubscribe');
+                                        if (isEntitled == null) {
+                                          return;
+                                        } else if (!isEntitled) {
+                                          await revenue_cat.loadOfferings();
                                         }
 
-                                        setState(() {});
+                                        if (!isEntitled) {
+                                          logFirebaseEvent(
+                                              'Container_backend_call');
+                                          _model.getSubscribeCloudGame =
+                                              await CloudpaymentsGroup
+                                                  .getSubscriptionCall
+                                                  .call(
+                                            id: valueOrDefault(
+                                                currentUserDocument?.modelId,
+                                                ''),
+                                          );
+                                          _shouldSetState = true;
+                                          if (CloudpaymentsGroup
+                                                  .getSubscriptionCall
+                                                  .modelStatus(
+                                                    (_model.getSubscribeCloudGame
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )
+                                                  .toString() !=
+                                              'Active') {
+                                            logFirebaseEvent(
+                                                'Container_navigate_to');
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SubPayWidget(
+                                                  showThreeMove: false,
+                                                ),
+                                              ),
+                                            );
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+                                        }
+                                        logFirebaseEvent(
+                                            'Container_navigate_to');
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => PlayerWidget(
+                                              meditationName: 'Деньги',
+                                              meditationSound:
+                                                  'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/meditation%2F%D0%94%D0%B5%D0%BD%D0%B5%D0%B6%D0%BD%D0%B0%D1%8F%20%D0%BC%D0%B5%D0%B4%D0%B8%D1%82%D0%B0%D1%86%D0%B8%D1%8F.m4a?alt=media&token=4b18e763-e9ce-41bb-b038-0d47c70ab91f',
+                                              meditationDescription:
+                                                  'Слушай и расширяй денежную ёмкость',
+                                            ),
+                                          ),
+                                        );
+                                        if (_shouldSetState) setState(() {});
                                       },
                                       child: Container(
                                         width: 160.0,
@@ -829,45 +845,69 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       onTap: () async {
                                         logFirebaseEvent(
                                             'HOME_PAGE_Container_rxt6w5o1_ON_TAP');
+                                        var _shouldSetState = false;
                                         logFirebaseEvent(
-                                            'Container_action_block');
-                                        _model.checkSubs5 = await action_blocks
-                                            .checkSubs(context);
-                                        if (_model.checkSubs5!) {
-                                          logFirebaseEvent(
-                                              'Container_update_app_state');
-                                          setState(() {
-                                            FFAppState().meditationName =
-                                                'Идеальный день';
-                                            FFAppState().meditationSound =
-                                                'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/meditation%2F%D0%9C%D0%BE%D0%B8%CC%86%20%D0%B8%D0%B4%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B8%CC%86%20%D0%B4%D0%B5%D0%BD%D1%8C.m4a?alt=media&token=8ef753f9-b302-4f8c-98ff-653445e4752f';
-                                            FFAppState().meditationDescription =
-                                                'Начни программировать свою реальность';
-                                          });
-                                          logFirebaseEvent(
-                                              'Container_navigate_to');
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  PlayerWidget(),
-                                            ),
-                                          );
-                                        } else {
-                                          logFirebaseEvent(
-                                              'Container_navigate_to');
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SubPayWidget(
-                                                showThreeMove: true,
-                                              ),
-                                            ),
-                                          );
+                                            'Container_revenue_cat');
+                                        final isEntitled = await revenue_cat
+                                            .isEntitled('issubscribe');
+                                        if (isEntitled == null) {
+                                          return;
+                                        } else if (!isEntitled) {
+                                          await revenue_cat.loadOfferings();
                                         }
 
-                                        setState(() {});
+                                        if (!isEntitled) {
+                                          logFirebaseEvent(
+                                              'Container_backend_call');
+                                          _model.getSubscribeCloudGame1 =
+                                              await CloudpaymentsGroup
+                                                  .getSubscriptionCall
+                                                  .call(
+                                            id: valueOrDefault(
+                                                currentUserDocument?.modelId,
+                                                ''),
+                                          );
+                                          _shouldSetState = true;
+                                          if (CloudpaymentsGroup
+                                                  .getSubscriptionCall
+                                                  .modelStatus(
+                                                    (_model.getSubscribeCloudGame1
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )
+                                                  .toString() !=
+                                              'Active') {
+                                            logFirebaseEvent(
+                                                'Container_navigate_to');
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SubPayWidget(
+                                                  showThreeMove: false,
+                                                ),
+                                              ),
+                                            );
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+                                        }
+                                        logFirebaseEvent(
+                                            'Container_navigate_to');
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => PlayerWidget(
+                                              meditationName: 'Идеальный день',
+                                              meditationSound:
+                                                  'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/meditation%2F%D0%9C%D0%BE%D0%B8%CC%86%20%D0%B8%D0%B4%D0%B5%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B8%CC%86%20%D0%B4%D0%B5%D0%BD%D1%8C.m4a?alt=media&token=8ef753f9-b302-4f8c-98ff-653445e4752f',
+                                              meditationDescription:
+                                                  'Начни программировать свою реальность',
+                                            ),
+                                          ),
+                                        );
+                                        if (_shouldSetState) setState(() {});
                                       },
                                       child: Container(
                                         width: 160.0,
@@ -881,7 +921,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           children: [
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.0, -1.0),
+                                                  0.00, -1.00),
                                               child: Image.asset(
                                                 'assets/images/bg_home_5.png',
                                                 width: double.infinity,
@@ -890,7 +930,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  -1.0, 0.0),
+                                                  -1.00, 0.00),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -905,7 +945,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.0, 1.0),
+                                                  0.00, 1.00),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -949,45 +989,70 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       onTap: () async {
                                         logFirebaseEvent(
                                             'HOME_PAGE_Container_aqmnpth0_ON_TAP');
+                                        var _shouldSetState = false;
                                         logFirebaseEvent(
-                                            'Container_action_block');
-                                        _model.checkSubs4 = await action_blocks
-                                            .checkSubs(context);
-                                        if (_model.checkSubs4!) {
-                                          logFirebaseEvent(
-                                              'Container_update_app_state');
-                                          setState(() {
-                                            FFAppState().meditationName =
-                                                'Внутренняя опора';
-                                            FFAppState().meditationSound =
-                                                'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/meditation%2F%D0%9E%D0%B1%D1%80%D0%B5%D1%82%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BE%D0%BF%D0%BE%D1%80%D1%8B%20%D0%B8%20%D1%83%D0%B2%D0%B5%D1%80%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8.m4a?alt=media&token=1452d0a7-de4a-417f-97c2-0f48a60eeb3e';
-                                            FFAppState().meditationDescription =
-                                                'Обрети уверенность в себе';
-                                          });
-                                          logFirebaseEvent(
-                                              'Container_navigate_to');
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  PlayerWidget(),
-                                            ),
-                                          );
-                                        } else {
-                                          logFirebaseEvent(
-                                              'Container_navigate_to');
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SubPayWidget(
-                                                showThreeMove: true,
-                                              ),
-                                            ),
-                                          );
+                                            'Container_revenue_cat');
+                                        final isEntitled = await revenue_cat
+                                            .isEntitled('issubscribe');
+                                        if (isEntitled == null) {
+                                          return;
+                                        } else if (!isEntitled) {
+                                          await revenue_cat.loadOfferings();
                                         }
 
-                                        setState(() {});
+                                        if (!isEntitled) {
+                                          logFirebaseEvent(
+                                              'Container_backend_call');
+                                          _model.getSubscribeCloudGame2 =
+                                              await CloudpaymentsGroup
+                                                  .getSubscriptionCall
+                                                  .call(
+                                            id: valueOrDefault(
+                                                currentUserDocument?.modelId,
+                                                ''),
+                                          );
+                                          _shouldSetState = true;
+                                          if (CloudpaymentsGroup
+                                                  .getSubscriptionCall
+                                                  .modelStatus(
+                                                    (_model.getSubscribeCloudGame2
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )
+                                                  .toString() !=
+                                              'Active') {
+                                            logFirebaseEvent(
+                                                'Container_navigate_to');
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SubPayWidget(
+                                                  showThreeMove: false,
+                                                ),
+                                              ),
+                                            );
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+                                        }
+                                        logFirebaseEvent(
+                                            'Container_navigate_to');
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => PlayerWidget(
+                                              meditationName:
+                                                  'Внутренняя опора',
+                                              meditationSound:
+                                                  'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/meditation%2F%D0%9E%D0%B1%D1%80%D0%B5%D1%82%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BE%D0%BF%D0%BE%D1%80%D1%8B%20%D0%B8%20%D1%83%D0%B2%D0%B5%D1%80%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8.m4a?alt=media&token=1452d0a7-de4a-417f-97c2-0f48a60eeb3e',
+                                              meditationDescription:
+                                                  'Обрети уверенность в себе',
+                                            ),
+                                          ),
+                                        );
+                                        if (_shouldSetState) setState(() {});
                                       },
                                       child: Container(
                                         width: 160.0,
@@ -1001,7 +1066,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           children: [
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.0, -1.0),
+                                                  0.00, -1.00),
                                               child: Image.asset(
                                                 'assets/images/bg_home_6.png',
                                                 width: double.infinity,
@@ -1010,7 +1075,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  -1.0, 0.0),
+                                                  -1.00, 0.00),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1025,7 +1090,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.0, 1.0),
+                                                  0.00, 1.00),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1069,45 +1134,69 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       onTap: () async {
                                         logFirebaseEvent(
                                             'HOME_PAGE_Container_p57ln24z_ON_TAP');
+                                        var _shouldSetState = false;
                                         logFirebaseEvent(
-                                            'Container_action_block');
-                                        _model.checkSubs3 = await action_blocks
-                                            .checkSubs(context);
-                                        if (_model.checkSubs3!) {
-                                          logFirebaseEvent(
-                                              'Container_update_app_state');
-                                          setState(() {
-                                            FFAppState().meditationName =
-                                                'Женственность';
-                                            FFAppState().meditationSound =
-                                                'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/meditation%2F%D0%A0%D0%B0%D1%81%D0%BA%D1%80%D1%8B%D1%82%D0%B8%D0%B5%20%D0%B6%D0%B5%D0%BD%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%B8%20%D1%81%D0%B5%D0%BA%D1%81%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8.m4a?alt=media&token=d9df3eb4-2ec6-48f5-8a0a-ca35fff53aa2';
-                                            FFAppState().meditationDescription =
-                                                'Почувствуй свою притягательность ';
-                                          });
-                                          logFirebaseEvent(
-                                              'Container_navigate_to');
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  PlayerWidget(),
-                                            ),
-                                          );
-                                        } else {
-                                          logFirebaseEvent(
-                                              'Container_navigate_to');
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SubPayWidget(
-                                                showThreeMove: true,
-                                              ),
-                                            ),
-                                          );
+                                            'Container_revenue_cat');
+                                        final isEntitled = await revenue_cat
+                                            .isEntitled('issubscribe');
+                                        if (isEntitled == null) {
+                                          return;
+                                        } else if (!isEntitled) {
+                                          await revenue_cat.loadOfferings();
                                         }
 
-                                        setState(() {});
+                                        if (!isEntitled) {
+                                          logFirebaseEvent(
+                                              'Container_backend_call');
+                                          _model.getSubscribeCloudGame3 =
+                                              await CloudpaymentsGroup
+                                                  .getSubscriptionCall
+                                                  .call(
+                                            id: valueOrDefault(
+                                                currentUserDocument?.modelId,
+                                                ''),
+                                          );
+                                          _shouldSetState = true;
+                                          if (CloudpaymentsGroup
+                                                  .getSubscriptionCall
+                                                  .modelStatus(
+                                                    (_model.getSubscribeCloudGame3
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )
+                                                  .toString() !=
+                                              'Active') {
+                                            logFirebaseEvent(
+                                                'Container_navigate_to');
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SubPayWidget(
+                                                  showThreeMove: false,
+                                                ),
+                                              ),
+                                            );
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+                                        }
+                                        logFirebaseEvent(
+                                            'Container_navigate_to');
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => PlayerWidget(
+                                              meditationName: 'Женственность',
+                                              meditationSound:
+                                                  'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/meditation%2F%D0%A0%D0%B0%D1%81%D0%BA%D1%80%D1%8B%D1%82%D0%B8%D0%B5%20%D0%B6%D0%B5%D0%BD%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%B8%20%D1%81%D0%B5%D0%BA%D1%81%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8.m4a?alt=media&token=d9df3eb4-2ec6-48f5-8a0a-ca35fff53aa2',
+                                              meditationDescription:
+                                                  'Почувствуй свою притягательность ',
+                                            ),
+                                          ),
+                                        );
+                                        if (_shouldSetState) setState(() {});
                                       },
                                       child: Container(
                                         width: 160.0,
@@ -1121,7 +1210,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           children: [
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.0, -1.0),
+                                                  0.00, -1.00),
                                               child: Image.asset(
                                                 'assets/images/bg_home_7.png',
                                                 width: double.infinity,
@@ -1130,7 +1219,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  -1.0, 0.0),
+                                                  -1.00, 0.00),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1145,7 +1234,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.0, 1.0),
+                                                  0.00, 1.00),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1189,45 +1278,69 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       onTap: () async {
                                         logFirebaseEvent(
                                             'HOME_PAGE_Container_vlks5osd_ON_TAP');
+                                        var _shouldSetState = false;
                                         logFirebaseEvent(
-                                            'Container_action_block');
-                                        _model.checkSubs2 = await action_blocks
-                                            .checkSubs(context);
-                                        if (_model.checkSubs2!) {
-                                          logFirebaseEvent(
-                                              'Container_update_app_state');
-                                          setState(() {
-                                            FFAppState().meditationName =
-                                                'Отношения';
-                                            FFAppState().meditationSound =
-                                                'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/meditation%2F%D0%A1%D1%87%D0%B0%D1%81%D1%82%D0%BB%D0%B8%D0%B2%D1%8B%D0%B5%20%D0%BE%D1%82%D0%BD%D0%BE%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%81%20%D0%BB%D1%8E%D0%B1%D0%B8%D0%BC%D1%8B%D0%BC%20%D0%BC%D1%83%D0%B6%D1%87%D0%B8%D0%BD%D0%BE%D0%B8%CC%86.m4a?alt=media&token=98768c80-cf2a-4141-a25b-03eaef68f899';
-                                            FFAppState().meditationDescription =
-                                                'Создавай отношения своей мечты';
-                                          });
-                                          logFirebaseEvent(
-                                              'Container_navigate_to');
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  PlayerWidget(),
-                                            ),
-                                          );
-                                        } else {
-                                          logFirebaseEvent(
-                                              'Container_navigate_to');
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SubPayWidget(
-                                                showThreeMove: true,
-                                              ),
-                                            ),
-                                          );
+                                            'Container_revenue_cat');
+                                        final isEntitled = await revenue_cat
+                                            .isEntitled('issubscribe');
+                                        if (isEntitled == null) {
+                                          return;
+                                        } else if (!isEntitled) {
+                                          await revenue_cat.loadOfferings();
                                         }
 
-                                        setState(() {});
+                                        if (!isEntitled) {
+                                          logFirebaseEvent(
+                                              'Container_backend_call');
+                                          _model.getSubscribeCloudGame4 =
+                                              await CloudpaymentsGroup
+                                                  .getSubscriptionCall
+                                                  .call(
+                                            id: valueOrDefault(
+                                                currentUserDocument?.modelId,
+                                                ''),
+                                          );
+                                          _shouldSetState = true;
+                                          if (CloudpaymentsGroup
+                                                  .getSubscriptionCall
+                                                  .modelStatus(
+                                                    (_model.getSubscribeCloudGame4
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )
+                                                  .toString() !=
+                                              'Active') {
+                                            logFirebaseEvent(
+                                                'Container_navigate_to');
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SubPayWidget(
+                                                  showThreeMove: false,
+                                                ),
+                                              ),
+                                            );
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+                                        }
+                                        logFirebaseEvent(
+                                            'Container_navigate_to');
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => PlayerWidget(
+                                              meditationName: 'Отношения',
+                                              meditationSound:
+                                                  'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/meditation%2F%D0%A1%D1%87%D0%B0%D1%81%D1%82%D0%BB%D0%B8%D0%B2%D1%8B%D0%B5%20%D0%BE%D1%82%D0%BD%D0%BE%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%81%20%D0%BB%D1%8E%D0%B1%D0%B8%D0%BC%D1%8B%D0%BC%20%D0%BC%D1%83%D0%B6%D1%87%D0%B8%D0%BD%D0%BE%D0%B8%CC%86.m4a?alt=media&token=98768c80-cf2a-4141-a25b-03eaef68f899',
+                                              meditationDescription:
+                                                  'Создавай отношения своей мечты',
+                                            ),
+                                          ),
+                                        );
+                                        if (_shouldSetState) setState(() {});
                                       },
                                       child: Container(
                                         width: 160.0,
@@ -1390,7 +1503,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  1.0, 0.0),
+                                                  1.00, 0.00),
                                               child: Container(
                                                 decoration: BoxDecoration(
                                                   color: Color(0x66202141),
@@ -1514,7 +1627,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    1.0, 0.0),
+                                                    1.00, 0.00),
                                                 child: Container(
                                                   decoration: BoxDecoration(
                                                     color: Color(0x66202141),
@@ -1641,7 +1754,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    1.0, 0.0),
+                                                    1.00, 0.00),
                                                 child: Container(
                                                   decoration: BoxDecoration(
                                                     color: Color(0x66202141),
@@ -1768,7 +1881,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    1.0, 0.0),
+                                                    1.00, 0.00),
                                                 child: Container(
                                                   decoration: BoxDecoration(
                                                     color: Color(0x66202141),
@@ -1852,61 +1965,139 @@ class _HomeWidgetState extends State<HomeWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 24.0, 0.0),
-                                child: FutureBuilder<List<AffirmationsRecord>>(
-                                  future: queryAffirmationsRecordOnce(
-                                    queryBuilder: (affirmationsRecord) =>
-                                        affirmationsRecord.orderBy('id'),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
+                        child: FutureBuilder<List<AffirmationsRecord>>(
+                          future: queryAffirmationsRecordOnce(
+                            queryBuilder: (affirmationsRecord) =>
+                                affirmationsRecord.orderBy('id'),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
                                   ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<AffirmationsRecord>
-                                        rowAffirmationsRecordList =
-                                        snapshot.data!;
-                                    return Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: List.generate(
-                                          rowAffirmationsRecordList.length,
-                                          (rowIndex) {
-                                        final rowAffirmationsRecord =
-                                            rowAffirmationsRecordList[rowIndex];
-                                        return InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
+                                ),
+                              );
+                            }
+                            List<AffirmationsRecord>
+                                carouselAffirmationsRecordList = snapshot.data!;
+                            return Container(
+                              width: double.infinity,
+                              height: 180.0,
+                              child: CarouselSlider.builder(
+                                itemCount:
+                                    carouselAffirmationsRecordList.length,
+                                itemBuilder: (context, carouselIndex, _) {
+                                  final carouselAffirmationsRecord =
+                                      carouselAffirmationsRecordList[
+                                          carouselIndex];
+                                  return Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5.0, 0.0, 5.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'HOME_PAGE_Container_38p3bjem_ON_TAP');
+                                        if (isWeb) {
+                                          logFirebaseEvent(
+                                              'Container_backend_call');
+                                          _model.getSubscribeCloudGame5 =
+                                              await CloudpaymentsGroup
+                                                  .getSubscriptionCall
+                                                  .call(
+                                            id: valueOrDefault(
+                                                currentUserDocument?.modelId,
+                                                ''),
+                                          );
+                                          if (CloudpaymentsGroup
+                                                  .getSubscriptionCall
+                                                  .modelStatus(
+                                                    (_model.getSubscribeCloudGame5
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  )
+                                                  .toString() ==
+                                              'Active') {
                                             logFirebaseEvent(
-                                                'HOME_PAGE_Container_m4hbhezk_ON_TAP');
+                                                'Container_navigate_to');
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AffirmationsWidget(
+                                                  currentAffi:
+                                                      carouselAffirmationsRecord,
+                                                ),
+                                              ),
+                                            );
+                                          } else {
                                             logFirebaseEvent(
-                                                'Container_action_block');
-                                            _model.checkSubs1 =
-                                                await action_blocks
-                                                    .checkSubs(context);
-                                            if (_model.checkSubs1!) {
+                                                'Container_navigate_to');
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SubPayWidget(
+                                                  showThreeMove: false,
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                        } else {
+                                          logFirebaseEvent(
+                                              'Container_revenue_cat');
+                                          final isEntitled = await revenue_cat
+                                              .isEntitled('issubscribe');
+                                          if (isEntitled == null) {
+                                            return;
+                                          } else if (!isEntitled) {
+                                            await revenue_cat.loadOfferings();
+                                          }
+
+                                          if (isEntitled) {
+                                            logFirebaseEvent(
+                                                'Container_navigate_to');
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AffirmationsWidget(
+                                                  currentAffi:
+                                                      carouselAffirmationsRecord,
+                                                ),
+                                              ),
+                                            );
+                                          } else {
+                                            logFirebaseEvent(
+                                                'Container_backend_call');
+                                            _model.getSubscribeCloudGame6 =
+                                                await CloudpaymentsGroup
+                                                    .getSubscriptionCall
+                                                    .call(
+                                              id: valueOrDefault(
+                                                  currentUserDocument?.modelId,
+                                                  ''),
+                                            );
+                                            if (CloudpaymentsGroup
+                                                    .getSubscriptionCall
+                                                    .modelStatus(
+                                                      (_model.getSubscribeCloudGame6
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    )
+                                                    .toString() ==
+                                                'Active') {
                                               logFirebaseEvent(
                                                   'Container_navigate_to');
                                               Navigator.push(
@@ -1915,7 +2106,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   builder: (context) =>
                                                       AffirmationsWidget(
                                                     currentAffi:
-                                                        rowAffirmationsRecord,
+                                                        carouselAffirmationsRecord,
                                                   ),
                                                 ),
                                               );
@@ -1927,96 +2118,103 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 MaterialPageRoute(
                                                   builder: (context) =>
                                                       SubPayWidget(
-                                                    showThreeMove: true,
+                                                    showThreeMove: false,
                                                   ),
                                                 ),
                                               );
                                             }
+                                          }
+                                        }
 
-                                            setState(() {});
-                                          },
-                                          child: Container(
-                                            width: 180.0,
-                                            height: 180.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  rowAffirmationsRecord.color,
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
+                                        setState(() {});
+                                      },
+                                      child: Container(
+                                        width: 180.0,
+                                        height: 180.0,
+                                        decoration: BoxDecoration(
+                                          color:
+                                              carouselAffirmationsRecord.color,
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        child: Stack(
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.00, -1.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 24.0, 0.0, 0.0),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image.asset(
+                                                    'assets/images/play.png',
+                                                    width: 64.0,
+                                                    height: 64.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ),
                                             ),
-                                            child: Stack(
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, -1.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 24.0,
-                                                                0.0, 0.0),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      child: Image.asset(
-                                                        'assets/images/play.png',
-                                                        width: 64.0,
-                                                        height: 64.0,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.00, -1.00),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 105.0, 0.0, 0.0),
+                                                child: Text(
+                                                  carouselAffirmationsRecord
+                                                      .name,
+                                                  textAlign: TextAlign.center,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .headlineSmall,
                                                 ),
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, -1.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                0.0,
-                                                                105.0,
-                                                                0.0,
-                                                                0.0),
-                                                    child: Text(
-                                                      rowAffirmationsRecord
-                                                          .name,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineSmall,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 1.0),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: Image.asset(
-                                                      'assets/images/Frame_11820.png',
-                                                      fit: BoxFit.contain,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
+                                              ),
                                             ),
-                                          ),
-                                        );
-                                      }).divide(SizedBox(width: 16.0)),
-                                    );
-                                  },
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.00, 1.00),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Image.asset(
+                                                  'assets/images/Frame_11820.png',
+                                                  fit: BoxFit.contain,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                carouselController:
+                                    _model.carouselController ??=
+                                        CarouselController(),
+                                options: CarouselOptions(
+                                  initialPage: min(
+                                      1,
+                                      carouselAffirmationsRecordList.length -
+                                          1),
+                                  viewportFraction: 0.5,
+                                  disableCenter: false,
+                                  enlargeCenterPage: true,
+                                  enlargeFactor: 0.35,
+                                  enableInfiniteScroll: true,
+                                  scrollDirection: Axis.horizontal,
+                                  autoPlay: false,
+                                  onPageChanged: (index, _) =>
+                                      _model.carouselCurrentIndex = index,
                                 ),
                               ),
-                            ],
-                          ),
+                            );
+                          },
                         ),
                       ),
                       Padding(
@@ -2371,7 +2569,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 child: Align(
                                                   alignment:
                                                       AlignmentDirectional(
-                                                          0.0, 1.0),
+                                                          0.00, 1.00),
                                                   child: Container(
                                                     width: double.infinity,
                                                     height: 50.0,

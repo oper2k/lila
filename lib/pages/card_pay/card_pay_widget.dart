@@ -4,6 +4,7 @@ import '/backend/backend.dart';
 import '/components/button_exp/button_exp_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/sub_thank_you/sub_thank_you_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -83,7 +84,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                 height: 100.0,
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -99,7 +100,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -122,9 +123,9 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                   if (widget.typeSubs == 0) {
                     return 'Покупка одной игры';
                   } else if (widget.typeSubs == 1) {
-                    return 'Бизлимит. На 1 месяц';
+                    return 'Бизлимит. 1 месяц';
                   } else {
-                    return 'Безлимит. 3 месяца';
+                    return 'Безлимит.  3 месяца';
                   }
                 }(),
                 style: FlutterFlowTheme.of(context).displaySmall.override(
@@ -503,7 +504,6 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                         cardCryptogramPacket: _model.cryptogramCard,
                         email: currentUserEmail,
                         accountId: currentUserEmail,
-                        apiCloud: FFAppState().apiCloud,
                       );
                       _shouldSetState = true;
                       if ((_model.apiResult2li?.succeeded ?? true)) {
@@ -535,16 +535,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                   FlutterFlowTheme.of(context).tertiary,
                             ),
                           );
-                          if (widget.typeSubs == 0) {
-                            logFirebaseEvent('Button_Exp_navigate_to');
-                            Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SubThankYouWidget(),
-                              ),
-                              (r) => false,
-                            );
-                          } else {
+                          if (widget.typeSubs != 0) {
                             logFirebaseEvent('Button_Exp_backend_call');
                             await CloudpaymentsGroup.createSubscriptionCall
                                 .call(
@@ -561,17 +552,16 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                     FFLocalizations.of(context).languageCode,
                               ),
                               period: widget.typeSubs,
-                              apiCloud: FFAppState().apiCloud,
-                            );
-                            logFirebaseEvent('Button_Exp_navigate_to');
-                            Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SubThankYouWidget(),
-                              ),
-                              (r) => false,
                             );
                           }
+                          logFirebaseEvent('Button_Exp_navigate_to');
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SubThankYouWidget(),
+                            ),
+                            (r) => false,
+                          );
                         } else {
                           if (CloudpaymentsGroup.payByCardCopyCall.reasonCode(
                                 (_model.apiResult2li?.jsonBody ?? ''),
@@ -670,17 +660,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                           FlutterFlowTheme.of(context).tertiary,
                                     ),
                                   );
-                                  if (widget.typeSubs == 0) {
-                                    logFirebaseEvent('Button_Exp_navigate_to');
-                                    Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            SubThankYouWidget(),
-                                      ),
-                                      (r) => false,
-                                    );
-                                  } else {
+                                  if (widget.typeSubs != 0) {
                                     logFirebaseEvent('Button_Exp_backend_call');
                                     _model.modelId = await CloudpaymentsGroup
                                         .createSubscriptionCall
@@ -698,20 +678,35 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                             .languageCode,
                                       ),
                                       period: widget.typeSubs,
-                                      apiCloud: FFAppState().apiCloud,
-                                      token: 'tk_6c4c1e2e2f0280a567b555a2eed1c',
+                                      token: CloudpaymentsGroup
+                                          .payByCardCopyCall
+                                          .token(
+                                            (_model.apiResult2li?.jsonBody ??
+                                                ''),
+                                          )
+                                          .toString(),
                                     );
                                     _shouldSetState = true;
-                                    logFirebaseEvent('Button_Exp_navigate_to');
-                                    Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            SubThankYouWidget(),
-                                      ),
-                                      (r) => false,
-                                    );
+                                    logFirebaseEvent('Button_Exp_backend_call');
+
+                                    await currentUserReference!
+                                        .update(createUsersRecordData(
+                                      modelId: CloudpaymentsGroup
+                                          .createSubscriptionCall
+                                          .modelId(
+                                            (_model.modelId?.jsonBody ?? ''),
+                                          )
+                                          .toString(),
+                                    ));
                                   }
+                                  logFirebaseEvent('Button_Exp_navigate_to');
+                                  Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SubThankYouWidget(),
+                                    ),
+                                    (r) => false,
+                                  );
                                 } else {
                                   logFirebaseEvent('Button_Exp_show_snack_bar');
                                   ScaffoldMessenger.of(context).showSnackBar(

@@ -3,6 +3,7 @@ import '/components/one_review/one_review_widget.dart';
 import '/components/review_video/review_video_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -64,7 +65,7 @@ class _ReviewsWidgetState extends State<ReviewsWidget> {
               child: Container(
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -80,7 +81,7 @@ class _ReviewsWidgetState extends State<ReviewsWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -121,94 +122,110 @@ class _ReviewsWidgetState extends State<ReviewsWidget> {
                       ),
                 ),
                 Expanded(
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
-                    child: FutureBuilder<List<ReviewsRecord>>(
-                      future: queryReviewsRecordOnce(),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primary,
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-                        List<ReviewsRecord> gridViewReviewsRecordList =
-                            snapshot.data!;
-                        return GridView.builder(
-                          padding: EdgeInsets.zero,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 15.0,
-                            mainAxisSpacing: 15.0,
-                            childAspectRatio: 0.78,
-                          ),
-                          scrollDirection: Axis.vertical,
-                          itemCount: gridViewReviewsRecordList.length,
-                          itemBuilder: (context, gridViewIndex) {
-                            final gridViewReviewsRecord =
-                                gridViewReviewsRecordList[gridViewIndex];
-                            return Builder(
-                              builder: (context) => InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  logFirebaseEvent(
-                                      'REVIEWS_PAGE_Container_vt7q8oy7_ON_TAP');
-                                  logFirebaseEvent('oneReview_alert_dialog');
-                                  await showAlignedDialog(
-                                    context: context,
-                                    isGlobal: true,
-                                    avoidOverflow: false,
-                                    targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                        .resolve(Directionality.of(context)),
-                                    followerAnchor: AlignmentDirectional(
-                                            0.0, 0.0)
-                                        .resolve(Directionality.of(context)),
-                                    builder: (dialogContext) {
-                                      return Material(
-                                        color: Colors.transparent,
-                                        child: GestureDetector(
-                                          onTap: () => FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode),
-                                          child: ReviewVideoWidget(
-                                            currentVideo:
-                                                gridViewReviewsRecord.video,
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => setState(() {}));
-                                },
-                                child: wrapWithModel(
-                                  model: _model.oneReviewModels.getModel(
-                                    gridViewIndex.toString(),
-                                    gridViewIndex,
-                                  ),
-                                  updateCallback: () => setState(() {}),
-                                  child: OneReviewWidget(
-                                    key: Key(
-                                      'Keyvt7_${gridViewIndex.toString()}',
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 30.0, 0.0, 30.0),
+                          child: FutureBuilder<List<ReviewsRecord>>(
+                            future: queryReviewsRecordOnce(),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).primary,
+                                      ),
                                     ),
-                                    currentReview: gridViewReviewsRecord,
                                   ),
+                                );
+                              }
+                              List<ReviewsRecord> gridViewReviewsRecordList =
+                                  snapshot.data!;
+                              return GridView.builder(
+                                padding: EdgeInsets.zero,
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 15.0,
+                                  mainAxisSpacing: 15.0,
+                                  childAspectRatio: 0.78,
                                 ),
-                              ),
-                            );
-                          },
-                        );
-                      },
+                                primary: false,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: gridViewReviewsRecordList.length,
+                                itemBuilder: (context, gridViewIndex) {
+                                  final gridViewReviewsRecord =
+                                      gridViewReviewsRecordList[gridViewIndex];
+                                  return Builder(
+                                    builder: (context) => InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'REVIEWS_PAGE_Container_vt7q8oy7_ON_TAP');
+                                        logFirebaseEvent(
+                                            'oneReview_alert_dialog');
+                                        await showAlignedDialog(
+                                          context: context,
+                                          isGlobal: true,
+                                          avoidOverflow: false,
+                                          targetAnchor: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          followerAnchor: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          builder: (dialogContext) {
+                                            return Material(
+                                              color: Colors.transparent,
+                                              child: GestureDetector(
+                                                onTap: () =>
+                                                    FocusScope.of(context)
+                                                        .requestFocus(
+                                                            _model.unfocusNode),
+                                                child: ReviewVideoWidget(
+                                                  currentVideo:
+                                                      gridViewReviewsRecord
+                                                          .video,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => setState(() {}));
+                                      },
+                                      child: wrapWithModel(
+                                        model: _model.oneReviewModels.getModel(
+                                          gridViewIndex.toString(),
+                                          gridViewIndex,
+                                        ),
+                                        updateCallback: () => setState(() {}),
+                                        child: OneReviewWidget(
+                                          key: Key(
+                                            'Keyvt7_${gridViewIndex.toString()}',
+                                          ),
+                                          currentReview: gridViewReviewsRecord,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

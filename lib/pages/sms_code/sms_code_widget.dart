@@ -3,6 +3,7 @@ import '/components/button_exp/button_exp_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main.dart';
 import '/pages/registration_name/registration_name_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -83,7 +84,7 @@ class _SmsCodeWidgetState extends State<SmsCodeWidget> {
               child: Container(
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -99,7 +100,7 @@ class _SmsCodeWidgetState extends State<SmsCodeWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -395,7 +396,7 @@ class _SmsCodeWidgetState extends State<SmsCodeWidget> {
                 ),
               Expanded(
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,

@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/button_home_game/button_home_game_widget.dart';
 import '/components/continue_game/continue_game_widget.dart';
@@ -6,6 +7,7 @@ import '/components/empty/empty_widget.dart';
 import '/components/review_video/review_video_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/affirmations/affirmations_widget.dart';
 import '/pages/cases/cases_widget.dart';
 import '/pages/cases_one/cases_one_widget.dart';
@@ -14,13 +16,14 @@ import '/pages/news/news_widget.dart';
 import '/pages/player/player_widget.dart';
 import '/pages/reviews/reviews_widget.dart';
 import '/pages/sub_pay/sub_pay_widget.dart';
-import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -38,18 +41,25 @@ class HomeModel extends FlutterFlowModel {
           pageViewController!.page != null
       ? pageViewController!.page!.round()
       : 0;
-  // Stores action output result for [Action Block - CheckSubs] action in Container widget.
-  bool? checkSubs;
-  // Stores action output result for [Action Block - CheckSubs] action in Container widget.
-  bool? checkSubs5;
-  // Stores action output result for [Action Block - CheckSubs] action in Container widget.
-  bool? checkSubs4;
-  // Stores action output result for [Action Block - CheckSubs] action in Container widget.
-  bool? checkSubs3;
-  // Stores action output result for [Action Block - CheckSubs] action in Container widget.
-  bool? checkSubs2;
-  // Stores action output result for [Action Block - CheckSubs] action in Container widget.
-  bool? checkSubs1;
+  // Stores action output result for [Backend Call - API (Get Subscription)] action in Container widget.
+  ApiCallResponse? getSubscribeCloudGame;
+  // Stores action output result for [Backend Call - API (Get Subscription)] action in Container widget.
+  ApiCallResponse? getSubscribeCloudGame1;
+  // Stores action output result for [Backend Call - API (Get Subscription)] action in Container widget.
+  ApiCallResponse? getSubscribeCloudGame2;
+  // Stores action output result for [Backend Call - API (Get Subscription)] action in Container widget.
+  ApiCallResponse? getSubscribeCloudGame3;
+  // Stores action output result for [Backend Call - API (Get Subscription)] action in Container widget.
+  ApiCallResponse? getSubscribeCloudGame4;
+  // State field(s) for Carousel widget.
+  CarouselController? carouselController;
+
+  int carouselCurrentIndex = 1;
+
+  // Stores action output result for [Backend Call - API (Get Subscription)] action in Container widget.
+  ApiCallResponse? getSubscribeCloudGame5;
+  // Stores action output result for [Backend Call - API (Get Subscription)] action in Container widget.
+  ApiCallResponse? getSubscribeCloudGame6;
 
   /// Initialization and disposal methods.
 

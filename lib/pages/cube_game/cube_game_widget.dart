@@ -1,15 +1,17 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/button_exp/button_exp_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/field_game/field_game_widget.dart';
 import '/pages/question_game/question_game_widget.dart';
 import '/pages/sub_pay/sub_pay_widget.dart';
-import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -193,7 +195,7 @@ class _CubeGameWidgetState extends State<CubeGameWidget>
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -331,7 +333,7 @@ class _CubeGameWidgetState extends State<CubeGameWidget>
                   if (FFAppState().cubeValue == 6)
                     Expanded(
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 1.0),
+                        alignment: AlignmentDirectional(0.00, 1.00),
                         child: FutureBuilder<List<GameFieldRecord>>(
                           future: queryGameFieldRecordOnce(
                             queryBuilder: (gameFieldRecord) =>
@@ -375,23 +377,47 @@ class _CubeGameWidgetState extends State<CubeGameWidget>
                                 if (FFAppState().Free3Moves <= 0) {
                                   if (!valueOrDefault<bool>(
                                       currentUserDocument?.buyGame, false)) {
-                                    logFirebaseEvent('Button_Exp_action_block');
-                                    _model.checkSubs =
-                                        await action_blocks.checkSubs(context);
-                                    _shouldSetState = true;
-                                    if (!_model.checkSubs!) {
-                                      logFirebaseEvent(
-                                          'Button_Exp_navigate_to');
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => SubPayWidget(
-                                            showThreeMove: true,
-                                          ),
-                                        ),
-                                      );
-                                      if (_shouldSetState) setState(() {});
+                                    logFirebaseEvent('Button_Exp_revenue_cat');
+                                    final isEntitled = await revenue_cat
+                                        .isEntitled('issubscribe');
+                                    if (isEntitled == null) {
                                       return;
+                                    } else if (!isEntitled) {
+                                      await revenue_cat.loadOfferings();
+                                    }
+
+                                    if (!isEntitled) {
+                                      logFirebaseEvent(
+                                          'Button_Exp_backend_call');
+                                      _model.getSubscribeCloudGame =
+                                          await CloudpaymentsGroup
+                                              .getSubscriptionCall
+                                              .call(
+                                        id: valueOrDefault(
+                                            currentUserDocument?.modelId, ''),
+                                      );
+                                      _shouldSetState = true;
+                                      if (CloudpaymentsGroup.getSubscriptionCall
+                                              .modelStatus(
+                                                (_model.getSubscribeCloudGame
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )
+                                              .toString() !=
+                                          'Active') {
+                                        logFirebaseEvent(
+                                            'Button_Exp_navigate_to');
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => SubPayWidget(
+                                              showThreeMove: true,
+                                            ),
+                                          ),
+                                        );
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
                                     }
                                   }
                                 }
@@ -458,7 +484,7 @@ class _CubeGameWidgetState extends State<CubeGameWidget>
                   if (FFAppState().cubeValue <= 5)
                     Expanded(
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 1.0),
+                        alignment: AlignmentDirectional(0.00, 1.00),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,

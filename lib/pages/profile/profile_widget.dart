@@ -1,15 +1,17 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/components/log_out/log_out_widget.dart';
 import '/components/sub_up_success/sub_up_success_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/about/about_widget.dart';
 import '/pages/history_game/history_game_widget.dart';
 import '/pages/profile_edit/profile_edit_widget.dart';
 import '/pages/sub_pay/sub_pay_widget.dart';
-import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -59,7 +61,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             backgroundColor: FlutterFlowTheme.of(context).secondary,
             automaticallyImplyLeading: false,
             leading: Align(
-              alignment: AlignmentDirectional(0.0, 1.0),
+              alignment: AlignmentDirectional(0.00, 1.00),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                 child: Icon(
@@ -71,7 +73,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             ),
             actions: [
               Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.00, 1.00),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                   child: InkWell(
@@ -110,7 +112,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             ],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -231,10 +233,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             onTap: () async {
                               logFirebaseEvent(
                                   'PROFILE_PAGE_Container_1eghy6b8_ON_TAP');
-                              logFirebaseEvent('Container_action_block');
-                              _model.checkSubs =
-                                  await action_blocks.checkSubs(context);
-                              if (_model.checkSubs!) {
+                              logFirebaseEvent('Container_revenue_cat');
+                              final isEntitled =
+                                  await revenue_cat.isEntitled('issubscribe');
+                              if (isEntitled == null) {
+                                return;
+                              } else if (!isEntitled) {
+                                await revenue_cat.loadOfferings();
+                              }
+
+                              if (isEntitled) {
                                 logFirebaseEvent('Container_bottom_sheet');
                                 await showModalBottomSheet(
                                   isScrollControlled: true,
@@ -254,15 +262,50 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   },
                                 ).then((value) => setState(() {}));
                               } else {
-                                logFirebaseEvent('Container_navigate_to');
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SubPayWidget(
-                                      showThreeMove: false,
-                                    ),
-                                  ),
+                                logFirebaseEvent('Container_backend_call');
+                                _model.getSubscribeCloudGame =
+                                    await CloudpaymentsGroup.getSubscriptionCall
+                                        .call(
+                                  id: valueOrDefault(
+                                      currentUserDocument?.modelId, ''),
                                 );
+                                if (CloudpaymentsGroup.getSubscriptionCall
+                                        .modelStatus(
+                                          (_model.getSubscribeCloudGame
+                                                  ?.jsonBody ??
+                                              ''),
+                                        )
+                                        .toString() ==
+                                    'Active') {
+                                  logFirebaseEvent('Container_bottom_sheet');
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    barrierColor: Color(0x00000000),
+                                    context: context,
+                                    builder: (context) {
+                                      return GestureDetector(
+                                        onTap: () => FocusScope.of(context)
+                                            .requestFocus(_model.unfocusNode),
+                                        child: Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: SubUpSuccessWidget(),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
+                                } else {
+                                  logFirebaseEvent('Container_navigate_to');
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SubPayWidget(
+                                        showThreeMove: false,
+                                      ),
+                                    ),
+                                  );
+                                }
                               }
 
                               setState(() {});

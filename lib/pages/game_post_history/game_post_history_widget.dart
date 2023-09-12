@@ -3,6 +3,7 @@ import '/components/button_exp/button_exp_widget.dart';
 import '/flutter_flow/flutter_flow_audio_player.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -94,7 +95,7 @@ class _GamePostHistoryWidgetState extends State<GamePostHistoryWidget> {
                 backgroundColor: FlutterFlowTheme.of(context).secondary,
                 automaticallyImplyLeading: false,
                 leading: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -120,7 +121,7 @@ class _GamePostHistoryWidgetState extends State<GamePostHistoryWidget> {
                 actions: [],
                 flexibleSpace: FlexibleSpaceBar(
                   background: Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.00, -1.00),
                     child: Image.asset(
                       'assets/images/StatusBar.png',
                       width: double.infinity,
@@ -385,7 +386,7 @@ class _GamePostHistoryWidgetState extends State<GamePostHistoryWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.00, 1.00),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 24.0, 0.0, 24.0),

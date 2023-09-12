@@ -5,6 +5,7 @@ import '/components/delete_account/delete_account_widget.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -82,7 +83,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
               child: Container(
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -124,7 +125,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                 child: Container(
                   decoration: BoxDecoration(),
                   child: Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.00, 1.00),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
@@ -140,7 +141,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
             ],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -370,7 +371,8 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                     ),
                                   ),
                                   child: Align(
-                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    alignment:
+                                        AlignmentDirectional(-1.00, 0.00),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
@@ -441,7 +443,8 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                     ),
                                   ),
                                   child: Align(
-                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    alignment:
+                                        AlignmentDirectional(-1.00, 0.00),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
@@ -552,7 +555,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   ),
                                 ),
                                 child: Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
+                                  alignment: AlignmentDirectional(-1.00, 0.00),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 0.0, 0.0),
@@ -705,7 +708,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,

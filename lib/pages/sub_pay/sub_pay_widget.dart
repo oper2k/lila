@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/sub_cloud_payments/sub_cloud_payments_widget.dart';
 import '/pages/sub_revenu/sub_revenu_widget.dart';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
@@ -70,7 +71,7 @@ class _SubPayWidgetState extends State<SubPayWidget> {
                 height: 100.0,
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -86,7 +87,7 @@ class _SubPayWidgetState extends State<SubPayWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -105,7 +106,7 @@ class _SubPayWidgetState extends State<SubPayWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Одна игра',
+                'Способ оплаты',
                 style: FlutterFlowTheme.of(context).displaySmall.override(
                       fontFamily:
                           FlutterFlowTheme.of(context).displaySmallFamily,
@@ -114,16 +115,23 @@ class _SubPayWidgetState extends State<SubPayWidget> {
                       lineHeight: 1.2,
                     ),
               ),
-              Text(
-                'К сожалению, на Android в России нельзя приобрести одну игру в приложении, поэтому вы можете воспользоваться оплатой картой, написав нашему менеджеру',
-                style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily:
-                          FlutterFlowTheme.of(context).headlineMediumFamily,
-                      fontSize: 14.0,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).headlineMediumFamily),
-                    ),
-              ),
+              if (responsiveVisibility(
+                context: context,
+                phone: false,
+                tablet: false,
+                tabletLandscape: false,
+                desktop: false,
+              ))
+                Text(
+                  'К сожалению, на Android в России нельзя приобрести одну игру в приложении, поэтому вы можете воспользоваться оплатой картой, написав нашему менеджеру',
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).headlineMediumFamily,
+                        fontSize: 14.0,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).headlineMediumFamily),
+                      ),
+                ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: InkWell(
@@ -282,32 +290,40 @@ class _SubPayWidgetState extends State<SubPayWidget> {
                   ),
                 ),
               ),
-              Expanded(
-                child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      logFirebaseEvent('SUB_PAY_PAGE_Text_rq456cw8_ON_TAP');
-                      logFirebaseEvent('Text_revenue_cat');
-                      await revenue_cat.restorePurchases();
-                    },
-                    child: Text(
-                      'Восстановить покупки',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).bodyMediumFamily,
-                            fontWeight: FontWeight.w600,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).bodyMediumFamily),
-                          ),
+              if (responsiveVisibility(
+                context: context,
+                phone: false,
+                tablet: false,
+                tabletLandscape: false,
+                desktop: false,
+              ))
+                Expanded(
+                  child: Align(
+                    alignment: AlignmentDirectional(0.00, 1.00),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        logFirebaseEvent('SUB_PAY_PAGE_Text_rq456cw8_ON_TAP');
+                        logFirebaseEvent('Text_revenue_cat');
+                        await revenue_cat.restorePurchases();
+                      },
+                      child: Text(
+                        'Восстановить покупки',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
+                              fontWeight: FontWeight.w600,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
+                            ),
+                      ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),

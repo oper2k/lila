@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/components/button_exp/button_exp_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/registration_email/registration_email_widget.dart';
 import '/pages/welcome/welcome_widget.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +72,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
               child: Container(
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -87,7 +88,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,

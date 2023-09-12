@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/button_exp/button_exp_widget.dart';
 import '/components/cube_6/cube6_widget.dart';
@@ -11,9 +12,9 @@ import '/flutter_flow/flutter_flow_audio_player.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/end_game_dage/end_game_dage_widget.dart';
 import '/pages/sub_pay/sub_pay_widget.dart';
-import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
@@ -30,8 +31,8 @@ class FieldGameModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Action Block - CheckSubs] action in Stack widget.
-  bool? checkSubs;
+  // Stores action output result for [Backend Call - API (Get Subscription)] action in Stack widget.
+  ApiCallResponse? getSubscribeCloudGame;
   // State field(s) for input_insite_game widget.
   TextEditingController? inputInsiteGameController;
   String? Function(BuildContext, String?)? inputInsiteGameControllerValidator;

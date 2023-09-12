@@ -7,6 +7,7 @@ import '/components/sub_up_success/sub_up_success_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/field_game/field_game_widget.dart';
 import '/pages/history_game/history_game_widget.dart';
 import '/pages/history_moves/history_moves_widget.dart';
