@@ -480,6 +480,22 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                   );
                   _shouldSetState = true;
                   if (_model.validateCartNumber!) {
+                    logFirebaseEvent('Button_Exp_alert_dialog');
+                    await showDialog(
+                      context: context,
+                      builder: (alertDialogContext) {
+                        return AlertDialog(
+                          title: Text('ошибка'),
+                          actions: [
+                            TextButton(
+                              onPressed: () =>
+                                  Navigator.pop(alertDialogContext),
+                              child: Text('Ok'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
                     logFirebaseEvent('Button_Exp_custom_action');
                     _model.validateCardDate =
                         await actions.validateCardExpireDate(
@@ -527,7 +543,8 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                     .toString(),
                                 style: GoogleFonts.getFont(
                                   'Inter',
-                                  color: FlutterFlowTheme.of(context).primary,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                 ),
                               ),
                               duration: Duration(milliseconds: 4000),
@@ -576,7 +593,8 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                       ).toString()}',
                                   style: GoogleFonts.getFont(
                                     'Inter',
-                                    color: FlutterFlowTheme.of(context).primary,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                   ),
                                 ),
                                 duration: Duration(milliseconds: 4000),
@@ -652,7 +670,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                         style: GoogleFonts.getFont(
                                           'Inter',
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                              .primaryText,
                                         ),
                                       ),
                                       duration: Duration(milliseconds: 4000),
@@ -719,7 +737,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                         style: GoogleFonts.getFont(
                                           'Inter',
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                              .primaryText,
                                         ),
                                       ),
                                       duration: Duration(milliseconds: 4000),
@@ -737,7 +755,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                       style: GoogleFonts.getFont(
                                         'Inter',
                                         color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                            .primaryText,
                                       ),
                                     ),
                                     duration: Duration(milliseconds: 4000),
@@ -754,8 +772,8 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                     'Ошибка 3DS',
                                     style: GoogleFonts.getFont(
                                       'Inter',
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                     ),
                                   ),
                                   duration: Duration(milliseconds: 4000),
@@ -774,7 +792,8 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                       ).toString()}',
                                   style: GoogleFonts.getFont(
                                     'Inter',
-                                    color: FlutterFlowTheme.of(context).primary,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                   ),
                                 ),
                                 duration: Duration(milliseconds: 4000),
@@ -792,7 +811,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                               'Что-то пошло не так: ${(_model.apiResult2li?.statusCode ?? 200).toString()}',
                               style: GoogleFonts.getFont(
                                 'Inter',
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: FlutterFlowTheme.of(context).primaryText,
                               ),
                             ),
                             duration: Duration(milliseconds: 4000),
@@ -809,7 +828,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                             'Срок карты введен неверно',
                             style: GoogleFonts.getFont(
                               'Inter',
-                              color: FlutterFlowTheme.of(context).primary,
+                              color: FlutterFlowTheme.of(context).primaryText,
                             ),
                           ),
                           duration: Duration(milliseconds: 4000),
@@ -828,7 +847,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                           'Номер карты введён неверно',
                           style: GoogleFonts.getFont(
                             'Inter',
-                            color: FlutterFlowTheme.of(context).primary,
+                            color: FlutterFlowTheme.of(context).primaryText,
                           ),
                         ),
                         duration: Duration(milliseconds: 4000),

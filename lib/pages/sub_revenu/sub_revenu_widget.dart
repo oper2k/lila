@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/pages/sub_pay/sub_pay_widget.dart';
 import '/pages/sub_thank_you/sub_thank_you_widget.dart';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:flutter/material.dart';
@@ -176,15 +175,24 @@ class _SubRevenuWidgetState extends State<SubRevenuWidget> {
                               onTap: () async {
                                 logFirebaseEvent(
                                     'SUB_REVENU_Container_85fm934h_ON_TAP');
-                                logFirebaseEvent('Container_navigate_to');
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SubPayWidget(
-                                      showThreeMove: false,
+                                logFirebaseEvent('Container_revenue_cat');
+                                _model.revenuePurchOneGame =
+                                    await revenue_cat.purchasePackage(
+                                        revenue_cat.offerings!.current!
+                                            .getPackage('')!
+                                            .storeProduct
+                                            .identifier);
+                                if (_model.revenuePurchOneGame!) {
+                                  logFirebaseEvent('Container_navigate_to');
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SubThankYouWidget(),
                                     ),
-                                  ),
-                                );
+                                  );
+                                }
+
+                                setState(() {});
                               },
                               child: Container(
                                 width: double.infinity,
