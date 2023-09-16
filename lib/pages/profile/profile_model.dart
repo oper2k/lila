@@ -22,6 +22,8 @@ class ProfileModel extends FlutterFlowModel {
 
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (Get Subscription)] action in Container widget.
+  ApiCallResponse? getSubscribeCloudGame1;
+  // Stores action output result for [Backend Call - API (Get Subscription)] action in Container widget.
   ApiCallResponse? getSubscribeCloudGame;
 
   /// Initialization and disposal methods.

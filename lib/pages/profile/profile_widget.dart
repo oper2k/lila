@@ -233,37 +233,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             onTap: () async {
                               logFirebaseEvent(
                                   'PROFILE_PAGE_Container_1eghy6b8_ON_TAP');
-                              logFirebaseEvent('Container_revenue_cat');
-                              final isEntitled =
-                                  await revenue_cat.isEntitled('issubscribe');
-                              if (isEntitled == null) {
-                                return;
-                              } else if (!isEntitled) {
-                                await revenue_cat.loadOfferings();
-                              }
-
-                              if (isEntitled) {
-                                logFirebaseEvent('Container_bottom_sheet');
-                                await showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Colors.transparent,
-                                  barrierColor: Color(0x00000000),
-                                  context: context,
-                                  builder: (context) {
-                                    return GestureDetector(
-                                      onTap: () => FocusScope.of(context)
-                                          .requestFocus(_model.unfocusNode),
-                                      child: Padding(
-                                        padding:
-                                            MediaQuery.viewInsetsOf(context),
-                                        child: SubUpSuccessWidget(),
-                                      ),
-                                    );
-                                  },
-                                ).then((value) => setState(() {}));
-                              } else {
+                              if (isWeb) {
                                 logFirebaseEvent('Container_backend_call');
-                                _model.getSubscribeCloudGame =
+                                _model.getSubscribeCloudGame1 =
                                     await CloudpaymentsGroup.getSubscriptionCall
                                         .call(
                                   id: valueOrDefault(
@@ -271,7 +243,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 );
                                 if (CloudpaymentsGroup.getSubscriptionCall
                                         .modelStatus(
-                                          (_model.getSubscribeCloudGame
+                                          (_model.getSubscribeCloudGame1
                                                   ?.jsonBody ??
                                               ''),
                                         )
@@ -305,6 +277,82 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       ),
                                     ),
                                   );
+                                }
+                              } else {
+                                logFirebaseEvent('Container_revenue_cat');
+                                final isEntitled =
+                                    await revenue_cat.isEntitled('issubscribe');
+                                if (isEntitled == null) {
+                                  return;
+                                } else if (!isEntitled) {
+                                  await revenue_cat.loadOfferings();
+                                }
+
+                                if (isEntitled) {
+                                  logFirebaseEvent('Container_bottom_sheet');
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    barrierColor: Color(0x00000000),
+                                    context: context,
+                                    builder: (context) {
+                                      return GestureDetector(
+                                        onTap: () => FocusScope.of(context)
+                                            .requestFocus(_model.unfocusNode),
+                                        child: Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: SubUpSuccessWidget(),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
+                                } else {
+                                  logFirebaseEvent('Container_backend_call');
+                                  _model.getSubscribeCloudGame =
+                                      await CloudpaymentsGroup
+                                          .getSubscriptionCall
+                                          .call(
+                                    id: valueOrDefault(
+                                        currentUserDocument?.modelId, ''),
+                                  );
+                                  if (CloudpaymentsGroup.getSubscriptionCall
+                                          .modelStatus(
+                                            (_model.getSubscribeCloudGame
+                                                    ?.jsonBody ??
+                                                ''),
+                                          )
+                                          .toString() ==
+                                      'Active') {
+                                    logFirebaseEvent('Container_bottom_sheet');
+                                    await showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      barrierColor: Color(0x00000000),
+                                      context: context,
+                                      builder: (context) {
+                                        return GestureDetector(
+                                          onTap: () => FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode),
+                                          child: Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: SubUpSuccessWidget(),
+                                          ),
+                                        );
+                                      },
+                                    ).then((value) => setState(() {}));
+                                  } else {
+                                    logFirebaseEvent('Container_navigate_to');
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => SubPayWidget(
+                                          showThreeMove: false,
+                                        ),
+                                      ),
+                                    );
+                                  }
                                 }
                               }
 

@@ -56,11 +56,6 @@ class HomeModel extends FlutterFlowModel {
 
   int carouselCurrentIndex = 1;
 
-  // Stores action output result for [Backend Call - API (Get Subscription)] action in Container widget.
-  ApiCallResponse? getSubscribeCloudGame5;
-  // Stores action output result for [Backend Call - API (Get Subscription)] action in Container widget.
-  ApiCallResponse? getSubscribeCloudGame6;
-
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

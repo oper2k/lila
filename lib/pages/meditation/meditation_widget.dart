@@ -119,18 +119,83 @@ class _MeditationWidgetState extends State<MeditationWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 45.0, 0.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 335.0,
-                        child: custom_widgets.AudioPlayerNew(
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                      child: Text(
+                        'Медитация',
+                        style:
+                            FlutterFlowTheme.of(context).displaySmall.override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .displaySmallFamily,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .displaySmallFamily),
+                                  lineHeight: 1.0,
+                                ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                      child: Text(
+                        'Поможет сформулировать запрос\nПонять, что вам нужно',
+                        style: FlutterFlowTheme.of(context).bodySmall.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodySmallFamily,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context).bodySmallFamily),
+                              lineHeight: 1.4,
+                            ),
+                      ),
+                    ),
+                    if (responsiveVisibility(
+                      context: context,
+                      phone: false,
+                      tablet: false,
+                      tabletLandscape: false,
+                      desktop: false,
+                    ))
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 45.0, 0.0, 0.0),
+                        child: Container(
                           width: double.infinity,
                           height: 335.0,
-                          musicName: 'Медитация',
-                          description:
-                              'Поможет сформулировать запрос\nПонять, что вам нужно',
-                          url:
+                          child: custom_widgets.AudioPlayerNew(
+                            width: double.infinity,
+                            height: 335.0,
+                            musicName: 'Медитация',
+                            description:
+                                'Поможет сформулировать запрос\nПонять, что вам нужно',
+                            url:
+                                'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/IMG_5212%20(online-audio-converter.com)%20(1).mp3?alt=media&token=94ebfdb9-6afd-4b62-baf5-221c02539a95',
+                          ),
+                        ),
+                      ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 26.0, 10.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 250.0,
+                        child: custom_widgets.CustomAudioPlayer(
+                          width: double.infinity,
+                          height: 250.0,
+                          audioUrl:
                               'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/IMG_5212%20(online-audio-converter.com)%20(1).mp3?alt=media&token=94ebfdb9-6afd-4b62-baf5-221c02539a95',
+                          title: 'Медитация',
+                          imgUrl: '0',
+                          skipForwardWidget: Icon(
+                            FFIcons.kright,
+                            size: 0.0,
+                          ),
+                          skipBackWidget: Icon(
+                            FFIcons.kleft,
+                            size: 0.0,
+                          ),
+                          onPlay: () async {},
+                          onPause: () async {},
+                          onSkipForward: () async {},
+                          onSkipBack: () async {},
                         ),
                       ),
                     ),

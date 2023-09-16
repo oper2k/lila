@@ -41,6 +41,8 @@ class CardPayModel extends FlutterFlowModel {
   String? cryptogramCard;
   // Stores action output result for [Backend Call - API (Pay by card Copy)] action in Button_Exp widget.
   ApiCallResponse? apiResult2li;
+  // Stores action output result for [Backend Call - API (Create Subscription)] action in Button_Exp widget.
+  ApiCallResponse? createSub;
   // Stores action output result for [Custom Action - check3DSCloudPayments] action in Button_Exp widget.
   List<String>? check3DS;
   // Stores action output result for [Backend Call - API (CheckDS Copy)] action in Button_Exp widget.

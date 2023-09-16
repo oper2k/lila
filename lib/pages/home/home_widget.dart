@@ -2009,124 +2009,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       onTap: () async {
                                         logFirebaseEvent(
                                             'HOME_PAGE_Container_38p3bjem_ON_TAP');
-                                        if (isWeb) {
-                                          logFirebaseEvent(
-                                              'Container_backend_call');
-                                          _model.getSubscribeCloudGame5 =
-                                              await CloudpaymentsGroup
-                                                  .getSubscriptionCall
-                                                  .call(
-                                            id: valueOrDefault(
-                                                currentUserDocument?.modelId,
-                                                ''),
-                                          );
-                                          if (CloudpaymentsGroup
-                                                  .getSubscriptionCall
-                                                  .modelStatus(
-                                                    (_model.getSubscribeCloudGame5
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  )
-                                                  .toString() ==
-                                              'Active') {
-                                            logFirebaseEvent(
-                                                'Container_navigate_to');
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    AffirmationsWidget(
-                                                  currentAffi:
-                                                      carouselAffirmationsRecord,
-                                                ),
-                                              ),
-                                            );
-                                          } else {
-                                            logFirebaseEvent(
-                                                'Container_navigate_to');
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SubPayWidget(
-                                                  showThreeMove: false,
-                                                ),
-                                              ),
-                                            );
-                                          }
-                                        } else {
-                                          logFirebaseEvent(
-                                              'Container_revenue_cat');
-                                          final isEntitled = await revenue_cat
-                                              .isEntitled('issubscribe');
-                                          if (isEntitled == null) {
-                                            return;
-                                          } else if (!isEntitled) {
-                                            await revenue_cat.loadOfferings();
-                                          }
-
-                                          if (isEntitled) {
-                                            logFirebaseEvent(
-                                                'Container_navigate_to');
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    AffirmationsWidget(
-                                                  currentAffi:
-                                                      carouselAffirmationsRecord,
-                                                ),
-                                              ),
-                                            );
-                                          } else {
-                                            logFirebaseEvent(
-                                                'Container_backend_call');
-                                            _model.getSubscribeCloudGame6 =
-                                                await CloudpaymentsGroup
-                                                    .getSubscriptionCall
-                                                    .call(
-                                              id: valueOrDefault(
-                                                  currentUserDocument?.modelId,
-                                                  ''),
-                                            );
-                                            if (CloudpaymentsGroup
-                                                    .getSubscriptionCall
-                                                    .modelStatus(
-                                                      (_model.getSubscribeCloudGame6
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    )
-                                                    .toString() ==
-                                                'Active') {
-                                              logFirebaseEvent(
-                                                  'Container_navigate_to');
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      AffirmationsWidget(
-                                                    currentAffi:
-                                                        carouselAffirmationsRecord,
-                                                  ),
-                                                ),
-                                              );
-                                            } else {
-                                              logFirebaseEvent(
-                                                  'Container_navigate_to');
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      SubPayWidget(
-                                                    showThreeMove: false,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                          }
-                                        }
-
-                                        setState(() {});
+                                        logFirebaseEvent(
+                                            'Container_navigate_to');
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                AffirmationsWidget(
+                                              currentAffi:
+                                                  carouselAffirmationsRecord,
+                                            ),
+                                          ),
+                                        );
                                       },
                                       child: Container(
                                         width: 180.0,
@@ -2251,7 +2145,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(12.0),
                                   child: Image.asset(
-                                    'assets/images/photo-output_(3).JPG',
+                                    'assets/images/photo-output_(5).jpg',
                                     width: double.infinity,
                                     fit: BoxFit.contain,
                                   ),

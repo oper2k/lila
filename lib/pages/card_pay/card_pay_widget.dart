@@ -480,22 +480,6 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                   );
                   _shouldSetState = true;
                   if (_model.validateCartNumber!) {
-                    logFirebaseEvent('Button_Exp_alert_dialog');
-                    await showDialog(
-                      context: context,
-                      builder: (alertDialogContext) {
-                        return AlertDialog(
-                          title: Text('ошибка'),
-                          actions: [
-                            TextButton(
-                              onPressed: () =>
-                                  Navigator.pop(alertDialogContext),
-                              child: Text('Ok'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
                     logFirebaseEvent('Button_Exp_custom_action');
                     _model.validateCardDate =
                         await actions.validateCardExpireDate(
@@ -554,7 +538,8 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                           );
                           if (widget.typeSubs != 0) {
                             logFirebaseEvent('Button_Exp_backend_call');
-                            await CloudpaymentsGroup.createSubscriptionCall
+                            _model.createSub = await CloudpaymentsGroup
+                                .createSubscriptionCall
                                 .call(
                               interval: widget.typeSubs?.toString(),
                               accountId: currentUserEmail,
@@ -570,6 +555,17 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                               ),
                               period: widget.typeSubs,
                             );
+                            _shouldSetState = true;
+                            logFirebaseEvent('Button_Exp_backend_call');
+
+                            await currentUserReference!
+                                .update(createUsersRecordData(
+                              modelId: CloudpaymentsGroup.createSubscriptionCall
+                                  .modelId(
+                                    (_model.createSub?.jsonBody ?? ''),
+                                  )
+                                  .toString(),
+                            ));
                           }
                           logFirebaseEvent('Button_Exp_navigate_to');
                           Navigator.pushAndRemoveUntil(
@@ -588,7 +584,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  'Что-то пошло не так: ${CloudpaymentsGroup.payByCardCopyCall.message(
+                                  'Что-то пошло не так 2: ${CloudpaymentsGroup.payByCardCopyCall.reasonCode(
                                         (_model.apiResult2li?.jsonBody ?? ''),
                                       ).toString()}',
                                   style: GoogleFonts.getFont(
@@ -730,7 +726,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'Что-то пошло не так: ${CloudpaymentsGroup.checkDSCopyCall.message(
+                                        'Что-то пошло не так 5: ${CloudpaymentsGroup.checkDSCopyCall.message(
                                               (_model.apiResult5ny?.jsonBody ??
                                                   ''),
                                             ).toString()}',
@@ -751,7 +747,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Что-то пошло не так: ${(_model.apiResult5ny?.statusCode ?? 200).toString()}',
+                                      'Что-то пошло не так 4: ${(_model.apiResult5ny?.statusCode ?? 200).toString()}',
                                       style: GoogleFonts.getFont(
                                         'Inter',
                                         color: FlutterFlowTheme.of(context)
@@ -787,7 +783,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  'Что-то пошло не так: ${CloudpaymentsGroup.payByCardCopyCall.message(
+                                  'Что-то пошло не так 3: ${CloudpaymentsGroup.payByCardCopyCall.message(
                                         (_model.apiResult2li?.jsonBody ?? ''),
                                       ).toString()}',
                                   style: GoogleFonts.getFont(
@@ -808,7 +804,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              'Что-то пошло не так: ${(_model.apiResult2li?.statusCode ?? 200).toString()}',
+                              'Что-то пошло не так 1: ${(_model.apiResult2li?.statusCode ?? 200).toString()}',
                               style: GoogleFonts.getFont(
                                 'Inter',
                                 color: FlutterFlowTheme.of(context).primaryText,
