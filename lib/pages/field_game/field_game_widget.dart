@@ -740,16 +740,36 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Text(
-                                      FFAppState().cubeValue666.toString(),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                    Text(
-                                      FFAppState().cube666.toString(),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
+                                    if (responsiveVisibility(
+                                      context: context,
+                                      tabletLandscape: false,
+                                      desktop: false,
+                                    ))
+                                      Text(
+                                        FFAppState().cubeValue666.toString(),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    if (responsiveVisibility(
+                                      context: context,
+                                      tabletLandscape: false,
+                                      desktop: false,
+                                    ))
+                                      Text(
+                                        FFAppState().cube666.toString(),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    if (responsiveVisibility(
+                                      context: context,
+                                      tabletLandscape: false,
+                                      desktop: false,
+                                    ))
+                                      Text(
+                                        FFAppState().boardValue.toString(),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 64.0, 0.0),
@@ -1408,7 +1428,7 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                             builder: (context) =>
                                                                 SubPayWidget(
                                                               showThreeMove:
-                                                                  true,
+                                                                  false,
                                                             ),
                                                           ),
                                                         );
@@ -1504,8 +1524,6 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                       isScrollControlled: true,
                                                       backgroundColor:
                                                           Colors.transparent,
-                                                      barrierColor:
-                                                          Color(0x00000000),
                                                       enableDrag: false,
                                                       context: context,
                                                       builder: (context) {
@@ -1526,9 +1544,12 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                     ).then((value) =>
                                                         setState(() {}));
 
-                                                    if (_shouldSetState)
-                                                      setState(() {});
-                                                    return;
+                                                    logFirebaseEvent(
+                                                        'Stack_wait__delay');
+                                                    await Future.delayed(
+                                                        const Duration(
+                                                            milliseconds:
+                                                                2000));
                                                   }
                                                 }
                                                 if (FFAppState().cubeValue ==

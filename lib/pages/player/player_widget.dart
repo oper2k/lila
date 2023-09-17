@@ -61,7 +61,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
             image: DecorationImage(
               fit: BoxFit.cover,
               image: Image.asset(
-                'assets/images/fon_player.jpg',
+                'assets/images/IMG_4991_1.jpg',
               ).image,
             ),
           ),

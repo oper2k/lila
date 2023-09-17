@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/card_pay/card_pay_widget.dart';
+import '/pages/cube_game/cube_game_widget.dart';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -535,8 +536,13 @@ class _SubCloudPaymentsWidgetState extends State<SubCloudPaymentsWidget> {
                           FFAppState().update(() {
                             FFAppState().Free3Moves = 3;
                           });
-                          logFirebaseEvent('Text_navigate_back');
-                          Navigator.pop(context);
+                          logFirebaseEvent('Text_navigate_to');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CubeGameWidget(),
+                            ),
+                          );
                         },
                         child: Text(
                           'Начать игру с 3 бесплатными ходами',
