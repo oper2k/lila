@@ -88,12 +88,7 @@ class _Cube6WidgetState extends State<Cube6Widget> {
                     FFAppState().GameEnd666 = true;
                   });
                   if (FFAppState().cube666 == 3) {
-                    if (FFAppState().cubeValue == 6) {
-                      logFirebaseEvent('Button_Gradient_update_app_state');
-                      FFAppState().update(() {
-                        FFAppState().cubeValue666 = (FFAppState().cube666 * 6);
-                      });
-                    } else {
+                    if (FFAppState().cubeValue != 6) {
                       logFirebaseEvent('Button_Gradient_update_app_state');
                       setState(() {
                         FFAppState().boardValue = FFAppState().cubeValue666;

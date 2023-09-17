@@ -730,6 +730,63 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
+                              if (responsiveVisibility(
+                                context: context,
+                                phone: false,
+                                tablet: false,
+                                tabletLandscape: false,
+                                desktop: false,
+                              ))
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      FFAppState().cubeValue666.toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                    Text(
+                                      FFAppState().cube666.toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 64.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          logFirebaseEvent(
+                                              'FIELD_GAME_Container_etmzfhq3_ON_TAP');
+                                          if (_model.game666) {
+                                            logFirebaseEvent(
+                                                'Container_update_widget_state');
+                                            setState(() {
+                                              _model.game666 = false;
+                                            });
+                                          } else {
+                                            logFirebaseEvent(
+                                                'Container_update_widget_state');
+                                            setState(() {
+                                              _model.game666 = true;
+                                            });
+                                          }
+                                        },
+                                        child: Container(
+                                          width: 50.0,
+                                          height: 19.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               Text(
                                 'Меню',
                                 style: FlutterFlowTheme.of(context).bodyMedium,
@@ -1385,14 +1442,25 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                       .controller
                                                       .stop();
                                                 }
-                                                // кидаем рандом кубика от 1 до 6
-                                                logFirebaseEvent(
-                                                    'Stack_update_app_state');
-                                                FFAppState().update(() {
-                                                  FFAppState().cubeValue =
-                                                      random_data.randomInteger(
-                                                          1, 6);
-                                                });
+                                                if (_model.game666) {
+                                                  // кидаем рандом кубика от 1 до 6
+                                                  logFirebaseEvent(
+                                                      'Stack_update_app_state');
+                                                  FFAppState().update(() {
+                                                    FFAppState().cubeValue = 6;
+                                                  });
+                                                } else {
+                                                  // кидаем рандом кубика от 1 до 6
+                                                  logFirebaseEvent(
+                                                      'Stack_update_app_state');
+                                                  FFAppState().update(() {
+                                                    FFAppState().cubeValue =
+                                                        random_data
+                                                            .randomInteger(
+                                                                1, 6);
+                                                  });
+                                                }
+
                                                 logFirebaseEvent(
                                                     'Stack_widget_animation');
                                                 if (animationsMap[
@@ -1406,6 +1474,30 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                 if (FFAppState().cube666 == 3) {
                                                   if (FFAppState().cubeValue !=
                                                       6) {
+                                                    // если выпало 3 шестерки и некст выпала не 6 то, перезапиши значение доски хода который мы записали при кидании первой шестерки
+                                                    logFirebaseEvent(
+                                                        'Stack_update_app_state');
+                                                    setState(() {
+                                                      FFAppState().boardValue =
+                                                          FFAppState()
+                                                              .cubeValue666;
+                                                      FFAppState()
+                                                              .stopCubeRotate =
+                                                          false;
+                                                    });
+                                                    logFirebaseEvent(
+                                                        'Stack_update_app_state');
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .cubeValue666 = 0;
+                                                      FFAppState().cube666 = 0;
+                                                    });
+                                                    logFirebaseEvent(
+                                                        'Stack_wait__delay');
+                                                    await Future.delayed(
+                                                        const Duration(
+                                                            milliseconds:
+                                                                1000));
                                                     logFirebaseEvent(
                                                         'Stack_bottom_sheet');
                                                     await showModalBottomSheet(
@@ -1434,24 +1526,6 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                     ).then((value) =>
                                                         setState(() {}));
 
-                                                    // если выпало 3 шестерки и некст выпала не 6 то, перезапиши значение доски хода который мы записали при кидании первой шестерки
-                                                    logFirebaseEvent(
-                                                        'Stack_update_app_state');
-                                                    setState(() {
-                                                      FFAppState().boardValue =
-                                                          FFAppState()
-                                                              .cubeValue666;
-                                                      FFAppState()
-                                                              .stopCubeRotate =
-                                                          false;
-                                                    });
-                                                    logFirebaseEvent(
-                                                        'Stack_update_app_state');
-                                                    setState(() {
-                                                      FFAppState()
-                                                          .cubeValue666 = 0;
-                                                      FFAppState().cube666 = 0;
-                                                    });
                                                     if (_shouldSetState)
                                                       setState(() {});
                                                     return;
@@ -1763,8 +1837,6 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                   logFirebaseEvent(
                                                       'Stack_update_app_state');
                                                   setState(() {
-                                                    FFAppState().cubeValue666 =
-                                                        0;
                                                     FFAppState().cube666 = 0;
                                                   });
                                                   logFirebaseEvent(
