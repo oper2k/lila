@@ -1,9 +1,12 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/cube_game/cube_game_widget.dart';
 import '/pages/sub_thank_you/sub_thank_you_widget.dart';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -176,14 +179,37 @@ class _SubRevenuWidgetState extends State<SubRevenuWidget> {
                               onTap: () async {
                                 logFirebaseEvent(
                                     'SUB_REVENU_Container_85fm934h_ON_TAP');
+                                logFirebaseEvent('Container_show_snack_bar');
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Покупаем игру. Подождите...',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                );
                                 logFirebaseEvent('Container_revenue_cat');
-                                _model.revenuePurchOneGame =
-                                    await revenue_cat.purchasePackage(
-                                        revenue_cat.offerings!.current!
-                                            .getPackage('')!
-                                            .storeProduct
-                                            .identifier);
+                                _model.revenuePurchOneGame = await revenue_cat
+                                    .purchasePackage(valueOrDefault<String>(
+                                  revenue_cat.offerings!.current!
+                                      .getPackage('onegame')!
+                                      .storeProduct
+                                      .identifier,
+                                  'onegame',
+                                ));
                                 if (_model.revenuePurchOneGame!) {
+                                  logFirebaseEvent('Container_backend_call');
+
+                                  await currentUserReference!
+                                      .update(createUsersRecordData(
+                                    buyGame: true,
+                                  ));
                                   logFirebaseEvent('Container_navigate_to');
                                   Navigator.pushReplacement(
                                     context,
@@ -337,11 +363,32 @@ class _SubRevenuWidgetState extends State<SubRevenuWidget> {
                               onTap: () async {
                                 logFirebaseEvent(
                                     'SUB_REVENU_Container_7jnqrbor_ON_TAP');
+                                logFirebaseEvent('Container_show_snack_bar');
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Оформляем подписку. Подождите...',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                );
                                 logFirebaseEvent('Container_revenue_cat');
                                 _model.revenuePurch = await revenue_cat
                                     .purchasePackage(revenuePackageItem
                                         .storeProduct.identifier);
                                 if (_model.revenuePurch!) {
+                                  logFirebaseEvent('Container_backend_call');
+
+                                  await currentUserReference!
+                                      .update(createUsersRecordData(
+                                    buyGame: true,
+                                  ));
                                   logFirebaseEvent('Container_navigate_to');
                                   Navigator.pushReplacement(
                                     context,

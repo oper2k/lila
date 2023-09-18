@@ -62,7 +62,7 @@ class _AffirmationsWidgetState extends State<AffirmationsWidget> {
             image: DecorationImage(
               fit: BoxFit.cover,
               image: Image.asset(
-                'assets/images/IMG_4991_1.jpg',
+                'assets/images/fon_player.jpg',
               ).image,
             ),
           ),
