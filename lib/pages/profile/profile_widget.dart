@@ -99,7 +99,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             ),
                           );
                         },
-                      ).then((value) => setState(() {}));
+                      ).then((value) => safeSetState(() {}));
                     },
                     child: Icon(
                       FFIcons.klogout,
@@ -266,7 +266,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         ),
                                       );
                                     },
-                                  ).then((value) => setState(() {}));
+                                  ).then((value) => safeSetState(() {}));
                                 } else {
                                   logFirebaseEvent('Container_navigate_to');
                                   Navigator.push(
@@ -306,7 +306,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         ),
                                       );
                                     },
-                                  ).then((value) => setState(() {}));
+                                  ).then((value) => safeSetState(() {}));
                                 } else {
                                   logFirebaseEvent('Container_backend_call');
                                   _model.getSubscribeCloudGame =
@@ -341,7 +341,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    ).then((value) => safeSetState(() {}));
                                   } else {
                                     logFirebaseEvent('Container_navigate_to');
                                     Navigator.push(

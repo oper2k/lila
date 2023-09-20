@@ -30,6 +30,8 @@ void main() async {
     loadDataAfterLaunch: true,
   );
 
+  await initializeFirebaseRemoteConfig();
+
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
     child: MyApp(),

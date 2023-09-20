@@ -724,7 +724,7 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                   ),
                                 );
                               },
-                            ).then((value) => setState(() {}));
+                            ).then((value) => safeSetState(() {}));
                           },
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -841,7 +841,7 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    ).then((value) => safeSetState(() {}));
                                   },
                                   child: Icon(
                                     FFIcons.kburger,
@@ -1542,7 +1542,7 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                         );
                                                       },
                                                     ).then((value) =>
-                                                        setState(() {}));
+                                                        safeSetState(() {}));
 
                                                     logFirebaseEvent(
                                                         'Stack_wait__delay');
@@ -1848,7 +1848,7 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                         );
                                                       },
                                                     ).then((value) =>
-                                                        setState(() {}));
+                                                        safeSetState(() {}));
 
                                                     if (_shouldSetState)
                                                       setState(() {});
@@ -1910,7 +1910,7 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                         );
                                                       },
                                                     ).then((value) =>
-                                                        setState(() {}));
+                                                        safeSetState(() {}));
 
                                                     logFirebaseEvent(
                                                         'Stack_update_app_state');
@@ -3091,7 +3091,7 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                         );
                                                       },
                                                     ).then((value) =>
-                                                        setState(() {}));
+                                                        safeSetState(() {}));
 
                                                     logFirebaseEvent(
                                                         'Button_Exp_update_app_state');
@@ -3381,7 +3381,7 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                       ),
                                     );
                                   },
-                                ).then((value) => setState(() {}));
+                                ).then((value) => safeSetState(() {}));
 
                                 logFirebaseEvent('IconButton_update_app_state');
                                 setState(() {

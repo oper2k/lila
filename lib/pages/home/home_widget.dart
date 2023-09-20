@@ -133,7 +133,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                           ),
                         );
                       },
-                    ).then((value) => setState(() {}));
+                    ).then((value) => safeSetState(() {}));
                   } else {
                     return;
                   }

@@ -347,7 +347,7 @@ class _MenuGameWidgetState extends State<MenuGameWidget> {
                             ),
                           );
                         },
-                      ).then((value) => setState(() {}));
+                      ).then((value) => safeSetState(() {}));
 
                       logFirebaseEvent('Container_update_app_state');
                       setState(() {

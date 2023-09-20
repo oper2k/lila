@@ -120,7 +120,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                         ),
                       );
                     },
-                  ).then((value) => setState(() {}));
+                  ).then((value) => safeSetState(() {}));
                 },
                 child: Container(
                   decoration: BoxDecoration(),
@@ -342,7 +342,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   );
 
                                   if (_datePickedDate != null) {
-                                    setState(() {
+                                    safeSetState(() {
                                       _model.datePicked = DateTime(
                                         _datePickedDate.year,
                                         _datePickedDate.month,

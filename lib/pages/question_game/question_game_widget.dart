@@ -205,7 +205,7 @@ class _QuestionGameWidgetState extends State<QuestionGameWidget> {
                           ),
                         );
                       },
-                    ).then((value) => setState(() {}));
+                    ).then((value) => safeSetState(() {}));
                   },
                   child: Text(
                     'Как сформулировать запрос?',

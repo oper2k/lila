@@ -444,7 +444,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                   ),
                                 );
                               },
-                            ).then((value) => setState(() {}));
+                            ).then((value) => safeSetState(() {}));
 
                             return;
                           } else {
