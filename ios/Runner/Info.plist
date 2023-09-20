@@ -46,7 +46,14 @@
     <string>Audio service</string>
 	<key>UIBackgroundMode</key>
     <string>Audio servise 2</string>
-
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Нам необходим доступ до вашей геолокации чтобы мы могли показать ближайших к вам пользователей нашего приложения</string>			
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
 
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
