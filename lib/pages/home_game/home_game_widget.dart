@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/button_gradient/button_gradient_widget.dart';
 import '/components/button_star_game/button_star_game_widget.dart';
@@ -13,9 +14,10 @@ import '/pages/history_game/history_game_widget.dart';
 import '/pages/history_moves/history_moves_widget.dart';
 import '/pages/meditation/meditation_widget.dart';
 import '/pages/rules_game/rules_game_widget.dart';
-import '/pages/sub_revenu/sub_revenu_widget.dart';
+import '/pages/sub_pay/sub_pay_widget.dart';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -418,6 +420,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                         onTap: () async {
                           logFirebaseEvent(
                               'HOME_GAME_PAGE_Container_0pp41ozi_ON_TAP');
+                          var _shouldSetState = false;
                           logFirebaseEvent('Container_revenue_cat');
                           final isEntitled =
                               await revenue_cat.isEntitled('issubscribe');
@@ -427,38 +430,54 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                             await revenue_cat.loadOfferings();
                           }
 
-                          if (isEntitled) {
-                            logFirebaseEvent('Container_bottom_sheet');
-                            await showModalBottomSheet(
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              barrierColor: Color(0x00000000),
-                              context: context,
-                              builder: (context) {
-                                return GestureDetector(
-                                  onTap: () => FocusScope.of(context)
-                                      .requestFocus(_model.unfocusNode),
-                                  child: Padding(
-                                    padding: MediaQuery.viewInsetsOf(context),
-                                    child: SubUpSuccessWidget(),
-                                  ),
-                                );
-                              },
-                            ).then((value) => safeSetState(() {}));
-
-                            return;
-                          } else {
-                            logFirebaseEvent('Container_navigate_to');
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SubRevenuWidget(
-                                  showThreeMovies: false,
-                                ),
-                              ),
+                          if (!isEntitled) {
+                            logFirebaseEvent('Container_backend_call');
+                            _model.getSubscribeCloudGame =
+                                await CloudpaymentsGroup.getSubscriptionCall
+                                    .call(
+                              id: valueOrDefault(
+                                  currentUserDocument?.modelId, ''),
                             );
-                            return;
+                            _shouldSetState = true;
+                            if (CloudpaymentsGroup.getSubscriptionCall
+                                    .modelStatus(
+                                      (_model.getSubscribeCloudGame?.jsonBody ??
+                                          ''),
+                                    )
+                                    .toString() !=
+                                'Active') {
+                              logFirebaseEvent('Container_navigate_to');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SubPayWidget(
+                                    showThreeMove: false,
+                                  ),
+                                ),
+                              );
+                              if (_shouldSetState) setState(() {});
+                              return;
+                            }
                           }
+                          logFirebaseEvent('Container_bottom_sheet');
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            barrierColor: Color(0x00000000),
+                            context: context,
+                            builder: (context) {
+                              return GestureDetector(
+                                onTap: () => FocusScope.of(context)
+                                    .requestFocus(_model.unfocusNode),
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: SubUpSuccessWidget(),
+                                ),
+                              );
+                            },
+                          ).then((value) => safeSetState(() {}));
+
+                          if (_shouldSetState) setState(() {});
                         },
                         child: Container(
                           width: double.infinity,
@@ -778,41 +797,58 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                               mainAxisSize: MainAxisSize.min,
                               children: List.generate(game.length, (gameIndex) {
                                 final gameItem = game[gameIndex];
-                                return InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    logFirebaseEvent(
-                                        'HOME_GAME_PAGE_Container_h2golsz0_ON_TAP');
-                                    logFirebaseEvent(
-                                        'Button_Gradient_update_app_state');
-                                    FFAppState().update(() {
-                                      FFAppState().boardValue =
-                                          FFAppState().boardValue;
-                                      FFAppState().cubeValue =
-                                          FFAppState().cubeValue;
-                                      FFAppState().stopCubeRotate = false;
-                                      FFAppState().cube666 = 0;
-                                      FFAppState().cubeValue666 = 0;
-                                    });
-                                    logFirebaseEvent(
-                                        'Button_Gradient_navigate_to');
-                                    Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => FieldGameWidget(
-                                          currentGame: gameItem,
+                                return Container(
+                                  key: ValueKey('Button_Gradient_6k1p'),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'HOME_GAME_PAGE_Container_h2golsz0_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Button_Gradient_backend_call');
+
+                                      await gameItem.reference
+                                          .update(createGamesRecordData(
+                                        isEnd: false,
+                                      ));
+                                      logFirebaseEvent(
+                                          'Button_Gradient_update_app_state');
+                                      FFAppState().update(() {
+                                        FFAppState().boardValue =
+                                            valueOrDefault<int>(
+                                                      FFAppState().boardValue,
+                                                      1,
+                                                    ) ==
+                                                    null
+                                                ? gameItem.moves.last.move
+                                                : valueOrDefault<int>(
+                                                    FFAppState().boardValue,
+                                                    1,
+                                                  );
+                                        FFAppState().stopCubeRotate = false;
+                                        FFAppState().cube666 = 0;
+                                        FFAppState().cubeValue666 = 0;
+                                      });
+                                      logFirebaseEvent(
+                                          'Button_Gradient_navigate_to');
+                                      Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => FieldGameWidget(
+                                            currentGame: gameItem,
+                                          ),
                                         ),
-                                      ),
-                                      (r) => false,
-                                    );
-                                  },
-                                  child: ButtonGradientWidget(
-                                    key: Key(
-                                        'Keyh2g_${gameIndex}_of_${game.length}'),
-                                    text: 'Продолжить игру',
+                                        (r) => false,
+                                      );
+                                    },
+                                    child: ButtonGradientWidget(
+                                      key: Key(
+                                          'Keyh2g_${gameIndex}_of_${game.length}'),
+                                      text: 'Продолжить игру',
+                                    ),
                                   ),
                                 );
                               }),

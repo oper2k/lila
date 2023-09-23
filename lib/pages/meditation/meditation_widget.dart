@@ -183,7 +183,8 @@ class _MeditationWidgetState extends State<MeditationWidget> {
                           audioUrl:
                               'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/IMG_5212%20(online-audio-converter.com)%20(1).mp3?alt=media&token=94ebfdb9-6afd-4b62-baf5-221c02539a95',
                           title: 'Медитация',
-                          imgUrl: '0',
+                          imgUrl:
+                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/frau-balance-acfnwt/assets/v8hew70pq8kr/fon_player.jpg',
                           skipForwardWidget: Icon(
                             FFIcons.kright,
                             size: 0.0,

@@ -6,7 +6,7 @@ Future initializeFirebaseRemoteConfig() async {
     minimumFetchInterval: const Duration(hours: 1),
   ));
   await FirebaseRemoteConfig.instance.setDefaults(const {
-    'showCloudPayment': true,
+    'showCloud2': false,
   });
   await FirebaseRemoteConfig.instance.fetchAndActivate();
 }

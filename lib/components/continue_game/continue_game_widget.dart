@@ -147,9 +147,19 @@ class _ContinueGameWidgetState extends State<ContinueGameWidget> {
                           ));
                           logFirebaseEvent('Button_Gradient_update_app_state');
                           FFAppState().update(() {
-                            FFAppState().boardValue = FFAppState().boardValue;
-                            FFAppState().cubeValue = FFAppState().cubeValue;
-                            FFAppState().endGame68 = 1;
+                            FFAppState().boardValue = valueOrDefault<int>(
+                                      FFAppState().boardValue,
+                                      1,
+                                    ) ==
+                                    null
+                                ? containerGamesRecord!.moves.last.move
+                                : valueOrDefault<int>(
+                                    FFAppState().boardValue,
+                                    1,
+                                  );
+                            FFAppState().cubeValue666 = 0;
+                            FFAppState().cube666 = 0;
+                            FFAppState().stopCubeRotate = false;
                           });
                           logFirebaseEvent('Button_Gradient_navigate_to');
                           Navigator.pushAndRemoveUntil(

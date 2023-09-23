@@ -21,11 +21,6 @@ class GamesRecord extends FirestoreRecord {
   DateTime? get date => _date;
   bool hasDate() => _date != null;
 
-  // "isEnd" field.
-  bool? _isEnd;
-  bool get isEnd => _isEnd ?? false;
-  bool hasIsEnd() => _isEnd != null;
-
   // "moves" field.
   List<LeelaMovesStruct>? _moves;
   List<LeelaMovesStruct> get moves => _moves ?? const [];
@@ -41,17 +36,22 @@ class GamesRecord extends FirestoreRecord {
   bool get isDelete => _isDelete ?? false;
   bool hasIsDelete() => _isDelete != null;
 
+  // "isEnd" field.
+  bool? _isEnd;
+  bool get isEnd => _isEnd ?? false;
+  bool hasIsEnd() => _isEnd != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
     _date = snapshotData['date'] as DateTime?;
-    _isEnd = snapshotData['isEnd'] as bool?;
     _moves = getStructList(
       snapshotData['moves'],
       LeelaMovesStruct.fromMap,
     );
     _request = snapshotData['request'] as String?;
     _isDelete = snapshotData['isDelete'] as bool?;
+    _isEnd = snapshotData['isEnd'] as bool?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -94,16 +94,16 @@ class GamesRecord extends FirestoreRecord {
 
 Map<String, dynamic> createGamesRecordData({
   DateTime? date,
-  bool? isEnd,
   String? request,
   bool? isDelete,
+  bool? isEnd,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'date': date,
-      'isEnd': isEnd,
       'request': request,
       'isDelete': isDelete,
+      'isEnd': isEnd,
     }.withoutNulls,
   );
 
@@ -117,15 +117,15 @@ class GamesRecordDocumentEquality implements Equality<GamesRecord> {
   bool equals(GamesRecord? e1, GamesRecord? e2) {
     const listEquality = ListEquality();
     return e1?.date == e2?.date &&
-        e1?.isEnd == e2?.isEnd &&
         listEquality.equals(e1?.moves, e2?.moves) &&
         e1?.request == e2?.request &&
-        e1?.isDelete == e2?.isDelete;
+        e1?.isDelete == e2?.isDelete &&
+        e1?.isEnd == e2?.isEnd;
   }
 
   @override
   int hash(GamesRecord? e) => const ListEquality()
-      .hash([e?.date, e?.isEnd, e?.moves, e?.request, e?.isDelete]);
+      .hash([e?.date, e?.moves, e?.request, e?.isDelete, e?.isEnd]);
 
   @override
   bool isValidKey(Object? o) => o is GamesRecord;

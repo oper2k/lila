@@ -177,7 +177,8 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                           height: 250.0,
                           audioUrl: widget.meditationSound!,
                           title: widget.meditationName!,
-                          imgUrl: '0',
+                          imgUrl:
+                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/frau-balance-acfnwt/assets/v8hew70pq8kr/fon_player.jpg',
                           skipForwardWidget: Icon(
                             FFIcons.kright,
                             size: 0.0,

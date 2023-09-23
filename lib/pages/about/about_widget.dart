@@ -187,7 +187,7 @@ class _AboutWidgetState extends State<AboutWidget> {
                     onTap: () async {
                       logFirebaseEvent('ABOUT_PAGE_Row_s63b3079_ON_TAP');
                       logFirebaseEvent('Row_launch_u_r_l');
-                      await launchURL('https://appful.pro');
+                      await launchURL('https://appfyl.com/');
                     },
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
@@ -196,7 +196,7 @@ class _AboutWidgetState extends State<AboutWidget> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(0.0),
                           child: Image.asset(
-                            'assets/images/logo.png',
+                            'assets/images/LogoM.png',
                             width: 112.0,
                             fit: BoxFit.contain,
                           ),

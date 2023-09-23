@@ -603,7 +603,6 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
       logFirebaseEvent('Field_Game_update_app_state');
       setState(() {
         FFAppState().visibilityCard = 1;
-        FFAppState().cubeValue = FFAppState().cubeValue;
       });
       logFirebaseEvent('Field_Game_wait__delay');
       await Future.delayed(const Duration(milliseconds: 3000));

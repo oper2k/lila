@@ -2188,11 +2188,20 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               'Container_update_app_state');
                                           FFAppState().update(() {
                                             FFAppState().boardValue =
-                                                FFAppState().boardValue;
-                                            FFAppState().cubeValue =
-                                                FFAppState().cubeValue;
+                                                valueOrDefault<int>(
+                                                          FFAppState()
+                                                              .boardValue,
+                                                          1,
+                                                        ) ==
+                                                        null
+                                                    ? gameItem.moves.last.move
+                                                    : valueOrDefault<int>(
+                                                        FFAppState().boardValue,
+                                                        1,
+                                                      );
                                             FFAppState().stopCubeRotate = false;
                                             FFAppState().cube666 = 0;
+                                            FFAppState().GameEnd666 = false;
                                           });
                                           logFirebaseEvent(
                                               'Container_navigate_to');

@@ -132,7 +132,7 @@ class _SubPayWidgetState extends State<SubPayWidget> {
                             FlutterFlowTheme.of(context).headlineMediumFamily),
                       ),
                 ),
-              if (getRemoteConfigBool('showCloudPayment'))
+              if (getRemoteConfigBool('showCloud2'))
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: InkWell(
