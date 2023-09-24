@@ -147,30 +147,6 @@ class _MeditationWidgetState extends State<MeditationWidget> {
                             ),
                       ),
                     ),
-                    if (responsiveVisibility(
-                      context: context,
-                      phone: false,
-                      tablet: false,
-                      tabletLandscape: false,
-                      desktop: false,
-                    ))
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 45.0, 0.0, 0.0),
-                        child: Container(
-                          width: double.infinity,
-                          height: 335.0,
-                          child: custom_widgets.AudioPlayerNew(
-                            width: double.infinity,
-                            height: 335.0,
-                            musicName: 'Медитация',
-                            description:
-                                'Поможет сформулировать запрос\nПонять, что вам нужно',
-                            url:
-                                'https://firebasestorage.googleapis.com/v0/b/frau-balance.appspot.com/o/IMG_5212%20(online-audio-converter.com)%20(1).mp3?alt=media&token=94ebfdb9-6afd-4b62-baf5-221c02539a95',
-                          ),
-                        ),
-                      ),
                     Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(10.0, 26.0, 10.0, 0.0),
@@ -187,10 +163,14 @@ class _MeditationWidgetState extends State<MeditationWidget> {
                               'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/frau-balance-acfnwt/assets/v8hew70pq8kr/fon_player.jpg',
                           skipForwardWidget: Icon(
                             FFIcons.kright,
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
                             size: 0.0,
                           ),
                           skipBackWidget: Icon(
                             FFIcons.kleft,
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
                             size: 0.0,
                           ),
                           onPlay: () async {},

@@ -181,10 +181,12 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                               'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/frau-balance-acfnwt/assets/v8hew70pq8kr/fon_player.jpg',
                           skipForwardWidget: Icon(
                             FFIcons.kright,
+                            color: FlutterFlowTheme.of(context).primaryBtnText,
                             size: 0.0,
                           ),
                           skipBackWidget: Icon(
                             FFIcons.kleft,
+                            color: FlutterFlowTheme.of(context).primaryBtnText,
                             size: 0.0,
                           ),
                           onPlay: () async {},

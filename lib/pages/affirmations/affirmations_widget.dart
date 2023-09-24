@@ -164,10 +164,14 @@ class _AffirmationsWidgetState extends State<AffirmationsWidget> {
                               'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/frau-balance-acfnwt/assets/v8hew70pq8kr/fon_player.jpg',
                           skipForwardWidget: Icon(
                             FFIcons.kleft,
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
                             size: 0.0,
                           ),
                           skipBackWidget: Icon(
                             FFIcons.kleft,
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
                             size: 0.0,
                           ),
                           onPlay: () async {},
