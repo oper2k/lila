@@ -17,6 +17,7 @@ import '/pages/player/player_widget.dart';
 import '/pages/reviews/reviews_widget.dart';
 import '/pages/sub_pay/sub_pay_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/random_data_util.dart' as random_data;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
@@ -2188,20 +2189,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               'Container_update_app_state');
                                           FFAppState().update(() {
                                             FFAppState().boardValue =
-                                                valueOrDefault<int>(
-                                                          FFAppState()
-                                                              .boardValue,
-                                                          1,
-                                                        ) ==
-                                                        null
-                                                    ? gameItem.moves.last.move
-                                                    : valueOrDefault<int>(
-                                                        FFAppState().boardValue,
-                                                        1,
-                                                      );
+                                                gameItem.moves.last.move;
                                             FFAppState().stopCubeRotate = false;
                                             FFAppState().cube666 = 0;
                                             FFAppState().GameEnd666 = false;
+                                            FFAppState().cubeValue =
+                                                random_data.randomInteger(1, 6);
                                           });
                                           logFirebaseEvent(
                                               'Container_navigate_to');

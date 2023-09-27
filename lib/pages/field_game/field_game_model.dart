@@ -32,6 +32,8 @@ class FieldGameModel extends FlutterFlowModel {
 
   bool game666 = false;
 
+  bool stopCard = true;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

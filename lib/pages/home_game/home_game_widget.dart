@@ -15,6 +15,7 @@ import '/pages/history_moves/history_moves_widget.dart';
 import '/pages/meditation/meditation_widget.dart';
 import '/pages/rules_game/rules_game_widget.dart';
 import '/pages/sub_pay/sub_pay_widget.dart';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -818,19 +819,12 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                           'Button_Gradient_update_app_state');
                                       FFAppState().update(() {
                                         FFAppState().boardValue =
-                                            valueOrDefault<int>(
-                                                      FFAppState().boardValue,
-                                                      1,
-                                                    ) ==
-                                                    null
-                                                ? gameItem.moves.last.move
-                                                : valueOrDefault<int>(
-                                                    FFAppState().boardValue,
-                                                    1,
-                                                  );
+                                            gameItem.moves.last.move;
                                         FFAppState().stopCubeRotate = false;
                                         FFAppState().cube666 = 0;
                                         FFAppState().cubeValue666 = 0;
+                                        FFAppState().cubeValue =
+                                            random_data.randomInteger(1, 6);
                                       });
                                       logFirebaseEvent(
                                           'Button_Gradient_navigate_to');

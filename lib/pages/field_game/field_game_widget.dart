@@ -657,10 +657,6 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
           );
         }
         List<GameFieldRecord> fieldGameGameFieldRecordList = snapshot.data!;
-        // Return an empty Container when the item does not exist.
-        if (snapshot.data!.isEmpty) {
-          return Container();
-        }
         final fieldGameGameFieldRecord = fieldGameGameFieldRecordList.isNotEmpty
             ? fieldGameGameFieldRecordList.first
             : null;
@@ -3210,6 +3206,13 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                           onPressed: () async {
                             logFirebaseEvent(
                                 'FIELD_GAME_PAGE_close2_ICN_ON_TAP');
+                            if (!_model.stopCard) {
+                              return;
+                            }
+                            logFirebaseEvent('IconButton_update_widget_state');
+                            setState(() {
+                              _model.stopCard = false;
+                            });
                             logFirebaseEvent('IconButton_backend_call');
 
                             await widget.currentGame!.reference.update({
@@ -3343,6 +3346,10 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                             logFirebaseEvent('IconButton_update_app_state');
                             setState(() {
                               FFAppState().stopCubeRotate = false;
+                            });
+                            logFirebaseEvent('IconButton_update_widget_state');
+                            setState(() {
+                              _model.stopCard = true;
                             });
                             if ((FFAppState().boardValue == 69) ||
                                 (FFAppState().boardValue == 70) ||

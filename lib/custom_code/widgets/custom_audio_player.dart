@@ -95,7 +95,7 @@ class _CustomAudioPlayerState extends State<CustomAudioPlayer>
         customNextAction: (player) => _onSkipForward(),
         customPrevAction: (player) => _onSkipBack(),
       ),
-      showNotification: true,
+      showNotification: isAndroid ? false : true,
       audio,
       autoStart: false,
     );
