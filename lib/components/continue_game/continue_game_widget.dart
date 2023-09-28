@@ -150,15 +150,11 @@ class _ContinueGameWidgetState extends State<ContinueGameWidget> {
                           logFirebaseEvent('Button_Gradient_update_app_state');
                           FFAppState().update(() {
                             FFAppState().boardValue = valueOrDefault<int>(
-                                      FFAppState().boardValue,
-                                      1,
-                                    ) ==
-                                    null
-                                ? containerGamesRecord!.moves.last.move
-                                : valueOrDefault<int>(
-                                    FFAppState().boardValue,
-                                    1,
-                                  );
+                              containerGamesRecord!.moves.length > 0
+                                  ? containerGamesRecord?.moves?.last?.move
+                                  : 6,
+                              6,
+                            );
                             FFAppState().cubeValue666 = 0;
                             FFAppState().cube666 = 0;
                             FFAppState().stopCubeRotate = false;

@@ -824,7 +824,12 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                           'Button_Gradient_update_app_state');
                                       FFAppState().update(() {
                                         FFAppState().boardValue =
-                                            gameItem.moves.last.move;
+                                            valueOrDefault<int>(
+                                          gameItem.moves.length > 0
+                                              ? gameItem.moves.last.move
+                                              : 6,
+                                          6,
+                                        );
                                         FFAppState().stopCubeRotate = false;
                                         FFAppState().cube666 = 0;
                                         FFAppState().cubeValue666 = 0;
