@@ -18,6 +18,7 @@ import '/pages/sub_pay/sub_pay_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
+import 'field_game_widget.dart' show FieldGameWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:expandable/expandable.dart';
@@ -27,7 +28,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class FieldGameModel extends FlutterFlowModel {
+class FieldGameModel extends FlutterFlowModel<FieldGameWidget> {
   ///  Local state fields for this page.
 
   bool game666 = false;

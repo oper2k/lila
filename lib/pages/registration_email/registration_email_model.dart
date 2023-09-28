@@ -7,11 +7,12 @@ import '/main.dart';
 import '/pages/forgot_password/forgot_password_widget.dart';
 import '/pages/registration_name/registration_name_widget.dart';
 import '/pages/welcome/welcome_widget.dart';
+import 'registration_email_widget.dart' show RegistrationEmailWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class RegistrationEmailModel extends FlutterFlowModel {
+class RegistrationEmailModel extends FlutterFlowModel<RegistrationEmailWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

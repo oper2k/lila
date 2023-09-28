@@ -43,7 +43,7 @@ class _SmsCodeWidgetState extends State<SmsCodeWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('SMS_CODE_PAGE_Sms_Code_ON_INIT_STATE');
       logFirebaseEvent('Sms_Code_timer');
-      _model.timerController.onExecute.add(StopWatchExecute.start);
+      _model.timerController.onStartTimer();
     });
 
     authManager.handlePhoneAuthStateChanges(context);
@@ -62,7 +62,9 @@ class _SmsCodeWidgetState extends State<SmsCodeWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondary,
@@ -301,7 +303,7 @@ class _SmsCodeWidgetState extends State<SmsCodeWidget> {
                             minute: false,
                             milliSecond: false,
                           ),
-                          timer: _model.timerController,
+                          controller: _model.timerController,
                           onChanged: (value, displayTime, shouldUpdate) {
                             _model.timerMilliseconds = value;
                             _model.timerValue = displayTime;

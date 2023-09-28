@@ -59,8 +59,10 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
     return FutureBuilder<List<GamesRecord>>(
       future: queryGamesRecordOnce(
         parent: currentUserReference,
-        queryBuilder: (gamesRecord) =>
-            gamesRecord.where('isEnd', isEqualTo: false),
+        queryBuilder: (gamesRecord) => gamesRecord.where(
+          'isEnd',
+          isEqualTo: false,
+        ),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -74,7 +76,9 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
         }
         List<GamesRecord> homeGameGamesRecordList = snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondary,
@@ -424,10 +428,9 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                           var _shouldSetState = false;
                           logFirebaseEvent('Container_revenue_cat');
                           final isEntitled =
-                              await revenue_cat.isEntitled('issubscribe');
-                          if (isEntitled == null) {
-                            return;
-                          } else if (!isEntitled) {
+                              await revenue_cat.isEntitled('issubscribe') ??
+                                  false;
+                          if (!isEntitled) {
                             await revenue_cat.loadOfferings();
                           }
 
@@ -468,8 +471,10 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                             context: context,
                             builder: (context) {
                               return GestureDetector(
-                                onTap: () => FocusScope.of(context)
-                                    .requestFocus(_model.unfocusNode),
+                                onTap: () => _model.unfocusNode.canRequestFocus
+                                    ? FocusScope.of(context)
+                                        .requestFocus(_model.unfocusNode)
+                                    : FocusScope.of(context).unfocus(),
                                 child: Padding(
                                   padding: MediaQuery.viewInsetsOf(context),
                                   child: SubUpSuccessWidget(),

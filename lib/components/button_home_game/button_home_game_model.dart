@@ -1,11 +1,12 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/question_game/question_game_widget.dart';
+import 'button_home_game_widget.dart' show ButtonHomeGameWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ButtonHomeGameModel extends FlutterFlowModel {
+class ButtonHomeGameModel extends FlutterFlowModel<ButtonHomeGameWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

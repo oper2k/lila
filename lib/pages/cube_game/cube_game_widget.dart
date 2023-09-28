@@ -183,7 +183,9 @@ class _CubeGameWidgetState extends State<CubeGameWidget>
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondary,
@@ -337,7 +339,10 @@ class _CubeGameWidgetState extends State<CubeGameWidget>
                         child: FutureBuilder<List<GameFieldRecord>>(
                           future: queryGameFieldRecordOnce(
                             queryBuilder: (gameFieldRecord) =>
-                                gameFieldRecord.where('number', isEqualTo: 68),
+                                gameFieldRecord.where(
+                              'number',
+                              isEqualTo: 68,
+                            ),
                             singleRecord: true,
                           ),
                           builder: (context, snapshot) {
@@ -379,10 +384,9 @@ class _CubeGameWidgetState extends State<CubeGameWidget>
                                       currentUserDocument?.buyGame, false)) {
                                     logFirebaseEvent('Button_Exp_revenue_cat');
                                     final isEntitled = await revenue_cat
-                                        .isEntitled('issubscribe');
-                                    if (isEntitled == null) {
-                                      return;
-                                    } else if (!isEntitled) {
+                                            .isEntitled('issubscribe') ??
+                                        false;
+                                    if (!isEntitled) {
                                       await revenue_cat.loadOfferings();
                                     }
 

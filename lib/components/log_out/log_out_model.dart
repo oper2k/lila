@@ -3,11 +3,12 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/welcome/welcome_widget.dart';
+import 'log_out_widget.dart' show LogOutWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class LogOutModel extends FlutterFlowModel {
+class LogOutModel extends FlutterFlowModel<LogOutWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

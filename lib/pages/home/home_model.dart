@@ -19,6 +19,7 @@ import '/pages/sub_pay/sub_pay_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
+import 'home_widget.dart' show HomeWidget;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:aligned_dialog/aligned_dialog.dart';
@@ -30,7 +31,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class HomeModel extends FlutterFlowModel {
+class HomeModel extends FlutterFlowModel<HomeWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

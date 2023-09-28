@@ -1,11 +1,12 @@
 import '/components/button_gradient/button_gradient_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'cube6_widget.dart' show Cube6Widget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class Cube6Model extends FlutterFlowModel {
+class Cube6Model extends FlutterFlowModel<Cube6Widget> {
   ///  State fields for stateful widgets in this component.
 
   // Model for Button_Gradient component.

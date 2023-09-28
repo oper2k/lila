@@ -17,13 +17,14 @@ import '/pages/rules_game/rules_game_widget.dart';
 import '/pages/sub_pay/sub_pay_widget.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
+import 'home_game_widget.dart' show HomeGameWidget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class HomeGameModel extends FlutterFlowModel {
+class HomeGameModel extends FlutterFlowModel<HomeGameWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

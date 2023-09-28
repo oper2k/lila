@@ -6,11 +6,12 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main.dart';
 import '/pages/history_moves/history_moves_widget.dart';
+import 'history_game_widget.dart' show HistoryGameWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class HistoryGameModel extends FlutterFlowModel {
+class HistoryGameModel extends FlutterFlowModel<HistoryGameWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

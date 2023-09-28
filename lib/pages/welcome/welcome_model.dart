@@ -6,13 +6,14 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/registration_email/registration_email_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
+import 'welcome_widget.dart' show WelcomeWidget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class WelcomeModel extends FlutterFlowModel {
+class WelcomeModel extends FlutterFlowModel<WelcomeWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

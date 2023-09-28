@@ -135,7 +135,11 @@ class _EndGameWidgetState extends State<EndGameWidget> {
                         ...createGamesRecordData(
                           isDelete: true,
                         ),
-                        'isEnd': FieldValue.delete(),
+                        ...mapToFirestore(
+                          {
+                            'isEnd': FieldValue.delete(),
+                          },
+                        ),
                       });
                       logFirebaseEvent('Button_navigate_to');
                       Navigator.pushAndRemoveUntil(

@@ -634,8 +634,10 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
 
     return FutureBuilder<List<GameFieldRecord>>(
       future: queryGameFieldRecordOnce(
-        queryBuilder: (gameFieldRecord) =>
-            gameFieldRecord.where('number', isEqualTo: FFAppState().boardValue),
+        queryBuilder: (gameFieldRecord) => gameFieldRecord.where(
+          'number',
+          isEqualTo: FFAppState().boardValue,
+        ),
         singleRecord: true,
       ),
       builder: (context, snapshot) {
@@ -661,7 +663,9 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
             ? fieldGameGameFieldRecordList.first
             : null;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondary,
@@ -709,8 +713,11 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                               context: context,
                               builder: (context) {
                                 return GestureDetector(
-                                  onTap: () => FocusScope.of(context)
-                                      .requestFocus(_model.unfocusNode),
+                                  onTap: () =>
+                                      _model.unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
                                   child: Padding(
                                     padding: MediaQuery.viewInsetsOf(context),
                                     child: MenuGameWidget(
@@ -778,13 +785,13 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                               'FIELD_GAME_Container_etmzfhq3_ON_TAP');
                                           if (_model.game666) {
                                             logFirebaseEvent(
-                                                'Container_update_widget_state');
+                                                'Container_update_page_state');
                                             setState(() {
                                               _model.game666 = false;
                                             });
                                           } else {
                                             logFirebaseEvent(
-                                                'Container_update_widget_state');
+                                                'Container_update_page_state');
                                             setState(() {
                                               _model.game666 = true;
                                             });
@@ -825,8 +832,13 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                       context: context,
                                       builder: (context) {
                                         return GestureDetector(
-                                          onTap: () => FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode),
+                                          onTap: () => _model
+                                                  .unfocusNode.canRequestFocus
+                                              ? FocusScope.of(context)
+                                                  .requestFocus(
+                                                      _model.unfocusNode)
+                                              : FocusScope.of(context)
+                                                  .unfocus(),
                                           child: Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),
@@ -1379,11 +1391,10 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                         'Stack_revenue_cat');
                                                     final isEntitled =
                                                         await revenue_cat
-                                                            .isEntitled(
-                                                                'issubscribe');
-                                                    if (isEntitled == null) {
-                                                      return;
-                                                    } else if (!isEntitled) {
+                                                                .isEntitled(
+                                                                    'issubscribe') ??
+                                                            false;
+                                                    if (!isEntitled) {
                                                       await revenue_cat
                                                           .loadOfferings();
                                                     }
@@ -1523,10 +1534,17 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                       context: context,
                                                       builder: (context) {
                                                         return GestureDetector(
-                                                          onTap: () => FocusScope
-                                                                  .of(context)
-                                                              .requestFocus(_model
-                                                                  .unfocusNode),
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
                                                           child: Padding(
                                                             padding: MediaQuery
                                                                 .viewInsetsOf(
@@ -1829,10 +1847,17 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                       context: context,
                                                       builder: (context) {
                                                         return GestureDetector(
-                                                          onTap: () => FocusScope
-                                                                  .of(context)
-                                                              .requestFocus(_model
-                                                                  .unfocusNode),
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
                                                           child: Padding(
                                                             padding: MediaQuery
                                                                 .viewInsetsOf(
@@ -1891,10 +1916,17 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                       context: context,
                                                       builder: (context) {
                                                         return GestureDetector(
-                                                          onTap: () => FocusScope
-                                                                  .of(context)
-                                                              .requestFocus(_model
-                                                                  .unfocusNode),
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
                                                           child: Padding(
                                                             padding: MediaQuery
                                                                 .viewInsetsOf(
@@ -2807,20 +2839,25 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                 await widget
                                                     .currentGame!.reference
                                                     .update({
-                                                  'moves':
-                                                      FieldValue.arrayUnion([
-                                                    getLeelaMovesFirestoreData(
-                                                      createLeelaMovesStruct(
-                                                        move: FFAppState()
-                                                            .boardValue,
-                                                        insite: _model
-                                                            .inputInsiteGameController
-                                                            .text,
-                                                        clearUnsetFields: false,
-                                                      ),
-                                                      true,
-                                                    )
-                                                  ]),
+                                                  ...mapToFirestore(
+                                                    {
+                                                      'moves': FieldValue
+                                                          .arrayUnion([
+                                                        getLeelaMovesFirestoreData(
+                                                          createLeelaMovesStruct(
+                                                            move: FFAppState()
+                                                                .boardValue,
+                                                            insite: _model
+                                                                .inputInsiteGameController
+                                                                .text,
+                                                            clearUnsetFields:
+                                                                false,
+                                                          ),
+                                                          true,
+                                                        )
+                                                      ]),
+                                                    },
+                                                  ),
                                                 });
                                                 logFirebaseEvent(
                                                     'Button_Exp_update_app_state');
@@ -3072,10 +3109,17 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                       context: context,
                                                       builder: (context) {
                                                         return GestureDetector(
-                                                          onTap: () => FocusScope
-                                                                  .of(context)
-                                                              .requestFocus(_model
-                                                                  .unfocusNode),
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
                                                           child: Padding(
                                                             padding: MediaQuery
                                                                 .viewInsetsOf(
@@ -3120,21 +3164,25 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                     ...createGamesRecordData(
                                                       isEnd: true,
                                                     ),
-                                                    'moves':
-                                                        FieldValue.arrayUnion([
-                                                      getLeelaMovesFirestoreData(
-                                                        createLeelaMovesStruct(
-                                                          move: FFAppState()
-                                                              .boardValue,
-                                                          insite: _model
-                                                              .inputInsiteGameController
-                                                              .text,
-                                                          clearUnsetFields:
-                                                              false,
-                                                        ),
-                                                        true,
-                                                      )
-                                                    ]),
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'moves': FieldValue
+                                                            .arrayUnion([
+                                                          getLeelaMovesFirestoreData(
+                                                            createLeelaMovesStruct(
+                                                              move: FFAppState()
+                                                                  .boardValue,
+                                                              insite: _model
+                                                                  .inputInsiteGameController
+                                                                  .text,
+                                                              clearUnsetFields:
+                                                                  false,
+                                                            ),
+                                                            true,
+                                                          )
+                                                        ]),
+                                                      },
+                                                    ),
                                                   });
                                                   logFirebaseEvent(
                                                       'Button_Exp_navigate_to');
@@ -3209,24 +3257,28 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                             if (!_model.stopCard) {
                               return;
                             }
-                            logFirebaseEvent('IconButton_update_widget_state');
+                            logFirebaseEvent('IconButton_update_page_state');
                             setState(() {
                               _model.stopCard = false;
                             });
                             logFirebaseEvent('IconButton_backend_call');
 
                             await widget.currentGame!.reference.update({
-                              'moves': FieldValue.arrayUnion([
-                                getLeelaMovesFirestoreData(
-                                  createLeelaMovesStruct(
-                                    move: FFAppState().boardValue,
-                                    insite:
-                                        _model.inputInsiteGameController.text,
-                                    clearUnsetFields: false,
-                                  ),
-                                  true,
-                                )
-                              ]),
+                              ...mapToFirestore(
+                                {
+                                  'moves': FieldValue.arrayUnion([
+                                    getLeelaMovesFirestoreData(
+                                      createLeelaMovesStruct(
+                                        move: FFAppState().boardValue,
+                                        insite: _model
+                                            .inputInsiteGameController.text,
+                                        clearUnsetFields: false,
+                                      ),
+                                      true,
+                                    )
+                                  ]),
+                                },
+                              ),
                             });
                             logFirebaseEvent('IconButton_update_app_state');
                             FFAppState().update(() {
@@ -3347,7 +3399,7 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                             setState(() {
                               FFAppState().stopCubeRotate = false;
                             });
-                            logFirebaseEvent('IconButton_update_widget_state');
+                            logFirebaseEvent('IconButton_update_page_state');
                             setState(() {
                               _model.stopCard = true;
                             });
@@ -3378,8 +3430,11 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                   context: context,
                                   builder: (context) {
                                     return GestureDetector(
-                                      onTap: () => FocusScope.of(context)
-                                          .requestFocus(_model.unfocusNode),
+                                      onTap: () => _model
+                                              .unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
@@ -3411,17 +3466,21 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                 ...createGamesRecordData(
                                   isEnd: true,
                                 ),
-                                'moves': FieldValue.arrayUnion([
-                                  getLeelaMovesFirestoreData(
-                                    createLeelaMovesStruct(
-                                      move: FFAppState().boardValue,
-                                      insite:
-                                          _model.inputInsiteGameController.text,
-                                      clearUnsetFields: false,
-                                    ),
-                                    true,
-                                  )
-                                ]),
+                                ...mapToFirestore(
+                                  {
+                                    'moves': FieldValue.arrayUnion([
+                                      getLeelaMovesFirestoreData(
+                                        createLeelaMovesStruct(
+                                          move: FFAppState().boardValue,
+                                          insite: _model
+                                              .inputInsiteGameController.text,
+                                          clearUnsetFields: false,
+                                        ),
+                                        true,
+                                      )
+                                    ]),
+                                  },
+                                ),
                               });
                               logFirebaseEvent('IconButton_navigate_to');
                               Navigator.pushAndRemoveUntil(

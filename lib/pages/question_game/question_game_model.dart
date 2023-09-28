@@ -4,12 +4,13 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/cube_game/cube_game_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'question_game_widget.dart' show QuestionGameWidget;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class QuestionGameModel extends FlutterFlowModel {
+class QuestionGameModel extends FlutterFlowModel<QuestionGameWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

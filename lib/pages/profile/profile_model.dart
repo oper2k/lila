@@ -12,12 +12,13 @@ import '/pages/profile_edit/profile_edit_widget.dart';
 import '/pages/sub_pay/sub_pay_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
+import 'profile_widget.dart' show ProfileWidget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ProfileModel extends FlutterFlowModel {
+class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

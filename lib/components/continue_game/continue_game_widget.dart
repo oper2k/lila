@@ -47,8 +47,10 @@ class _ContinueGameWidgetState extends State<ContinueGameWidget> {
     return FutureBuilder<List<GamesRecord>>(
       future: queryGamesRecordOnce(
         parent: currentUserReference,
-        queryBuilder: (gamesRecord) =>
-            gamesRecord.where('isEnd', isEqualTo: false),
+        queryBuilder: (gamesRecord) => gamesRecord.where(
+          'isEnd',
+          isEqualTo: false,
+        ),
         singleRecord: true,
       ),
       builder: (context, snapshot) {

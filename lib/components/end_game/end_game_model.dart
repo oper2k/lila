@@ -4,12 +4,13 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/history_game/history_game_widget.dart';
+import 'end_game_widget.dart' show EndGameWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class EndGameModel extends FlutterFlowModel {
+class EndGameModel extends FlutterFlowModel<EndGameWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

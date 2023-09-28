@@ -10,12 +10,13 @@ import '/pages/sms_code/sms_code_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
+import 'sms_code_widget.dart' show SmsCodeWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class SmsCodeModel extends FlutterFlowModel {
+class SmsCodeModel extends FlutterFlowModel<SmsCodeWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -30,8 +31,8 @@ class SmsCodeModel extends FlutterFlowModel {
     minute: false,
     milliSecond: false,
   );
-  StopWatchTimer timerController =
-      StopWatchTimer(mode: StopWatchMode.countDown);
+  FlutterFlowTimerController timerController =
+      FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countDown));
 
   // Model for Button_Exp component.
   late ButtonExpModel buttonExpModel;

@@ -50,7 +50,9 @@ class _HistoryGameWidgetState extends State<HistoryGameWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondary,
@@ -142,7 +144,10 @@ class _HistoryGameWidgetState extends State<HistoryGameWidget> {
                     future: queryGamesRecordOnce(
                       parent: currentUserReference,
                       queryBuilder: (gamesRecord) => gamesRecord
-                          .where('isDelete', isEqualTo: false)
+                          .where(
+                            'isDelete',
+                            isEqualTo: false,
+                          )
                           .orderBy('date', descending: true),
                     ),
                     builder: (context, snapshot) {
@@ -315,7 +320,10 @@ class _HistoryGameWidgetState extends State<HistoryGameWidget> {
                     future: queryGamesRecordOnce(
                       parent: currentUserReference,
                       queryBuilder: (gamesRecord) => gamesRecord
-                          .where('isDelete', isEqualTo: true)
+                          .where(
+                            'isDelete',
+                            isEqualTo: true,
+                          )
                           .orderBy('date'),
                     ),
                     builder: (context, snapshot) {

@@ -4,12 +4,13 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main.dart';
 import '/pages/history_game/history_game_widget.dart';
+import 'end_game_dage_widget.dart' show EndGameDageWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
-class EndGameDageModel extends FlutterFlowModel {
+class EndGameDageModel extends FlutterFlowModel<EndGameDageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

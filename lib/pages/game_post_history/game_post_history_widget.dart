@@ -52,8 +52,10 @@ class _GamePostHistoryWidgetState extends State<GamePostHistoryWidget> {
 
     return FutureBuilder<List<GameFieldRecord>>(
       future: queryGameFieldRecordOnce(
-        queryBuilder: (gameFieldRecord) =>
-            gameFieldRecord.where('number', isEqualTo: widget.moves),
+        queryBuilder: (gameFieldRecord) => gameFieldRecord.where(
+          'number',
+          isEqualTo: widget.moves,
+        ),
         singleRecord: true,
       ),
       builder: (context, snapshot) {
@@ -85,7 +87,9 @@ class _GamePostHistoryWidgetState extends State<GamePostHistoryWidget> {
                 ? gamePostHistoryGameFieldRecordList.first
                 : null;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondary,

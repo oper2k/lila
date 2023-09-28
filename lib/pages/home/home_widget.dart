@@ -66,8 +66,10 @@ class _HomeWidgetState extends State<HomeWidget> {
     return FutureBuilder<List<GamesRecord>>(
       future: queryGamesRecordOnce(
         parent: currentUserReference,
-        queryBuilder: (gamesRecord) =>
-            gamesRecord.where('isEnd', isEqualTo: false),
+        queryBuilder: (gamesRecord) => gamesRecord.where(
+          'isEnd',
+          isEqualTo: false,
+        ),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -81,7 +83,9 @@ class _HomeWidgetState extends State<HomeWidget> {
         }
         List<GamesRecord> homeGamesRecordList = snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
           child: WillPopScope(
             onWillPop: () async => false,
             child: Scaffold(
@@ -126,8 +130,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                       context: context,
                       builder: (context) {
                         return GestureDetector(
-                          onTap: () => FocusScope.of(context)
-                              .requestFocus(_model.unfocusNode),
+                          onTap: () => _model.unfocusNode.canRequestFocus
+                              ? FocusScope.of(context)
+                                  .requestFocus(_model.unfocusNode)
+                              : FocusScope.of(context).unfocus(),
                           child: Padding(
                             padding: MediaQuery.viewInsetsOf(context),
                             child: ContinueGameWidget(),
@@ -705,10 +711,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         logFirebaseEvent(
                                             'Container_revenue_cat');
                                         final isEntitled = await revenue_cat
-                                            .isEntitled('issubscribe');
-                                        if (isEntitled == null) {
-                                          return;
-                                        } else if (!isEntitled) {
+                                                .isEntitled('issubscribe') ??
+                                            false;
+                                        if (!isEntitled) {
                                           await revenue_cat.loadOfferings();
                                         }
 
@@ -850,10 +855,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         logFirebaseEvent(
                                             'Container_revenue_cat');
                                         final isEntitled = await revenue_cat
-                                            .isEntitled('issubscribe');
-                                        if (isEntitled == null) {
-                                          return;
-                                        } else if (!isEntitled) {
+                                                .isEntitled('issubscribe') ??
+                                            false;
+                                        if (!isEntitled) {
                                           await revenue_cat.loadOfferings();
                                         }
 
@@ -994,10 +998,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         logFirebaseEvent(
                                             'Container_revenue_cat');
                                         final isEntitled = await revenue_cat
-                                            .isEntitled('issubscribe');
-                                        if (isEntitled == null) {
-                                          return;
-                                        } else if (!isEntitled) {
+                                                .isEntitled('issubscribe') ??
+                                            false;
+                                        if (!isEntitled) {
                                           await revenue_cat.loadOfferings();
                                         }
 
@@ -1139,10 +1142,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         logFirebaseEvent(
                                             'Container_revenue_cat');
                                         final isEntitled = await revenue_cat
-                                            .isEntitled('issubscribe');
-                                        if (isEntitled == null) {
-                                          return;
-                                        } else if (!isEntitled) {
+                                                .isEntitled('issubscribe') ??
+                                            false;
+                                        if (!isEntitled) {
                                           await revenue_cat.loadOfferings();
                                         }
 
@@ -1283,10 +1285,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         logFirebaseEvent(
                                             'Container_revenue_cat');
                                         final isEntitled = await revenue_cat
-                                            .isEntitled('issubscribe');
-                                        if (isEntitled == null) {
-                                          return;
-                                        } else if (!isEntitled) {
+                                                .isEntitled('issubscribe') ??
+                                            false;
+                                        if (!isEntitled) {
                                           await revenue_cat.loadOfferings();
                                         }
 
@@ -2189,7 +2190,19 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               'Container_update_app_state');
                                           FFAppState().update(() {
                                             FFAppState().boardValue =
-                                                gameItem.moves.last.move;
+                                                valueOrDefault<int>(
+                                              valueOrDefault<int>(
+                                                        gameItem.moves.length,
+                                                        6,
+                                                      ) >
+                                                      0
+                                                  ? valueOrDefault<int>(
+                                                      gameItem.moves.last.move,
+                                                      6,
+                                                    )
+                                                  : 6,
+                                              6,
+                                            );
                                             FFAppState().stopCubeRotate = false;
                                             FFAppState().cube666 = 0;
                                             FFAppState().GameEnd666 = false;
@@ -2430,10 +2443,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   return Material(
                                                     color: Colors.transparent,
                                                     child: GestureDetector(
-                                                      onTap: () => FocusScope
-                                                              .of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode),
+                                                      onTap: () => _model
+                                                              .unfocusNode
+                                                              .canRequestFocus
+                                                          ? FocusScope.of(
+                                                                  context)
+                                                              .requestFocus(_model
+                                                                  .unfocusNode)
+                                                          : FocusScope.of(
+                                                                  context)
+                                                              .unfocus(),
                                                       child: ReviewVideoWidget(
                                                         currentVideo:
                                                             rowReviewsRecord

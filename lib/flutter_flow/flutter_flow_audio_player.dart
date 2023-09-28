@@ -26,6 +26,7 @@ export 'package:assets_audio_player/assets_audio_player.dart';
 
 class FlutterFlowAudioPlayer extends StatefulWidget {
   const FlutterFlowAudioPlayer({
+    Key? key,
     required this.audio,
     required this.titleTextStyle,
     required this.playbackDurationTextStyle,
@@ -35,7 +36,7 @@ class FlutterFlowAudioPlayer extends StatefulWidget {
     required this.elevation,
     this.pauseOnNavigate = true,
     required this.playInBackground,
-  });
+  }) : super(key: key);
 
   final Audio audio;
   final TextStyle titleTextStyle;
@@ -112,8 +113,9 @@ class _FlutterFlowAudioPlayerState extends State<FlutterFlowAudioPlayer>
     }
   }
 
-  Duration currentPosition(RealtimePlayingInfos infos) => infos.currentPosition;
-  Duration duration(RealtimePlayingInfos infos) => infos.duration;
+  Duration currentPosition(RealtimePlayingInfos infos) =>
+      infos.currentPosition.ensureFinite;
+  Duration duration(RealtimePlayingInfos infos) => infos.duration.ensureFinite;
 
   String playbackStateText(RealtimePlayingInfos infos) {
     final currentPositionString = durationToString(currentPosition(infos));
@@ -370,4 +372,8 @@ String generateRandomAlphaNumericString() {
   const chars = 'abcdefghijklmnopqrstuvwxyz1234567890';
   return String.fromCharCodes(Iterable.generate(
       8, (_) => chars.codeUnits[math.Random().nextInt(chars.length)]));
+}
+
+extension _AudioPlayerDurationExtensions on Duration {
+  Duration get ensureFinite => inMicroseconds.isFinite ? this : Duration.zero;
 }

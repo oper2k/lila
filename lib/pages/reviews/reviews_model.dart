@@ -4,12 +4,13 @@ import '/components/review_video/review_video_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'reviews_widget.dart' show ReviewsWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ReviewsModel extends FlutterFlowModel {
+class ReviewsModel extends FlutterFlowModel<ReviewsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

@@ -12,6 +12,7 @@ import '/pages/sub_pay/sub_pay_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
+import 'cube_game_widget.dart' show CubeGameWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -20,7 +21,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
-class CubeGameModel extends FlutterFlowModel {
+class CubeGameModel extends FlutterFlowModel<CubeGameWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

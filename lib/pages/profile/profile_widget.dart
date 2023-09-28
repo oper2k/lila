@@ -51,7 +51,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondary,
@@ -91,8 +93,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         context: context,
                         builder: (context) {
                           return GestureDetector(
-                            onTap: () => FocusScope.of(context)
-                                .requestFocus(_model.unfocusNode),
+                            onTap: () => _model.unfocusNode.canRequestFocus
+                                ? FocusScope.of(context)
+                                    .requestFocus(_model.unfocusNode)
+                                : FocusScope.of(context).unfocus(),
                             child: Padding(
                               padding: MediaQuery.viewInsetsOf(context),
                               child: LogOutWidget(),
@@ -257,8 +261,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     context: context,
                                     builder: (context) {
                                       return GestureDetector(
-                                        onTap: () => FocusScope.of(context)
-                                            .requestFocus(_model.unfocusNode),
+                                        onTap: () => _model
+                                                .unfocusNode.canRequestFocus
+                                            ? FocusScope.of(context)
+                                                .requestFocus(
+                                                    _model.unfocusNode)
+                                            : FocusScope.of(context).unfocus(),
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
@@ -280,11 +288,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 }
                               } else {
                                 logFirebaseEvent('Container_revenue_cat');
-                                final isEntitled =
-                                    await revenue_cat.isEntitled('issubscribe');
-                                if (isEntitled == null) {
-                                  return;
-                                } else if (!isEntitled) {
+                                final isEntitled = await revenue_cat
+                                        .isEntitled('issubscribe') ??
+                                    false;
+                                if (!isEntitled) {
                                   await revenue_cat.loadOfferings();
                                 }
 
@@ -297,8 +304,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     context: context,
                                     builder: (context) {
                                       return GestureDetector(
-                                        onTap: () => FocusScope.of(context)
-                                            .requestFocus(_model.unfocusNode),
+                                        onTap: () => _model
+                                                .unfocusNode.canRequestFocus
+                                            ? FocusScope.of(context)
+                                                .requestFocus(
+                                                    _model.unfocusNode)
+                                            : FocusScope.of(context).unfocus(),
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
@@ -332,8 +343,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       context: context,
                                       builder: (context) {
                                         return GestureDetector(
-                                          onTap: () => FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode),
+                                          onTap: () => _model
+                                                  .unfocusNode.canRequestFocus
+                                              ? FocusScope.of(context)
+                                                  .requestFocus(
+                                                      _model.unfocusNode)
+                                              : FocusScope.of(context)
+                                                  .unfocus(),
                                           child: Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),

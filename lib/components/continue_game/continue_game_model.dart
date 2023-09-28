@@ -4,12 +4,13 @@ import '/components/button_gradient/button_gradient_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/field_game/field_game_widget.dart';
+import 'continue_game_widget.dart' show ContinueGameWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ContinueGameModel extends FlutterFlowModel {
+class ContinueGameModel extends FlutterFlowModel<ContinueGameWidget> {
   ///  State fields for stateful widgets in this component.
 
   // Model for Button_Gradient component.

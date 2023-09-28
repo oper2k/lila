@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/sub_thank_you/sub_thank_you_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'card_pay_widget.dart' show CardPayWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 
-class CardPayModel extends FlutterFlowModel {
+class CardPayModel extends FlutterFlowModel<CardPayWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

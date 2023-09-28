@@ -46,12 +46,12 @@ class _SubUpSuccessWidgetState extends State<SubUpSuccessWidget> {
               )
               .toString() ==
           'Active') {
-        logFirebaseEvent('SubUpSuccess_update_widget_state');
+        logFirebaseEvent('SubUpSuccess_update_component_state');
         setState(() {
           _model.subBool = true;
         });
       } else {
-        logFirebaseEvent('SubUpSuccess_update_widget_state');
+        logFirebaseEvent('SubUpSuccess_update_component_state');
         setState(() {
           _model.subBool = false;
         });

@@ -4,11 +4,12 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/question_game/question_game_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import 'meditation_widget.dart' show MeditationWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class MeditationModel extends FlutterFlowModel {
+class MeditationModel extends FlutterFlowModel<MeditationWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
