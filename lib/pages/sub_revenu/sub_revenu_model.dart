@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/cube_game/cube_game_widget.dart';
+import '/pages/field_game/field_game_widget.dart';
 import '/pages/sub_thank_you/sub_thank_you_widget.dart';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'sub_revenu_widget.dart' show SubRevenuWidget;
@@ -20,6 +21,8 @@ class SubRevenuModel extends FlutterFlowModel<SubRevenuWidget> {
   bool? revenuePurchOneGame;
   // Stores action output result for [RevenueCat - Purchase] action in Container widget.
   bool? revenuePurch;
+  // Stores action output result for [Backend Call - Create Document] action in Text widget.
+  GamesRecord? newGame;
 
   /// Initialization and disposal methods.
 

@@ -416,6 +416,8 @@ class _CubeGameWidgetState extends State<CubeGameWidget>
                                           MaterialPageRoute(
                                             builder: (context) => SubPayWidget(
                                               showThreeMove: true,
+                                              currentRequest:
+                                                  widget.currentRequest,
                                             ),
                                           ),
                                         );

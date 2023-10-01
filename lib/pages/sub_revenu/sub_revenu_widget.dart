@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/cube_game/cube_game_widget.dart';
+import '/pages/field_game/field_game_widget.dart';
 import '/pages/sub_thank_you/sub_thank_you_widget.dart';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,9 +18,11 @@ class SubRevenuWidget extends StatefulWidget {
   const SubRevenuWidget({
     Key? key,
     this.showThreeMovies,
+    required this.currentRequest,
   }) : super(key: key);
 
   final bool? showThreeMovies;
+  final String? currentRequest;
 
   @override
   _SubRevenuWidgetState createState() => _SubRevenuWidgetState();
@@ -542,39 +545,125 @@ class _SubRevenuWidgetState extends State<SubRevenuWidget> {
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          logFirebaseEvent(
-                              'SUB_REVENU_PAGE_Text_sas5yuvm_ON_TAP');
-                          logFirebaseEvent('Text_update_app_state');
-                          FFAppState().update(() {
-                            FFAppState().Free3Moves = 3;
-                          });
-                          logFirebaseEvent('Text_navigate_to');
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CubeGameWidget(),
+                      child: FutureBuilder<List<GameFieldRecord>>(
+                        future: queryGameFieldRecordOnce(
+                          queryBuilder: (gameFieldRecord) =>
+                              gameFieldRecord.where(
+                            'number',
+                            isEqualTo: 68,
+                          ),
+                          singleRecord: true,
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+                          List<GameFieldRecord> textGameFieldRecordList =
+                              snapshot.data!;
+                          // Return an empty Container when the item does not exist.
+                          if (snapshot.data!.isEmpty) {
+                            return Container();
+                          }
+                          final textGameFieldRecord =
+                              textGameFieldRecordList.isNotEmpty
+                                  ? textGameFieldRecordList.first
+                                  : null;
+                          return InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'SUB_REVENU_PAGE_Text_sas5yuvm_ON_TAP');
+                              logFirebaseEvent('Text_update_app_state');
+                              FFAppState().update(() {
+                                FFAppState().Free3Moves = 3;
+                              });
+                              if (widget.showThreeMovies!) {
+                                logFirebaseEvent('Text_update_app_state');
+                                FFAppState().update(() {
+                                  FFAppState().cubeValue = 6;
+                                  FFAppState().boardValue = 68;
+                                  FFAppState().endGame68 = 0;
+                                  FFAppState().stopCubeRotate = true;
+                                  FFAppState().cube666 = 0;
+                                  FFAppState().cubeValue666 = 0;
+                                  FFAppState().oneGame = true;
+                                  FFAppState().endGame = false;
+                                  FFAppState().visibilityCard = 1;
+                                });
+                                logFirebaseEvent('Text_backend_call');
+
+                                var gamesRecordReference =
+                                    GamesRecord.createDoc(
+                                        currentUserReference!);
+                                await gamesRecordReference
+                                    .set(createGamesRecordData(
+                                  date: getCurrentTimestamp,
+                                  isEnd: false,
+                                  request: widget.currentRequest,
+                                  isDelete: false,
+                                ));
+                                _model.newGame =
+                                    GamesRecord.getDocumentFromData(
+                                        createGamesRecordData(
+                                          date: getCurrentTimestamp,
+                                          isEnd: false,
+                                          request: widget.currentRequest,
+                                          isDelete: false,
+                                        ),
+                                        gamesRecordReference);
+                                logFirebaseEvent('Text_navigate_to');
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => FieldGameWidget(
+                                      currentGameField: textGameFieldRecord,
+                                      currentGame: _model.newGame,
+                                    ),
+                                  ),
+                                  (r) => false,
+                                );
+                              } else {
+                                logFirebaseEvent('Text_navigate_to');
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => CubeGameWidget(),
+                                  ),
+                                );
+                              }
+
+                              setState(() {});
+                            },
+                            child: Text(
+                              'Начать игру с 3 бесплатными ходами',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    fontWeight: FontWeight.w600,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
+                                  ),
                             ),
                           );
                         },
-                        child: Text(
-                          'Начать игру с 3 бесплатными ходами',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyMediumFamily,
-                                fontWeight: FontWeight.w600,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
-                              ),
-                        ),
                       ),
                     ),
                   ),

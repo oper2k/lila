@@ -14,9 +14,11 @@ class SubPayWidget extends StatefulWidget {
   const SubPayWidget({
     Key? key,
     required this.showThreeMove,
+    this.currentRequest,
   }) : super(key: key);
 
   final bool? showThreeMove;
+  final String? currentRequest;
 
   @override
   _SubPayWidgetState createState() => _SubPayWidgetState();
@@ -151,6 +153,7 @@ class _SubPayWidgetState extends State<SubPayWidget> {
                         MaterialPageRoute(
                           builder: (context) => SubCloudPaymentsWidget(
                             showThreeMovies: widget.showThreeMove,
+                            currentRequest: widget.currentRequest!,
                           ),
                         ),
                       );
@@ -228,6 +231,7 @@ class _SubPayWidgetState extends State<SubPayWidget> {
                       MaterialPageRoute(
                         builder: (context) => SubRevenuWidget(
                           showThreeMovies: widget.showThreeMove,
+                          currentRequest: widget.currentRequest!,
                         ),
                       ),
                     );
