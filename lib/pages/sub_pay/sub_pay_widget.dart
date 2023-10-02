@@ -230,8 +230,8 @@ class _SubPayWidgetState extends State<SubPayWidget> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => SubRevenuWidget(
-                          showThreeMovies: widget.showThreeMove,
-                          currentRequest: widget.currentRequest!,
+                          showThreeMovies: widget.showThreeMove!,
+                          currentRequest: widget.currentRequest,
                         ),
                       ),
                     );

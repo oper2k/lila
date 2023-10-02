@@ -17,8 +17,8 @@ export 'sub_revenu_model.dart';
 class SubRevenuWidget extends StatefulWidget {
   const SubRevenuWidget({
     Key? key,
-    this.showThreeMovies,
-    required this.currentRequest,
+    required this.showThreeMovies,
+    this.currentRequest,
   }) : super(key: key);
 
   final bool? showThreeMovies;
