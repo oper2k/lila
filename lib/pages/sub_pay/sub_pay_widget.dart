@@ -41,7 +41,7 @@ class _SubPayWidgetState extends State<SubPayWidget> {
       logFirebaseEvent('SUB_PAY_PAGE_Sub_Pay_ON_INIT_STATE');
       if (!getRemoteConfigBool('showCloud2')) {
         logFirebaseEvent('Sub_Pay_navigate_to');
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => SubRevenuWidget(
