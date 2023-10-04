@@ -5,6 +5,7 @@ import '/pages/sub_cloud_payments/sub_cloud_payments_widget.dart';
 import '/pages/sub_revenu/sub_revenu_widget.dart';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'sub_pay_model.dart';
@@ -35,6 +36,22 @@ class _SubPayWidgetState extends State<SubPayWidget> {
     _model = createModel(context, () => SubPayModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Sub_Pay'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('SUB_PAY_PAGE_Sub_Pay_ON_INIT_STATE');
+      if (!getRemoteConfigBool('showCloud2')) {
+        logFirebaseEvent('Sub_Pay_navigate_to');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SubRevenuWidget(
+              showThreeMovies: widget.showThreeMove!,
+              currentRequest: widget.currentRequest,
+            ),
+          ),
+        );
+      }
+    });
   }
 
   @override
