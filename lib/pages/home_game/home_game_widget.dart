@@ -456,6 +456,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                 MaterialPageRoute(
                                   builder: (context) => SubPayWidget(
                                     showThreeMove: false,
+                                    currentRequest: 'нет',
                                   ),
                                 ),
                               );

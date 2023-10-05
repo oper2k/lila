@@ -18,11 +18,12 @@ class SubRevenuWidget extends StatefulWidget {
   const SubRevenuWidget({
     Key? key,
     required this.showThreeMovies,
-    this.currentRequest,
-  }) : super(key: key);
+    String? currentRequest,
+  })  : this.currentRequest = currentRequest ?? 'нет',
+        super(key: key);
 
   final bool? showThreeMovies;
-  final String? currentRequest;
+  final String currentRequest;
 
   @override
   _SubRevenuWidgetState createState() => _SubRevenuWidgetState();

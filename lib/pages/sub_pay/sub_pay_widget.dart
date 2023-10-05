@@ -39,7 +39,7 @@ class _SubPayWidgetState extends State<SubPayWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('SUB_PAY_PAGE_Sub_Pay_ON_INIT_STATE');
-      if (!getRemoteConfigBool('showCloud2')) {
+      if (!getRemoteConfigBool('showCloud3')) {
         logFirebaseEvent('Sub_Pay_navigate_to');
         Navigator.pushReplacement(
           context,
@@ -153,86 +153,87 @@ class _SubPayWidgetState extends State<SubPayWidget> {
                             FlutterFlowTheme.of(context).headlineMediumFamily),
                       ),
                 ),
-              if (getRemoteConfigBool('showCloud2'))
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      logFirebaseEvent(
-                          'SUB_PAY_PAGE_Container_ei6p3xzs_ON_TAP');
-                      logFirebaseEvent('Container_navigate_to');
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SubCloudPaymentsWidget(
-                            showThreeMovies: widget.showThreeMove,
-                            currentRequest: widget.currentRequest!,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    logFirebaseEvent('SUB_PAY_PAGE_Container_ei6p3xzs_ON_TAP');
+                    logFirebaseEvent('Container_navigate_to');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SubCloudPaymentsWidget(
+                          showThreeMovies: widget.showThreeMove,
+                          currentRequest: valueOrDefault<String>(
+                            widget.currentRequest,
+                            'Нет',
                           ),
                         ),
-                      );
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      height: 88.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).tertiary,
-                        borderRadius: BorderRadius.circular(24.0),
                       ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            12.0, 12.0, 12.0, 12.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              width: 64.0,
-                              height: 64.0,
-                              decoration: BoxDecoration(
-                                color: Color(0xFF3F3C68),
-                                shape: BoxShape.circle,
-                              ),
-                              child: Icon(
-                                FFIcons.kcreditCard,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 24.0,
-                              ),
+                    );
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 88.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).tertiary,
+                      borderRadius: BorderRadius.circular(24.0),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          12.0, 12.0, 12.0, 12.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: 64.0,
+                            height: 64.0,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF3F3C68),
+                              shape: BoxShape.circle,
                             ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'Оплатить картой',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .bodyMediumFamily,
-                                        fontWeight: FontWeight.w600,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily),
-                                      ),
-                                ),
-                              ),
-                            ),
-                            Icon(
-                              FFIcons.kright,
+                            child: Icon(
+                              FFIcons.kcreditCard,
                               color: FlutterFlowTheme.of(context).primaryText,
-                              size: 17.0,
+                              size: 24.0,
                             ),
-                          ],
-                        ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                'Оплатить картой',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
+                                      fontWeight: FontWeight.w600,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
+                                    ),
+                              ),
+                            ),
+                          ),
+                          Icon(
+                            FFIcons.kright,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 17.0,
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
+              ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: InkWell(
@@ -248,7 +249,10 @@ class _SubPayWidgetState extends State<SubPayWidget> {
                       MaterialPageRoute(
                         builder: (context) => SubRevenuWidget(
                           showThreeMovies: widget.showThreeMove!,
-                          currentRequest: widget.currentRequest,
+                          currentRequest: valueOrDefault<String>(
+                            widget.currentRequest,
+                            'Нет',
+                          ),
                         ),
                       ),
                     );

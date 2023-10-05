@@ -18,11 +18,12 @@ class SubCloudPaymentsWidget extends StatefulWidget {
   const SubCloudPaymentsWidget({
     Key? key,
     this.showThreeMovies,
-    required this.currentRequest,
-  }) : super(key: key);
+    String? currentRequest,
+  })  : this.currentRequest = currentRequest ?? 'нет',
+        super(key: key);
 
   final bool? showThreeMovies;
-  final String? currentRequest;
+  final String currentRequest;
 
   @override
   _SubCloudPaymentsWidgetState createState() => _SubCloudPaymentsWidgetState();

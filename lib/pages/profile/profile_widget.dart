@@ -282,6 +282,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     MaterialPageRoute(
                                       builder: (context) => SubPayWidget(
                                         showThreeMove: false,
+                                        currentRequest: 'Нет',
                                       ),
                                     ),
                                   );
