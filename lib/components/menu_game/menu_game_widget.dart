@@ -8,6 +8,7 @@ import '/main.dart';
 import '/pages/history_moves/history_moves_widget.dart';
 import '/pages/rules_game/rules_game_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'menu_game_model.dart';
@@ -90,7 +91,7 @@ class _MenuGameWidgetState extends State<MenuGameWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(-1.00, 0.00),
+                  alignment: AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 28.0, 0.0, 0.0),

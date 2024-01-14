@@ -8,6 +8,7 @@ import '/main.dart';
 import '/pages/history_moves/history_moves_widget.dart';
 import 'history_game_widget.dart' show HistoryGameWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 

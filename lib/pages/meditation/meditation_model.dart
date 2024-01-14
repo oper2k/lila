@@ -6,6 +6,7 @@ import '/pages/question_game/question_game_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'meditation_widget.dart' show MeditationWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 

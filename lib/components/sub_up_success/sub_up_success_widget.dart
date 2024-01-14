@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'sub_up_success_model.dart';
@@ -40,11 +41,9 @@ class _SubUpSuccessWidgetState extends State<SubUpSuccessWidget> {
           await CloudpaymentsGroup.getSubscriptionCall.call(
         id: valueOrDefault(currentUserDocument?.modelId, ''),
       );
-      if (CloudpaymentsGroup.getSubscriptionCall
-              .modelStatus(
-                (_model.getSubscribeCloudGame?.jsonBody ?? ''),
-              )
-              .toString() ==
+      if (CloudpaymentsGroup.getSubscriptionCall.modelStatus(
+            (_model.getSubscribeCloudGame?.jsonBody ?? ''),
+          ) ==
           'Active') {
         logFirebaseEvent('SubUpSuccess_update_component_state');
         setState(() {
@@ -172,7 +171,7 @@ class _SubUpSuccessWidgetState extends State<SubUpSuccessWidget> {
                 ),
               ),
             Align(
-              alignment: AlignmentDirectional(0.00, 1.00),
+              alignment: AlignmentDirectional(0.0, 1.0),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 52.0, 0.0, 0.0),
                 child: InkWell(

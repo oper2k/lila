@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'one_review_model.dart';
@@ -59,7 +60,7 @@ class _OneReviewWidgetState extends State<OneReviewWidget> {
           borderRadius: BorderRadius.circular(16.0),
         ),
         child: Align(
-          alignment: AlignmentDirectional(0.00, 1.00),
+          alignment: AlignmentDirectional(0.0, 1.0),
           child: Container(
             width: double.infinity,
             height: 50.0,

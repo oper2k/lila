@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'game_post_history_model.dart';
@@ -48,6 +49,15 @@ class _GamePostHistoryWidgetState extends State<GamePostHistoryWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return FutureBuilder<List<GameFieldRecord>>(
@@ -99,7 +109,7 @@ class _GamePostHistoryWidgetState extends State<GamePostHistoryWidget> {
                 backgroundColor: FlutterFlowTheme.of(context).secondary,
                 automaticallyImplyLeading: false,
                 leading: Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -125,7 +135,7 @@ class _GamePostHistoryWidgetState extends State<GamePostHistoryWidget> {
                 actions: [],
                 flexibleSpace: FlexibleSpaceBar(
                   background: Align(
-                    alignment: AlignmentDirectional(0.00, -1.00),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Image.asset(
                       'assets/images/StatusBar.png',
                       width: double.infinity,
@@ -390,7 +400,7 @@ class _GamePostHistoryWidgetState extends State<GamePostHistoryWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 24.0, 0.0, 24.0),

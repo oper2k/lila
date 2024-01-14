@@ -9,6 +9,7 @@ import '/pages/registration_name/registration_name_widget.dart';
 import '/pages/welcome/welcome_widget.dart';
 import 'registration_email_widget.dart' show RegistrationEmailWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +25,7 @@ class RegistrationEmailModel extends FlutterFlowModel<RegistrationEmailWidget> {
       tabBarController != null ? tabBarController!.index : 0;
 
   // State field(s) for emailAddress widget.
+  FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressController;
   String? Function(BuildContext, String?)? emailAddressControllerValidator;
   String? _emailAddressControllerValidator(BuildContext context, String? val) {
@@ -35,6 +37,7 @@ class RegistrationEmailModel extends FlutterFlowModel<RegistrationEmailWidget> {
   }
 
   // State field(s) for password widget.
+  FocusNode? passwordFocusNode;
   TextEditingController? passwordController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordControllerValidator;
@@ -43,6 +46,7 @@ class RegistrationEmailModel extends FlutterFlowModel<RegistrationEmailWidget> {
   // Model for Button_Exp component.
   late ButtonExpModel buttonExpModel2;
   // State field(s) for email widget.
+  FocusNode? emailFocusNode;
   TextEditingController? emailController;
   String? Function(BuildContext, String?)? emailControllerValidator;
   String? _emailControllerValidator(BuildContext context, String? val) {
@@ -54,6 +58,7 @@ class RegistrationEmailModel extends FlutterFlowModel<RegistrationEmailWidget> {
   }
 
   // State field(s) for password_1 widget.
+  FocusNode? password1FocusNode;
   TextEditingController? password1Controller;
   late bool password1Visibility;
   String? Function(BuildContext, String?)? password1ControllerValidator;
@@ -70,6 +75,7 @@ class RegistrationEmailModel extends FlutterFlowModel<RegistrationEmailWidget> {
   }
 
   // State field(s) for password_2 widget.
+  FocusNode? password2FocusNode;
   TextEditingController? password2Controller;
   late bool password2Visibility;
   String? Function(BuildContext, String?)? password2ControllerValidator;
@@ -93,13 +99,23 @@ class RegistrationEmailModel extends FlutterFlowModel<RegistrationEmailWidget> {
   void dispose() {
     unfocusNode.dispose();
     tabBarController?.dispose();
+    emailAddressFocusNode?.dispose();
     emailAddressController?.dispose();
+
+    passwordFocusNode?.dispose();
     passwordController?.dispose();
+
     buttonExpModel1.dispose();
     buttonExpModel2.dispose();
+    emailFocusNode?.dispose();
     emailController?.dispose();
+
+    password1FocusNode?.dispose();
     password1Controller?.dispose();
+
+    password2FocusNode?.dispose();
     password2Controller?.dispose();
+
     buttonExpModel3.dispose();
   }
 

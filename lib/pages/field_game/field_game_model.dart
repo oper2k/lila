@@ -24,6 +24,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -40,7 +41,11 @@ class FieldGameModel extends FlutterFlowModel<FieldGameWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (Get Subscription)] action in Stack widget.
   ApiCallResponse? getSubscribeCloudGame;
+  // State field(s) for Expandable widget.
+  late ExpandableController expandableController;
+
   // State field(s) for input_insite_game widget.
+  FocusNode? inputInsiteGameFocusNode;
   TextEditingController? inputInsiteGameController;
   String? Function(BuildContext, String?)? inputInsiteGameControllerValidator;
   // Model for Button_Exp component.
@@ -54,7 +59,10 @@ class FieldGameModel extends FlutterFlowModel<FieldGameWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    expandableController.dispose();
+    inputInsiteGameFocusNode?.dispose();
     inputInsiteGameController?.dispose();
+
     buttonExpModel.dispose();
   }
 

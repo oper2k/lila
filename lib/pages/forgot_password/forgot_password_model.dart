@@ -7,6 +7,7 @@ import '/pages/registration_email/registration_email_widget.dart';
 import '/pages/welcome/welcome_widget.dart';
 import 'forgot_password_widget.dart' show ForgotPasswordWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +16,7 @@ class ForgotPasswordModel extends FlutterFlowModel<ForgotPasswordWidget> {
 
   final unfocusNode = FocusNode();
   // State field(s) for emailAddress widget.
+  FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressController;
   String? Function(BuildContext, String?)? emailAddressControllerValidator;
   // Model for Button_Exp component.
@@ -28,7 +30,9 @@ class ForgotPasswordModel extends FlutterFlowModel<ForgotPasswordWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    emailAddressFocusNode?.dispose();
     emailAddressController?.dispose();
+
     buttonExpModel.dispose();
   }
 

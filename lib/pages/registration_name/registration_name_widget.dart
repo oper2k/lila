@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'registration_name_model.dart';
@@ -32,7 +33,11 @@ class _RegistrationNameWidgetState extends State<RegistrationNameWidget> {
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'Registration_Name'});
     _model.nameInputController ??= TextEditingController();
+    _model.nameInputFocusNode ??= FocusNode();
+
     _model.phoneInputController ??= TextEditingController();
+    _model.phoneInputFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.phoneInputController?.text = '+7';
         }));
@@ -47,6 +52,15 @@ class _RegistrationNameWidgetState extends State<RegistrationNameWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -74,7 +88,7 @@ class _RegistrationNameWidgetState extends State<RegistrationNameWidget> {
               child: Container(
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -90,7 +104,7 @@ class _RegistrationNameWidgetState extends State<RegistrationNameWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -153,6 +167,7 @@ class _RegistrationNameWidgetState extends State<RegistrationNameWidget> {
                                 width: double.infinity,
                                 child: TextFormField(
                                   controller: _model.nameInputController,
+                                  focusNode: _model.nameInputFocusNode,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Имя',
@@ -226,6 +241,7 @@ class _RegistrationNameWidgetState extends State<RegistrationNameWidget> {
                                 width: double.infinity,
                                 child: TextFormField(
                                   controller: _model.phoneInputController,
+                                  focusNode: _model.phoneInputFocusNode,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelStyle: FlutterFlowTheme.of(context)
@@ -302,7 +318,7 @@ class _RegistrationNameWidgetState extends State<RegistrationNameWidget> {
               ),
               Expanded(
                 child: Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,

@@ -12,6 +12,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'profile_edit_model.dart';
@@ -38,8 +39,12 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
         parameters: {'screen_name': 'Profile_Edit'});
     _model.nameInputController ??=
         TextEditingController(text: currentUserDisplayName);
+    _model.nameInputFocusNode ??= FocusNode();
+
     _model.familyInputController ??= TextEditingController(
         text: valueOrDefault(currentUserDocument?.displayFamily, ''));
+    _model.familyInputFocusNode ??= FocusNode();
+
     _model.phoneInputController ??= TextEditingController(
         text: valueOrDefault<String>(
       currentPhoneNumber != null && currentPhoneNumber != ''
@@ -47,6 +52,9 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
           : '+7',
       'Дата рождения',
     ));
+    _model.phoneInputFocusNode ??= FocusNode();
+
+    _model.genderController = ExpandableController(initialExpanded: false);
   }
 
   @override
@@ -58,6 +66,15 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -85,7 +102,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
               child: Container(
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -129,7 +146,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                 child: Container(
                   decoration: BoxDecoration(),
                   child: Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
@@ -145,7 +162,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
             ],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -190,6 +207,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   width: double.infinity,
                                   child: TextFormField(
                                     controller: _model.nameInputController,
+                                    focusNode: _model.nameInputFocusNode,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText: 'Имя',
@@ -261,6 +279,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   width: double.infinity,
                                   child: TextFormField(
                                     controller: _model.familyInputController,
+                                    focusNode: _model.familyInputFocusNode,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText: 'Фамилия',
@@ -375,8 +394,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                     ),
                                   ),
                                   child: Align(
-                                    alignment:
-                                        AlignmentDirectional(-1.00, 0.00),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
@@ -447,8 +465,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                     ),
                                   ),
                                   child: Align(
-                                    alignment:
-                                        AlignmentDirectional(-1.00, 0.00),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
@@ -471,6 +488,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   width: double.infinity,
                                   child: TextFormField(
                                     controller: _model.phoneInputController,
+                                    focusNode: _model.phoneInputFocusNode,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelStyle: FlutterFlowTheme.of(context)
@@ -559,7 +577,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   ),
                                 ),
                                 child: Align(
-                                  alignment: AlignmentDirectional(-1.00, 0.00),
+                                  alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 0.0, 0.0),
@@ -599,7 +617,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       width: double.infinity,
                                       color: Color(0x00000000),
                                       child: ExpandableNotifier(
-                                        initialExpanded: false,
+                                        controller: _model.genderController,
                                         child: ExpandablePanel(
                                           header: Padding(
                                             padding:
@@ -712,7 +730,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,

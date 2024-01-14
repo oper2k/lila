@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'button_exp_model.dart';
@@ -52,7 +53,7 @@ class _ButtonExpWidgetState extends State<ButtonExpWidget> {
         borderRadius: BorderRadius.circular(30.0),
       ),
       child: Align(
-        alignment: AlignmentDirectional(0.00, 0.00),
+        alignment: AlignmentDirectional(0.0, 0.0),
         child: Text(
           widget.text!,
           textAlign: TextAlign.center,

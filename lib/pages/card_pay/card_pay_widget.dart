@@ -10,6 +10,7 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
@@ -44,8 +45,13 @@ class _CardPayWidgetState extends State<CardPayWidget> {
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'CardPay'});
     _model.numberController ??= TextEditingController();
+    _model.numberFocusNode ??= FocusNode();
+
     _model.dateController ??= TextEditingController();
+    _model.dateFocusNode ??= FocusNode();
+
     _model.cvvController ??= TextEditingController();
+    _model.cvvFocusNode ??= FocusNode();
   }
 
   @override
@@ -57,6 +63,15 @@ class _CardPayWidgetState extends State<CardPayWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -86,7 +101,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                 height: 100.0,
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -102,7 +117,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -160,6 +175,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                       width: double.infinity,
                       child: TextFormField(
                         controller: _model.numberController,
+                        focusNode: _model.numberFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
                           '_model.numberController',
                           Duration(milliseconds: 1000),
@@ -224,8 +240,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                           ),
                           filled: true,
                           fillColor: Color(0x1AFFFFFF),
-                          contentPadding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 20.0, 20.0, 20.0),
+                          contentPadding: EdgeInsets.all(20.0),
                         ),
                         style:
                             FlutterFlowTheme.of(context).titleMedium.override(
@@ -258,6 +273,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                               width: double.infinity,
                               child: TextFormField(
                                 controller: _model.dateController,
+                                focusNode: _model.dateFocusNode,
                                 onChanged: (_) => EasyDebounce.debounce(
                                   '_model.dateController',
                                   Duration(milliseconds: 1000),
@@ -324,9 +340,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                   ),
                                   filled: true,
                                   fillColor: Color(0x1AFFFFFF),
-                                  contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 20.0, 20.0, 20.0),
+                                  contentPadding: EdgeInsets.all(20.0),
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .titleMedium
@@ -357,6 +371,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                               width: double.infinity,
                               child: TextFormField(
                                 controller: _model.cvvController,
+                                focusNode: _model.cvvFocusNode,
                                 onChanged: (_) => EasyDebounce.debounce(
                                   '_model.cvvController',
                                   Duration(milliseconds: 1000),
@@ -423,9 +438,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                   ),
                                   filled: true,
                                   fillColor: Color(0x1AFFFFFF),
-                                  contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 20.0, 20.0, 20.0),
+                                  contentPadding: EdgeInsets.all(20.0),
                                   suffixIcon: InkWell(
                                     onTap: () => setState(
                                       () => _model.cvvVisibility =
@@ -511,7 +524,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                       if ((_model.apiResult2li?.succeeded ?? true)) {
                         if (CloudpaymentsGroup.payByCardCopyCall.isSuccess(
                           (_model.apiResult2li?.jsonBody ?? ''),
-                        )) {
+                        )!) {
                           logFirebaseEvent('Button_Exp_backend_call');
 
                           await currentUserReference!
@@ -524,9 +537,8 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                               content: Text(
                                 CloudpaymentsGroup.payByCardCopyCall
                                     .successMessage(
-                                      (_model.apiResult2li?.jsonBody ?? ''),
-                                    )
-                                    .toString(),
+                                  (_model.apiResult2li?.jsonBody ?? ''),
+                                )!,
                                 style: GoogleFonts.getFont(
                                   'Inter',
                                   color:
@@ -556,6 +568,9 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                     FFLocalizations.of(context).languageCode,
                               ),
                               period: widget.typeSubs,
+                              token: CloudpaymentsGroup.payByCardCopyCall.token(
+                                (_model.apiResult2li?.jsonBody ?? ''),
+                              ),
                             );
                             _shouldSetState = true;
                             logFirebaseEvent('Button_Exp_backend_call');
@@ -588,7 +603,7 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                 content: Text(
                                   'Что-то пошло не так 2: ${CloudpaymentsGroup.payByCardCopyCall.reasonCode(
                                         (_model.apiResult2li?.jsonBody ?? ''),
-                                      ).toString()}',
+                                      )?.toString()}',
                                   style: GoogleFonts.getFont(
                                     'Inter',
                                     color: FlutterFlowTheme.of(context)
@@ -605,34 +620,29 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                           }
                           if (CloudpaymentsGroup.payByCardCopyCall
                                       .urlForConfirm(
-                                        (_model.apiResult2li?.jsonBody ?? ''),
-                                      )
-                                      .toString() !=
+                                    (_model.apiResult2li?.jsonBody ?? ''),
+                                  ) !=
                                   null &&
                               CloudpaymentsGroup.payByCardCopyCall
                                       .urlForConfirm(
-                                        (_model.apiResult2li?.jsonBody ?? ''),
-                                      )
-                                      .toString() !=
+                                    (_model.apiResult2li?.jsonBody ?? ''),
+                                  ) !=
                                   '') {
                             logFirebaseEvent('Button_Exp_custom_action');
                             _model.check3DS =
                                 await actions.check3DSCloudPayments(
                               CloudpaymentsGroup.payByCardCopyCall
                                   .urlForConfirm(
-                                    (_model.apiResult2li?.jsonBody ?? ''),
-                                  )
-                                  .toString(),
+                                (_model.apiResult2li?.jsonBody ?? ''),
+                              )!,
                               CloudpaymentsGroup.payByCardCopyCall
                                   .transactionId(
                                     (_model.apiResult2li?.jsonBody ?? ''),
-                                  )
+                                  )!
                                   .toString(),
-                              CloudpaymentsGroup.payByCardCopyCall
-                                  .paReq(
-                                    (_model.apiResult2li?.jsonBody ?? ''),
-                                  )
-                                  .toString(),
+                              CloudpaymentsGroup.payByCardCopyCall.paReq(
+                                (_model.apiResult2li?.jsonBody ?? ''),
+                              )!,
                             );
                             _shouldSetState = true;
                             if (_model.check3DS!.length > 0) {
@@ -694,10 +704,9 @@ class _CardPayWidgetState extends State<CardPayWidget> {
                                             .languageCode,
                                       ),
                                       period: widget.typeSubs,
-                                      token: CloudpaymentsGroup
-                                          .payByCardCopyCall
+                                      token: CloudpaymentsGroup.checkDSCopyCall
                                           .token(
-                                            (_model.apiResult2li?.jsonBody ??
+                                            (_model.apiResult5ny?.jsonBody ??
                                                 ''),
                                           )
                                           .toString(),

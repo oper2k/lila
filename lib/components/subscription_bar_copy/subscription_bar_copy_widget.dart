@@ -8,6 +8,7 @@ import '/pages/sub_thank_you/sub_thank_you_widget.dart';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'subscription_bar_copy_model.dart';
@@ -91,7 +92,7 @@ class _SubscriptionBarCopyWidgetState extends State<SubscriptionBarCopyWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(-1.00, 0.00),
+                    alignment: AlignmentDirectional(-1.0, 0.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 48.0, 0.0, 0.0),
@@ -122,7 +123,7 @@ class _SubscriptionBarCopyWidgetState extends State<SubscriptionBarCopyWidget> {
                         ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(-1.00, 0.00),
+                    alignment: AlignmentDirectional(-1.0, 0.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
@@ -224,9 +225,7 @@ class _SubscriptionBarCopyWidgetState extends State<SubscriptionBarCopyWidget> {
                                             shape: BoxShape.circle,
                                           ),
                                           child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    15.0, 15.0, 15.0, 15.0),
+                                            padding: EdgeInsets.all(15.0),
                                             child: Image.asset(
                                               'assets/images/stars1.png',
                                               width: 100.0,
@@ -388,9 +387,7 @@ class _SubscriptionBarCopyWidgetState extends State<SubscriptionBarCopyWidget> {
                                                       .identifier !=
                                                   'onemonth')
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15.0, 15.0,
-                                                          15.0, 15.0),
+                                                  padding: EdgeInsets.all(15.0),
                                                   child: Image.asset(
                                                     'assets/images/fire.png',
                                                     width: 100.0,
@@ -403,9 +400,7 @@ class _SubscriptionBarCopyWidgetState extends State<SubscriptionBarCopyWidget> {
                                                       .identifier !=
                                                   'threemonth')
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15.0, 15.0,
-                                                          15.0, 15.0),
+                                                  padding: EdgeInsets.all(15.0),
                                                   child: Image.asset(
                                                     'assets/images/diamond.png',
                                                     width: 100.0,
@@ -497,7 +492,7 @@ class _SubscriptionBarCopyWidgetState extends State<SubscriptionBarCopyWidget> {
                   ),
                   if (widget.showThreeMovies)
                     Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
@@ -534,7 +529,7 @@ class _SubscriptionBarCopyWidgetState extends State<SubscriptionBarCopyWidget> {
                     ),
                   if (!widget.showThreeMovies)
                     Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),

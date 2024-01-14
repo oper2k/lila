@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/registration_email/registration_email_widget.dart';
 import '/pages/welcome/welcome_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'forgot_password_model.dart';
@@ -31,6 +32,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'ForgotPassword'});
     _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressFocusNode ??= FocusNode();
   }
 
   @override
@@ -42,6 +44,15 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -74,7 +85,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
               child: Container(
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -90,7 +101,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -143,6 +154,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                       width: double.infinity,
                       child: TextFormField(
                         controller: _model.emailAddressController,
+                        focusNode: _model.emailAddressFocusNode,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: 'Email',

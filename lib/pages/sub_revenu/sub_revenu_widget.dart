@@ -9,6 +9,7 @@ import '/pages/sub_thank_you/sub_thank_you_widget.dart';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'sub_revenu_model.dart';
@@ -51,6 +52,15 @@ class _SubRevenuWidgetState extends State<SubRevenuWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -78,7 +88,7 @@ class _SubRevenuWidgetState extends State<SubRevenuWidget> {
               child: Container(
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -94,7 +104,7 @@ class _SubRevenuWidgetState extends State<SubRevenuWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -115,7 +125,7 @@ class _SubRevenuWidgetState extends State<SubRevenuWidget> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(-1.00, 0.00),
+                  alignment: AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 48.0, 0.0, 0.0),
@@ -144,7 +154,7 @@ class _SubRevenuWidgetState extends State<SubRevenuWidget> {
                       ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(-1.00, 0.00),
+                  alignment: AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
@@ -249,9 +259,7 @@ class _SubRevenuWidgetState extends State<SubRevenuWidget> {
                                           shape: BoxShape.circle,
                                         ),
                                         child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  15.0, 15.0, 15.0, 15.0),
+                                          padding: EdgeInsets.all(15.0),
                                           child: Image.asset(
                                             'assets/images/stars1.png',
                                             width: 100.0,
@@ -435,9 +443,7 @@ class _SubRevenuWidgetState extends State<SubRevenuWidget> {
                                                     .storeProduct.identifier !=
                                                 'onemonth')
                                               Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        15.0, 15.0, 15.0, 15.0),
+                                                padding: EdgeInsets.all(15.0),
                                                 child: Image.asset(
                                                   'assets/images/fire.png',
                                                   width: 100.0,
@@ -449,9 +455,7 @@ class _SubRevenuWidgetState extends State<SubRevenuWidget> {
                                                     .storeProduct.identifier !=
                                                 'threemonth')
                                               Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        15.0, 15.0, 15.0, 15.0),
+                                                padding: EdgeInsets.all(15.0),
                                                 child: Image.asset(
                                                   'assets/images/diamond.png',
                                                   width: 100.0,
@@ -542,7 +546,7 @@ class _SubRevenuWidgetState extends State<SubRevenuWidget> {
                 ),
                 if (widget.showThreeMovies ?? true)
                   Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
@@ -670,7 +674,7 @@ class _SubRevenuWidgetState extends State<SubRevenuWidget> {
                   ),
                 if (!widget.showThreeMovies!)
                   Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 30.0),

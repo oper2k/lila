@@ -6,6 +6,7 @@ import '/pages/cube_game/cube_game_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'question_game_model.dart';
@@ -31,6 +32,7 @@ class _QuestionGameWidgetState extends State<QuestionGameWidget> {
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'Question_Game'});
     _model.questionInputController ??= TextEditingController();
+    _model.questionInputFocusNode ??= FocusNode();
   }
 
   @override
@@ -42,6 +44,15 @@ class _QuestionGameWidgetState extends State<QuestionGameWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -69,7 +80,7 @@ class _QuestionGameWidgetState extends State<QuestionGameWidget> {
               child: Container(
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -85,7 +96,7 @@ class _QuestionGameWidgetState extends State<QuestionGameWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -134,6 +145,7 @@ class _QuestionGameWidgetState extends State<QuestionGameWidget> {
                   autovalidateMode: AutovalidateMode.disabled,
                   child: TextFormField(
                     controller: _model.questionInputController,
+                    focusNode: _model.questionInputFocusNode,
                     onChanged: (_) => EasyDebounce.debounce(
                       '_model.questionInputController',
                       Duration(milliseconds: 100),
@@ -270,7 +282,7 @@ class _QuestionGameWidgetState extends State<QuestionGameWidget> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     child: Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Text(
                         'Бросить кубик',
                         textAlign: TextAlign.center,

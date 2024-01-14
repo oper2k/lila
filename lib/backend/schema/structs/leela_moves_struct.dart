@@ -36,8 +36,9 @@ class LeelaMovesStruct extends FFFirebaseStruct {
         insite: data['insite'] as String?,
       );
 
-  static LeelaMovesStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? LeelaMovesStruct.fromMap(data) : null;
+  static LeelaMovesStruct? maybeFromMap(dynamic data) => data is Map
+      ? LeelaMovesStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'move': _move,

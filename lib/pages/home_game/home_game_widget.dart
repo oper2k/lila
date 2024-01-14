@@ -20,6 +20,7 @@ import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_game_model.dart';
@@ -54,6 +55,15 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return FutureBuilder<List<GamesRecord>>(
@@ -90,7 +100,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                 actions: [],
                 flexibleSpace: FlexibleSpaceBar(
                   background: Align(
-                    alignment: AlignmentDirectional(0.00, -1.00),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Image.asset(
                       'assets/images/StatusBar.png',
                       width: double.infinity,
@@ -178,8 +188,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                 child: Stack(
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 12.0, 12.0, 12.0),
+                                      padding: EdgeInsets.all(12.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -190,7 +199,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                           Expanded(
                                             child: Align(
                                               alignment: AlignmentDirectional(
-                                                  1.00, -1.00),
+                                                  1.0, -1.0),
                                               child: Container(
                                                 width: 40.0,
                                                 height: 40.0,
@@ -199,9 +208,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          4.0, 4.0, 4.0, 4.0),
+                                                  padding: EdgeInsets.all(4.0),
                                                   child: Image.asset(
                                                     'assets/images/book.png',
                                                     fit: BoxFit.contain,
@@ -266,8 +273,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 1.00),
+                                      alignment: AlignmentDirectional(0.0, 1.0),
                                       child: Image.asset(
                                         'assets/images/bg_home_leela.png',
                                         width: double.infinity,
@@ -313,8 +319,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                   child: Stack(
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 12.0, 12.0, 12.0),
+                                        padding: EdgeInsets.all(12.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -325,7 +330,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                             Expanded(
                                               child: Align(
                                                 alignment: AlignmentDirectional(
-                                                    1.00, -1.00),
+                                                    1.0, -1.0),
                                                 child: Container(
                                                   width: 40.0,
                                                   height: 40.0,
@@ -398,7 +403,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                       ),
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.00, 1.00),
+                                            AlignmentDirectional(0.0, 1.0),
                                         child: Image.asset(
                                           'assets/images/bg_home_leela.png',
                                           width: double.infinity,
@@ -445,10 +450,9 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                             _shouldSetState = true;
                             if (CloudpaymentsGroup.getSubscriptionCall
                                     .modelStatus(
-                                      (_model.getSubscribeCloudGame?.jsonBody ??
-                                          ''),
-                                    )
-                                    .toString() !=
+                                  (_model.getSubscribeCloudGame?.jsonBody ??
+                                      ''),
+                                ) !=
                                 'Active') {
                               logFirebaseEvent('Container_navigate_to');
                               Navigator.push(
@@ -545,8 +549,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                                     shape: BoxShape.circle,
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 15.0, 15.0, 15.0),
+                                    padding: EdgeInsets.all(15.0),
                                     child: Image.asset(
                                       'assets/images/crown_home_leela.png',
                                       fit: BoxFit.contain,
@@ -787,7 +790,7 @@ class _HomeGameWidgetState extends State<HomeGameWidget> {
                       },
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 27.0, 0.0, 25.0),

@@ -9,6 +9,7 @@ import '/pages/history_moves/history_moves_widget.dart';
 import '/pages/rules_game/rules_game_widget.dart';
 import 'menu_game_widget.dart' show MenuGameWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 

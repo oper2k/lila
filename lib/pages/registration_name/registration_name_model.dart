@@ -8,6 +8,7 @@ import '/main.dart';
 import 'registration_name_widget.dart' show RegistrationNameWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +18,7 @@ class RegistrationNameModel extends FlutterFlowModel<RegistrationNameWidget> {
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for NameInput widget.
+  FocusNode? nameInputFocusNode;
   TextEditingController? nameInputController;
   String? Function(BuildContext, String?)? nameInputControllerValidator;
   String? _nameInputControllerValidator(BuildContext context, String? val) {
@@ -31,6 +33,7 @@ class RegistrationNameModel extends FlutterFlowModel<RegistrationNameWidget> {
   }
 
   // State field(s) for PhoneInput widget.
+  FocusNode? phoneInputFocusNode;
   TextEditingController? phoneInputController;
   String? Function(BuildContext, String?)? phoneInputControllerValidator;
   // Model for Button_Exp component.
@@ -45,8 +48,12 @@ class RegistrationNameModel extends FlutterFlowModel<RegistrationNameWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    nameInputFocusNode?.dispose();
     nameInputController?.dispose();
+
+    phoneInputFocusNode?.dispose();
     phoneInputController?.dispose();
+
     buttonExpModel.dispose();
   }
 

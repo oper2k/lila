@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/question_game/question_game_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'button_home_game_model.dart';
@@ -109,8 +110,7 @@ class _ButtonHomeGameWidgetState extends State<ButtonHomeGameWidget> {
                     shape: BoxShape.circle,
                   ),
                   child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                    padding: EdgeInsets.all(15.0),
                     child: Image.asset(
                       'assets/images/stars1.png',
                       fit: BoxFit.contain,

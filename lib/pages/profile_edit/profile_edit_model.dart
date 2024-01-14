@@ -13,6 +13,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -22,6 +23,7 @@ class ProfileEditModel extends FlutterFlowModel<ProfileEditWidget> {
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for NameInput widget.
+  FocusNode? nameInputFocusNode;
   TextEditingController? nameInputController;
   String? Function(BuildContext, String?)? nameInputControllerValidator;
   String? _nameInputControllerValidator(BuildContext context, String? val) {
@@ -36,12 +38,17 @@ class ProfileEditModel extends FlutterFlowModel<ProfileEditWidget> {
   }
 
   // State field(s) for FamilyInput widget.
+  FocusNode? familyInputFocusNode;
   TextEditingController? familyInputController;
   String? Function(BuildContext, String?)? familyInputControllerValidator;
   DateTime? datePicked;
   // State field(s) for PhoneInput widget.
+  FocusNode? phoneInputFocusNode;
   TextEditingController? phoneInputController;
   String? Function(BuildContext, String?)? phoneInputControllerValidator;
+  // State field(s) for Gender widget.
+  late ExpandableController genderController;
+
   // State field(s) for GenderRadioButton widget.
   FormFieldController<String>? genderRadioButtonValueController;
   // Model for Button_Exp component.
@@ -56,9 +63,16 @@ class ProfileEditModel extends FlutterFlowModel<ProfileEditWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    nameInputFocusNode?.dispose();
     nameInputController?.dispose();
+
+    familyInputFocusNode?.dispose();
     familyInputController?.dispose();
+
+    phoneInputFocusNode?.dispose();
     phoneInputController?.dispose();
+
+    genderController.dispose();
     buttonExpModel.dispose();
   }
 

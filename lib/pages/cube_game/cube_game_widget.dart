@@ -15,6 +15,7 @@ import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -180,6 +181,15 @@ class _CubeGameWidgetState extends State<CubeGameWidget>
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -197,7 +207,7 @@ class _CubeGameWidgetState extends State<CubeGameWidget>
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -335,7 +345,7 @@ class _CubeGameWidgetState extends State<CubeGameWidget>
                   if (FFAppState().cubeValue == 6)
                     Expanded(
                       child: Align(
-                        alignment: AlignmentDirectional(0.00, 1.00),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: FutureBuilder<List<GameFieldRecord>>(
                           future: queryGameFieldRecordOnce(
                             queryBuilder: (gameFieldRecord) =>
@@ -403,11 +413,10 @@ class _CubeGameWidgetState extends State<CubeGameWidget>
                                       _shouldSetState = true;
                                       if (CloudpaymentsGroup.getSubscriptionCall
                                               .modelStatus(
-                                                (_model.getSubscribeCloudGame
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              )
-                                              .toString() !=
+                                            (_model.getSubscribeCloudGame
+                                                    ?.jsonBody ??
+                                                ''),
+                                          ) !=
                                           'Active') {
                                         logFirebaseEvent(
                                             'Button_Exp_navigate_to');
@@ -490,7 +499,7 @@ class _CubeGameWidgetState extends State<CubeGameWidget>
                   if (FFAppState().cubeValue <= 5)
                     Expanded(
                       child: Align(
-                        alignment: AlignmentDirectional(0.00, 1.00),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,

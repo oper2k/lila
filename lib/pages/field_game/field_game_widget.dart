@@ -23,6 +23,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -612,7 +613,10 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
       });
     });
 
+    _model.expandableController = ExpandableController(initialExpanded: true);
     _model.inputInsiteGameController ??= TextEditingController();
+    _model.inputInsiteGameFocusNode ??= FocusNode();
+
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -630,6 +634,15 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return FutureBuilder<List<GameFieldRecord>>(
@@ -732,6 +745,84 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
+                              if (responsiveVisibility(
+                                context: context,
+                                phone: false,
+                                tablet: false,
+                                tabletLandscape: false,
+                                desktop: false,
+                              ))
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 18.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'FIELD_GAME_PAGE_Text_iphk8t06_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Text_update_page_state');
+                                      setState(() {
+                                        _model.game666 = false;
+                                      });
+                                    },
+                                    child: Text(
+                                      '6',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                  ),
+                                ),
+                              if (responsiveVisibility(
+                                context: context,
+                                phone: false,
+                                tablet: false,
+                                tabletLandscape: false,
+                                desktop: false,
+                              ))
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 8.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'FIELD_GAME_PAGE_Text_jju1kevk_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Text_update_page_state');
+                                      setState(() {
+                                        _model.game666 = true;
+                                      });
+                                    },
+                                    child: Text(
+                                      '666',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                  ),
+                                ),
+                              if (responsiveVisibility(
+                                context: context,
+                                phone: false,
+                                tablet: false,
+                                tabletLandscape: false,
+                                desktop: false,
+                              ))
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 6.0, 0.0),
+                                  child: Text(
+                                    _model.game666.toString(),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                ),
                               if (responsiveVisibility(
                                 context: context,
                                 phone: false,
@@ -872,7 +963,7 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                           children: [
                             if (FFAppState().visibilityCard == 1)
                               Align(
-                                alignment: AlignmentDirectional(0.00, -1.00),
+                                alignment: AlignmentDirectional(0.0, -1.0),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 13.0, 0.0, 0.0),
@@ -1279,8 +1370,8 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                               Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.00,
-                                                                        0.00),
+                                                                        0.0,
+                                                                        0.0),
                                                                 child: Text(
                                                                   gridViewGameFieldRecord
                                                                       .number
@@ -1307,8 +1398,8 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                               Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.00,
-                                                                        0.00),
+                                                                        0.0,
+                                                                        0.0),
                                                                 child: Text(
                                                                   gridViewGameFieldRecord
                                                                       .number
@@ -1415,11 +1506,10 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                       if (CloudpaymentsGroup
                                                               .getSubscriptionCall
                                                               .modelStatus(
-                                                                (_model.getSubscribeCloudGame
-                                                                        ?.jsonBody ??
-                                                                    ''),
-                                                              )
-                                                              .toString() !=
+                                                            (_model.getSubscribeCloudGame
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                          ) !=
                                                           'Active') {
                                                         logFirebaseEvent(
                                                             'Stack_update_app_state');
@@ -2211,7 +2301,7 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                               ),
                             if (FFAppState().visibilityCard == 2)
                               Align(
-                                alignment: AlignmentDirectional(0.00, 1.00),
+                                alignment: AlignmentDirectional(0.0, 1.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -2242,8 +2332,7 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                       borderRadius: BorderRadius.circular(22.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          6.0, 6.0, 6.0, 6.0),
+                                      padding: EdgeInsets.all(6.0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
@@ -2607,8 +2696,8 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                               Color(0x00000000),
                                                           child:
                                                               ExpandableNotifier(
-                                                            initialExpanded:
-                                                                true,
+                                                            controller: _model
+                                                                .expandableController,
                                                             child:
                                                                 ExpandablePanel(
                                                               header: Row(
@@ -2674,15 +2763,14 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                                       ),
                                                                       child:
                                                                           Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            8.0,
-                                                                            8.0,
-                                                                            8.0,
-                                                                            8.0),
+                                                                        padding:
+                                                                            EdgeInsets.all(8.0),
                                                                         child:
                                                                             TextFormField(
                                                                           controller:
                                                                               _model.inputInsiteGameController,
+                                                                          focusNode:
+                                                                              _model.inputInsiteGameFocusNode,
                                                                           onChanged: (_) =>
                                                                               EasyDebounce.debounce(
                                                                             '_model.inputInsiteGameController',

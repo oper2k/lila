@@ -8,6 +8,7 @@ import '/pages/forgot_password/forgot_password_widget.dart';
 import '/pages/registration_name/registration_name_widget.dart';
 import '/pages/welcome/welcome_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'registration_email_model.dart';
@@ -40,10 +41,19 @@ class _RegistrationEmailWidgetState extends State<RegistrationEmailWidget>
       initialIndex: 0,
     )..addListener(() => setState(() {}));
     _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressFocusNode ??= FocusNode();
+
     _model.passwordController ??= TextEditingController();
+    _model.passwordFocusNode ??= FocusNode();
+
     _model.emailController ??= TextEditingController();
+    _model.emailFocusNode ??= FocusNode();
+
     _model.password1Controller ??= TextEditingController();
+    _model.password1FocusNode ??= FocusNode();
+
     _model.password2Controller ??= TextEditingController();
+    _model.password2FocusNode ??= FocusNode();
   }
 
   @override
@@ -55,6 +65,15 @@ class _RegistrationEmailWidgetState extends State<RegistrationEmailWidget>
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -87,7 +106,7 @@ class _RegistrationEmailWidgetState extends State<RegistrationEmailWidget>
               child: Container(
                 decoration: BoxDecoration(),
                 child: Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -103,7 +122,7 @@ class _RegistrationEmailWidgetState extends State<RegistrationEmailWidget>
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -158,6 +177,9 @@ class _RegistrationEmailWidgetState extends State<RegistrationEmailWidget>
                             ),
                           ],
                           controller: _model.tabBarController,
+                          onTap: (i) async {
+                            [() async {}, () async {}][i]();
+                          },
                         ),
                       ),
                       Expanded(
@@ -189,6 +211,8 @@ class _RegistrationEmailWidgetState extends State<RegistrationEmailWidget>
                                               child: TextFormField(
                                                 controller: _model
                                                     .emailAddressController,
+                                                focusNode: _model
+                                                    .emailAddressFocusNode,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   hintText: 'Email',
@@ -281,6 +305,8 @@ class _RegistrationEmailWidgetState extends State<RegistrationEmailWidget>
                                                 child: TextFormField(
                                                   controller:
                                                       _model.passwordController,
+                                                  focusNode:
+                                                      _model.passwordFocusNode,
                                                   obscureText: !_model
                                                       .passwordVisibility,
                                                   decoration: InputDecoration(
@@ -542,6 +568,8 @@ class _RegistrationEmailWidgetState extends State<RegistrationEmailWidget>
                                               child: TextFormField(
                                                 controller:
                                                     _model.emailController,
+                                                focusNode:
+                                                    _model.emailFocusNode,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   hintText: 'Email',
@@ -634,6 +662,8 @@ class _RegistrationEmailWidgetState extends State<RegistrationEmailWidget>
                                                 child: TextFormField(
                                                   controller: _model
                                                       .password1Controller,
+                                                  focusNode:
+                                                      _model.password1FocusNode,
                                                   obscureText: !_model
                                                       .password1Visibility,
                                                   decoration: InputDecoration(
@@ -758,6 +788,8 @@ class _RegistrationEmailWidgetState extends State<RegistrationEmailWidget>
                                                 child: TextFormField(
                                                   controller: _model
                                                       .password2Controller,
+                                                  focusNode:
+                                                      _model.password2FocusNode,
                                                   obscureText: !_model
                                                       .password2Visibility,
                                                   decoration: InputDecoration(

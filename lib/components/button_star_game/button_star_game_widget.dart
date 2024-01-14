@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/question_game/question_game_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'button_star_game_model.dart';
@@ -43,7 +44,7 @@ class _ButtonStarGameWidgetState extends State<ButtonStarGameWidget> {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
+          padding: EdgeInsets.all(3.0),
           child: Container(
             width: double.infinity,
             height: 48.0,
@@ -57,7 +58,7 @@ class _ButtonStarGameWidgetState extends State<ButtonStarGameWidget> {
               borderRadius: BorderRadius.circular(30.0),
             ),
             child: Align(
-              alignment: AlignmentDirectional(0.00, 0.00),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: Text(
                 'Начать игру',
                 style: FlutterFlowTheme.of(context).bodyMedium,

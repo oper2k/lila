@@ -14,6 +14,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'profile_model.dart';
@@ -48,6 +49,15 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -63,7 +73,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             backgroundColor: FlutterFlowTheme.of(context).secondary,
             automaticallyImplyLeading: false,
             leading: Align(
-              alignment: AlignmentDirectional(0.00, 1.00),
+              alignment: AlignmentDirectional(0.0, 1.0),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                 child: Icon(
@@ -75,7 +85,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             ),
             actions: [
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                   child: InkWell(
@@ -116,7 +126,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             ],
             flexibleSpace: FlexibleSpaceBar(
               background: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Image.asset(
                   'assets/images/StatusBar.png',
                   width: double.infinity,
@@ -247,11 +257,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 );
                                 if (CloudpaymentsGroup.getSubscriptionCall
                                         .modelStatus(
-                                          (_model.getSubscribeCloudGame1
-                                                  ?.jsonBody ??
-                                              ''),
-                                        )
-                                        .toString() ==
+                                      (_model.getSubscribeCloudGame1
+                                              ?.jsonBody ??
+                                          ''),
+                                    ) ==
                                     'Active') {
                                   logFirebaseEvent('Container_bottom_sheet');
                                   await showModalBottomSheet(
@@ -330,11 +339,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   );
                                   if (CloudpaymentsGroup.getSubscriptionCall
                                           .modelStatus(
-                                            (_model.getSubscribeCloudGame
-                                                    ?.jsonBody ??
-                                                ''),
-                                          )
-                                          .toString() ==
+                                        (_model.getSubscribeCloudGame
+                                                ?.jsonBody ??
+                                            ''),
+                                      ) ==
                                       'Active') {
                                     logFirebaseEvent('Container_bottom_sheet');
                                     await showModalBottomSheet(

@@ -21,12 +21,12 @@ import '/flutter_flow/random_data_util.dart' as random_data;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_model.dart';
@@ -61,6 +61,15 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     context.watch<FFAppState>();
 
     return FutureBuilder<List<GamesRecord>>(
@@ -99,7 +108,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   actions: [],
                   flexibleSpace: FlexibleSpaceBar(
                     background: Align(
-                      alignment: AlignmentDirectional(0.00, -1.00),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Image.asset(
                         'assets/images/StatusBar.png',
                         width: double.infinity,
@@ -336,8 +345,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 1.00),
+                                      alignment: AlignmentDirectional(0.0, 1.0),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 10.0),
@@ -732,11 +740,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           if (CloudpaymentsGroup
                                                   .getSubscriptionCall
                                                   .modelStatus(
-                                                    (_model.getSubscribeCloudGame
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  )
-                                                  .toString() !=
+                                                (_model.getSubscribeCloudGame
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              ) !=
                                               'Active') {
                                             logFirebaseEvent(
                                                 'Container_navigate_to');
@@ -876,11 +883,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           if (CloudpaymentsGroup
                                                   .getSubscriptionCall
                                                   .modelStatus(
-                                                    (_model.getSubscribeCloudGame1
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  )
-                                                  .toString() !=
+                                                (_model.getSubscribeCloudGame1
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              ) !=
                                               'Active') {
                                             logFirebaseEvent(
                                                 'Container_navigate_to');
@@ -926,7 +932,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           children: [
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.00, -1.00),
+                                                  0.0, -1.0),
                                               child: Image.asset(
                                                 'assets/images/bg_home_5.png',
                                                 width: double.infinity,
@@ -935,7 +941,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  -1.00, 0.00),
+                                                  -1.0, 0.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -950,7 +956,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.00, 1.00),
+                                                  0.0, 1.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1019,11 +1025,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           if (CloudpaymentsGroup
                                                   .getSubscriptionCall
                                                   .modelStatus(
-                                                    (_model.getSubscribeCloudGame2
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  )
-                                                  .toString() !=
+                                                (_model.getSubscribeCloudGame2
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              ) !=
                                               'Active') {
                                             logFirebaseEvent(
                                                 'Container_navigate_to');
@@ -1070,7 +1075,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           children: [
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.00, -1.00),
+                                                  0.0, -1.0),
                                               child: Image.asset(
                                                 'assets/images/bg_home_6.png',
                                                 width: double.infinity,
@@ -1079,7 +1084,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  -1.00, 0.00),
+                                                  -1.0, 0.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1094,7 +1099,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.00, 1.00),
+                                                  0.0, 1.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1163,11 +1168,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           if (CloudpaymentsGroup
                                                   .getSubscriptionCall
                                                   .modelStatus(
-                                                    (_model.getSubscribeCloudGame3
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  )
-                                                  .toString() !=
+                                                (_model.getSubscribeCloudGame3
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              ) !=
                                               'Active') {
                                             logFirebaseEvent(
                                                 'Container_navigate_to');
@@ -1213,7 +1217,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           children: [
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.00, -1.00),
+                                                  0.0, -1.0),
                                               child: Image.asset(
                                                 'assets/images/bg_home_7.png',
                                                 width: double.infinity,
@@ -1222,7 +1226,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  -1.00, 0.00),
+                                                  -1.0, 0.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1237,7 +1241,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.00, 1.00),
+                                                  0.0, 1.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -1306,11 +1310,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           if (CloudpaymentsGroup
                                                   .getSubscriptionCall
                                                   .modelStatus(
-                                                    (_model.getSubscribeCloudGame4
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                  )
-                                                  .toString() !=
+                                                (_model.getSubscribeCloudGame4
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              ) !=
                                               'Active') {
                                             logFirebaseEvent(
                                                 'Container_navigate_to');
@@ -1505,7 +1508,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  1.00, 0.00),
+                                                  1.0, 0.0),
                                               child: Container(
                                                 decoration: BoxDecoration(
                                                   color: Color(0x66202141),
@@ -1629,7 +1632,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    1.00, 0.00),
+                                                    1.0, 0.0),
                                                 child: Container(
                                                   decoration: BoxDecoration(
                                                     color: Color(0x66202141),
@@ -1756,7 +1759,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    1.00, 0.00),
+                                                    1.0, 0.0),
                                                 child: Container(
                                                   decoration: BoxDecoration(
                                                     color: Color(0x66202141),
@@ -1883,7 +1886,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    1.00, 0.00),
+                                                    1.0, 0.0),
                                                 child: Container(
                                                   decoration: BoxDecoration(
                                                     color: Color(0x66202141),
@@ -2037,7 +2040,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           children: [
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.00, -1.00),
+                                                  0.0, -1.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -2057,7 +2060,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.00, -1.00),
+                                                  0.0, -1.0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -2074,7 +2077,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.00, 1.00),
+                                                  0.0, 1.0),
                                               child: ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
@@ -2301,12 +2304,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                15.0,
-                                                                15.0,
-                                                                15.0,
-                                                                15.0),
+                                                        EdgeInsets.all(15.0),
                                                     child: Image.asset(
                                                       'assets/images/stars1.png',
                                                       fit: BoxFit.contain,
@@ -2423,25 +2421,20 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   'HOME_PAGE_Container_jab18a7b_ON_TAP');
                                               logFirebaseEvent(
                                                   'Container_alert_dialog');
-                                              await showAlignedDialog(
+                                              await showDialog(
                                                 context: context,
-                                                isGlobal: true,
-                                                avoidOverflow: false,
-                                                targetAnchor:
-                                                    AlignmentDirectional(
-                                                            0.0, 0.0)
-                                                        .resolve(
-                                                            Directionality.of(
-                                                                context)),
-                                                followerAnchor:
-                                                    AlignmentDirectional(
-                                                            0.0, 0.0)
-                                                        .resolve(
-                                                            Directionality.of(
-                                                                context)),
                                                 builder: (dialogContext) {
-                                                  return Material(
-                                                    color: Colors.transparent,
+                                                  return Dialog(
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
                                                     child: GestureDetector(
                                                       onTap: () => _model
                                                               .unfocusNode
@@ -2484,7 +2477,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 child: Align(
                                                   alignment:
                                                       AlignmentDirectional(
-                                                          0.00, 1.00),
+                                                          0.0, 1.0),
                                                   child: Container(
                                                     width: double.infinity,
                                                     height: 50.0,

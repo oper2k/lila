@@ -11,6 +11,7 @@ import 'card_pay_widget.dart' show CardPayWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
@@ -20,14 +21,17 @@ class CardPayModel extends FlutterFlowModel<CardPayWidget> {
 
   final unfocusNode = FocusNode();
   // State field(s) for Number widget.
+  FocusNode? numberFocusNode;
   TextEditingController? numberController;
   final numberMask = MaskTextInputFormatter(mask: '#### #### #### ####');
   String? Function(BuildContext, String?)? numberControllerValidator;
   // State field(s) for Date widget.
+  FocusNode? dateFocusNode;
   TextEditingController? dateController;
   final dateMask = MaskTextInputFormatter(mask: '##/##');
   String? Function(BuildContext, String?)? dateControllerValidator;
   // State field(s) for CVV widget.
+  FocusNode? cvvFocusNode;
   TextEditingController? cvvController;
   late bool cvvVisibility;
   final cvvMask = MaskTextInputFormatter(mask: '###');
@@ -60,9 +64,15 @@ class CardPayModel extends FlutterFlowModel<CardPayWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    numberFocusNode?.dispose();
     numberController?.dispose();
+
+    dateFocusNode?.dispose();
     dateController?.dispose();
+
+    cvvFocusNode?.dispose();
     cvvController?.dispose();
+
     buttonExpModel.dispose();
   }
 

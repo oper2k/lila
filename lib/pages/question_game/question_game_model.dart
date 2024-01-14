@@ -7,6 +7,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'question_game_widget.dart' show QuestionGameWidget;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +17,7 @@ class QuestionGameModel extends FlutterFlowModel<QuestionGameWidget> {
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for QuestionInput widget.
+  FocusNode? questionInputFocusNode;
   TextEditingController? questionInputController;
   String? Function(BuildContext, String?)? questionInputControllerValidator;
   String? _questionInputControllerValidator(BuildContext context, String? val) {
@@ -38,6 +40,7 @@ class QuestionGameModel extends FlutterFlowModel<QuestionGameWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    questionInputFocusNode?.dispose();
     questionInputController?.dispose();
   }
 
