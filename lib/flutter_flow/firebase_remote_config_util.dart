@@ -6,7 +6,7 @@ Future initializeFirebaseRemoteConfig() async {
     minimumFetchInterval: const Duration(hours: 1),
   ));
   await FirebaseRemoteConfig.instance.setDefaults(const {
-    'showCloud3': false,
+    'showCloud4': false,
   });
   await FirebaseRemoteConfig.instance.fetchAndActivate();
 }

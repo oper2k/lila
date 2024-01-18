@@ -40,7 +40,7 @@ class _SubPayWidgetState extends State<SubPayWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('SUB_PAY_PAGE_Sub_Pay_ON_INIT_STATE');
-      if (!getRemoteConfigBool('showCloud3')) {
+      if (!getRemoteConfigBool('showCloud4')) {
         logFirebaseEvent('Sub_Pay_navigate_to');
         Navigator.pushReplacement(
           context,
