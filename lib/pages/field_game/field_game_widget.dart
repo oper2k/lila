@@ -770,6 +770,37 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                       });
                                     },
                                     child: Text(
+                                      FFAppState().oneGame.toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                  ),
+                                ),
+                              if (responsiveVisibility(
+                                context: context,
+                                phone: false,
+                                tablet: false,
+                                tabletLandscape: false,
+                                desktop: false,
+                              ))
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 18.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'FIELD_GAME_PAGE_Text_szehu40d_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Text_update_page_state');
+                                      setState(() {
+                                        _model.game666 = false;
+                                      });
+                                    },
+                                    child: Text(
                                       '6',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
@@ -822,83 +853,6 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
                                   ),
-                                ),
-                              if (responsiveVisibility(
-                                context: context,
-                                phone: false,
-                                tablet: false,
-                                tabletLandscape: false,
-                                desktop: false,
-                              ))
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    if (responsiveVisibility(
-                                      context: context,
-                                      tabletLandscape: false,
-                                      desktop: false,
-                                    ))
-                                      Text(
-                                        FFAppState().cubeValue666.toString(),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                      ),
-                                    if (responsiveVisibility(
-                                      context: context,
-                                      tabletLandscape: false,
-                                      desktop: false,
-                                    ))
-                                      Text(
-                                        FFAppState().cube666.toString(),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                      ),
-                                    if (responsiveVisibility(
-                                      context: context,
-                                      tabletLandscape: false,
-                                      desktop: false,
-                                    ))
-                                      Text(
-                                        FFAppState().boardValue.toString(),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                      ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 64.0, 0.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          logFirebaseEvent(
-                                              'FIELD_GAME_Container_etmzfhq3_ON_TAP');
-                                          if (_model.game666) {
-                                            logFirebaseEvent(
-                                                'Container_update_page_state');
-                                            setState(() {
-                                              _model.game666 = false;
-                                            });
-                                          } else {
-                                            logFirebaseEvent(
-                                                'Container_update_page_state');
-                                            setState(() {
-                                              _model.game666 = true;
-                                            });
-                                          }
-                                        },
-                                        child: Container(
-                                          width: 50.0,
-                                          height: 19.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
                                 ),
                               Text(
                                 'Меню',
@@ -1587,74 +1541,156 @@ class _FieldGameWidgetState extends State<FieldGameWidget>
                                                       .controller
                                                       .forward(from: 0.0);
                                                 }
-                                                if (FFAppState().cube666 == 3) {
-                                                  if (FFAppState().cubeValue !=
-                                                      6) {
-                                                    // если выпало 3 шестерки и некст выпала не 6 то, перезапиши значение доски хода который мы записали при кидании первой шестерки
-                                                    logFirebaseEvent(
-                                                        'Stack_update_app_state');
-                                                    setState(() {
-                                                      FFAppState().boardValue =
-                                                          FFAppState()
-                                                              .cubeValue666;
-                                                      FFAppState()
-                                                              .stopCubeRotate =
-                                                          false;
-                                                    });
-                                                    logFirebaseEvent(
-                                                        'Stack_update_app_state');
-                                                    setState(() {
-                                                      FFAppState()
-                                                          .cubeValue666 = 0;
-                                                      FFAppState().cube666 = 0;
-                                                    });
-                                                    logFirebaseEvent(
-                                                        'Stack_wait__delay');
-                                                    await Future.delayed(
-                                                        const Duration(
-                                                            milliseconds:
-                                                                1000));
-                                                    logFirebaseEvent(
-                                                        'Stack_bottom_sheet');
-                                                    await showModalBottomSheet(
-                                                      isScrollControlled: true,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      enableDrag: false,
-                                                      context: context,
-                                                      builder: (context) {
-                                                        return GestureDetector(
-                                                          onTap: () => _model
-                                                                  .unfocusNode
-                                                                  .canRequestFocus
-                                                              ? FocusScope.of(
-                                                                      context)
-                                                                  .requestFocus(
-                                                                      _model
-                                                                          .unfocusNode)
-                                                              : FocusScope.of(
-                                                                      context)
-                                                                  .unfocus(),
-                                                          child: Padding(
-                                                            padding: MediaQuery
-                                                                .viewInsetsOf(
-                                                                    context),
-                                                            child:
-                                                                Game666Widget(),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ).then((value) =>
-                                                        safeSetState(() {}));
+                                                if (FFAppState().oneGame) {
+                                                  if (FFAppState().cube666 ==
+                                                      2) {
+                                                    if (FFAppState()
+                                                            .cubeValue !=
+                                                        6) {
+                                                      // если выпало 3 шестерки и некст выпала не 6 то, перезапиши значение доски хода который мы записали при кидании первой шестерки
+                                                      logFirebaseEvent(
+                                                          'Stack_update_app_state');
+                                                      setState(() {
+                                                        FFAppState()
+                                                            .boardValue = 0;
+                                                        FFAppState()
+                                                                .stopCubeRotate =
+                                                            false;
+                                                      });
+                                                      logFirebaseEvent(
+                                                          'Stack_update_app_state');
+                                                      setState(() {
+                                                        FFAppState()
+                                                            .cubeValue666 = 0;
+                                                        FFAppState().cube666 =
+                                                            0;
+                                                        FFAppState().oneGame =
+                                                            false;
+                                                      });
+                                                      logFirebaseEvent(
+                                                          'Stack_wait__delay');
+                                                      await Future.delayed(
+                                                          const Duration(
+                                                              milliseconds:
+                                                                  1000));
+                                                      logFirebaseEvent(
+                                                          'Stack_bottom_sheet');
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        enableDrag: false,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  Game666Widget(),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() {}));
 
-                                                    logFirebaseEvent(
-                                                        'Stack_wait__delay');
-                                                    await Future.delayed(
-                                                        const Duration(
-                                                            milliseconds:
-                                                                2000));
+                                                      logFirebaseEvent(
+                                                          'Stack_wait__delay');
+                                                      await Future.delayed(
+                                                          const Duration(
+                                                              milliseconds:
+                                                                  2000));
+                                                    }
+                                                  }
+                                                } else {
+                                                  if (FFAppState().cube666 ==
+                                                      3) {
+                                                    if (FFAppState()
+                                                            .cubeValue !=
+                                                        6) {
+                                                      // если выпало 3 шестерки и некст выпала не 6 то, перезапиши значение доски хода который мы записали при кидании первой шестерки
+                                                      logFirebaseEvent(
+                                                          'Stack_update_app_state');
+                                                      setState(() {
+                                                        FFAppState()
+                                                                .boardValue =
+                                                            FFAppState()
+                                                                .cubeValue666;
+                                                        FFAppState()
+                                                                .stopCubeRotate =
+                                                            false;
+                                                      });
+                                                      logFirebaseEvent(
+                                                          'Stack_update_app_state');
+                                                      setState(() {
+                                                        FFAppState()
+                                                            .cubeValue666 = 0;
+                                                        FFAppState().cube666 =
+                                                            0;
+                                                      });
+                                                      logFirebaseEvent(
+                                                          'Stack_wait__delay');
+                                                      await Future.delayed(
+                                                          const Duration(
+                                                              milliseconds:
+                                                                  1000));
+                                                      logFirebaseEvent(
+                                                          'Stack_bottom_sheet');
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        enableDrag: false,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  Game666Widget(),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() {}));
+
+                                                      logFirebaseEvent(
+                                                          'Stack_wait__delay');
+                                                      await Future.delayed(
+                                                          const Duration(
+                                                              milliseconds:
+                                                                  2000));
+                                                    }
                                                   }
                                                 }
+
                                                 if (FFAppState().cubeValue ==
                                                     6) {
                                                   if (FFAppState().boardValue ==

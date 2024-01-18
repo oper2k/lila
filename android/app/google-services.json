@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "1017382373837-j3dbdjs1ai89nutda7h6jhua6nsvofqc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pro.appful.fraubalance",
+            "certificate_hash": "30139f2e6f76792109827cd4d8d51e7543cffd52"
+          }
+        },
+        {
           "client_id": "1017382373837-s80u0kdpf6403etf55rs3o1h06srnr0s.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

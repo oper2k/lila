@@ -88,14 +88,26 @@ class _Cube6WidgetState extends State<Cube6Widget> {
                     FFAppState().visibilityCard = 1;
                     FFAppState().GameEnd666 = true;
                   });
-                  if (FFAppState().cube666 == 3) {
-                    if (FFAppState().cubeValue != 6) {
-                      logFirebaseEvent('Button_Gradient_update_app_state');
-                      setState(() {
-                        FFAppState().boardValue = FFAppState().cubeValue666;
-                      });
+                  if (FFAppState().oneGame) {
+                    if (FFAppState().cube666 == 2) {
+                      if (FFAppState().cubeValue != 6) {
+                        logFirebaseEvent('Button_Gradient_update_app_state');
+                        setState(() {
+                          FFAppState().boardValue = FFAppState().cubeValue666;
+                        });
+                      }
+                    }
+                  } else {
+                    if (FFAppState().cube666 == 3) {
+                      if (FFAppState().cubeValue != 6) {
+                        logFirebaseEvent('Button_Gradient_update_app_state');
+                        setState(() {
+                          FFAppState().boardValue = FFAppState().cubeValue666;
+                        });
+                      }
                     }
                   }
+
                   if (FFAppState().boardValue == 67) {
                     logFirebaseEvent('Button_Gradient_update_app_state');
                     FFAppState().update(() {
